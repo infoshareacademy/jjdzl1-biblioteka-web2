@@ -20,40 +20,40 @@ public class UsersQuery {
 
     public static ResultSet listOfUsers(String order, String findUserByName) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users ORDER BY " + order;
+        String query = "SELECT * FROM user ORDER BY " + order;
         if (findUserByName != null)
-            query = "SELECT * FROM users WHERE lastName LIKE '%" + findUserByName + "%' ORDER BY " + order;
+            query = "SELECT * FROM user WHERE lastName LIKE '%" + findUserByName + "%' ORDER BY " + order;
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet listOfUsersFromTo(String order, int from, int to) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users ORDER BY " + order + " LIMIT " + from + "," + to;
+        String query = "SELECT * FROM user ORDER BY " + order + " LIMIT " + from + "," + to;
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet CountAllUsers() throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT COUNT(*) FROM users WHERE 1";
+        String query = "SELECT COUNT(*) FROM user WHERE 1";
         return preparedStatement(query).executeQuery();
 
     }
 
     public static ResultSet findUserById(int id) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users WHERE id = " + id;
+        String query = "SELECT * FROM user WHERE id = " + id;
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet findUserByLogin(String login) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users WHERE login = '" + login + "'";
+        String query = "SELECT * FROM user WHERE login = '" + login + "'";
         return preparedStatement(query).executeQuery();
     }
 
     public static void updateUserQuery(String userLogin, User user) throws SQLException, ClassNotFoundException {
 
-        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE login = '" + userLogin + "'";
+        String query = "UPDATE user SET login = ?, firstName = ?, lastName = ?, email = ?, admin = ?, status = ? WHERE login = '" + userLogin + "'";
 
         PreparedStatement ps = preparedStatement(query);
         ps.setString(1, user.getLogin());
@@ -70,7 +70,7 @@ public class UsersQuery {
 
     public static void updateAccountQuery(String userName, User user) throws SQLException, ClassNotFoundException {
 
-        String query = "UPDATE users SET login = ?, firstName = ?, lastName = ?, email = ?, password = ?" +
+        String query = "UPDATE user SET login = ?, firstName = ?, lastName = ?, email = ?, password = ?" +
                 " WHERE login = '" + userName + "'";
 
         PreparedStatement ps = preparedStatement(query);
@@ -85,13 +85,13 @@ public class UsersQuery {
 
     public static ResultSet findUserByEmail(String email) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users WHERE email = '" + email + "'";
+        String query = "SELECT * FROM user WHERE email = '" + email + "'";
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet findUserByEmailOrLogin(String email, String login) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM users WHERE email = '" + email + "' OR login = '" + login + "'";
+        String query = "SELECT * FROM user WHERE email = '" + email + "' OR login = '" + login + "'";
         return preparedStatement(query).executeQuery();
     }
 
@@ -99,7 +99,7 @@ public class UsersQuery {
 
         Hasher hasher = new PBKDF2Hasher();
 
-        String query = "INSERT INTO `users`(`login`, `password`, `firstName`, `lastName`, `email`, `admin`) VALUES ('" +
+        String query = "INSERT INTO `user`(`login`, `password`, `firstName`, `lastName`, `email`, `admin`) VALUES ('" +
                 user.getLogin() + "', '" +
                 hasher.hash(user.getPassword()) + "', '" +
                 user.getFirstName() + "', '" +

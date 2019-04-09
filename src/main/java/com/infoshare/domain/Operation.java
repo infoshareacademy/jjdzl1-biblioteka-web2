@@ -18,7 +18,7 @@ public class Operation implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-]    @Column
+    @Column
     private int userId;
 
     @Column
