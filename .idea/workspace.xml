@@ -7,14 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb2ea21-1755-4bc9-b5ab-3405b5bfdef3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/domain/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/domain/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/domain/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/domain/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/query/BooksQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/query/BooksQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/query/OperationsQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/query/OperationsQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/query/StatsQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/query/StatsQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/query/UsersQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/query/UsersQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/validation/BookValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/validation/BookValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/bookDescription.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/bookDescription.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/listOfBorrow.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/listOfBorrow.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bookDescription.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bookDescription.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/listOfBooks.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listOfBooks.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,92 +70,85 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/domain/User.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/validation/BookValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="171">
+              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/UsersRepositoryDao.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="280">
+              <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/UsersQuery.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+            <state relative-caret-position="1330">
+              <caret line="132" column="7" lean-forward="true" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfBorrow.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="99" column="25" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfUsers.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-918" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/userBasket.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1946" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/listOfBooks.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddUserServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/bookDescription.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-723">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            <state relative-caret-position="756">
+              <caret line="43" column="81" selection-start-line="43" selection-start-column="81" selection-end-line="43" selection-end-column="81" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/addUser.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfOperations.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-864" />
+            <state relative-caret-position="-1100" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/LogoutServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/bookDescription.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/LoginServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-306">
-              <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/StatsQuery.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/loginSuccess.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="118" column="44" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/OperationsQuery.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="540">
+              <caret line="43" column="81" selection-start-line="43" selection-start-column="81" selection-end-line="43" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -161,6 +158,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>users</find>
+      <find>books</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,13 +173,22 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/domain/Operation.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0a44604d-d605-4f52-bdb5-5114e1c617aa/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/domain/Book.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/query/UsersQuery.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/LoginServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/query/StatsQuery.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/query/StatsQuery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/domain/Book.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/query/OperationsQuery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/query/BooksQuery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/validation/BookValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/bookDescription.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/listOfBorrow.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/listOfBooks.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/bookDescription.jsp" />
       </list>
     </option>
   </component>
@@ -260,6 +267,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infoshare" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -278,7 +294,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infoshare" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
               <item name="servlets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
+              <item name="validation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
@@ -478,16 +512,15 @@
       <workItem from="1554742665910" duration="19000" />
       <workItem from="1554744915398" duration="673000" />
       <workItem from="1554752450649" duration="855000" />
-      <workItem from="1554793718729" duration="1920000" />
+      <workItem from="1554793718729" duration="5449000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24007000" />
+    <option name="totallyTimeSpent" value="27536000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1032" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3104189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -500,13 +533,13 @@
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989259" visible="true" weight="0.2422503" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989259" visible="true" weight="0.26176807" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3295063" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32646048" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.326062" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50107414" side_tool="true" weight="0.2422503" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3295063" />
@@ -577,37 +610,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mysql/standalone.xml" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7a0754a6-1eb1-455e-8870-7fea81e0b3f5/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/2e47edcd-2e78-4f34-b4b3-561767d1cd59/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8913815a-8a10-4e8c-ba85-3fe7c0ce152f/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="das://8913815a-8a10-4e8c-ba85-3fe7c0ce152f/schema/librarydb2/table/operations" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8000f463-9d52-4a2f-ae4b-8cbb7c1adc1d/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b23a1e35-b3a2-4844-b3fe-9ae1dab4afcb/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9882e1c1-00eb-4e94-8aa8-fcee9eba8eea/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/378b8c62-8a74-4a71-b1ed-eb39748bb2a7/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -654,20 +656,6 @@
     </entry>
     <entry file="das://d3b6e146-3bcf-4050-9033-cf83e38b7334/schema/librarydb/table/books" />
     <entry file="das://d3b6e146-3bcf-4050-9033-cf83e38b7334/schema/librarydb/table/operations" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/BooksQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/domain/OperationType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/filters/AuthenticationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -681,9 +669,6 @@
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfOperations.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0a44604d-d605-4f52-bdb5-5114e1c617aa/console.sql">
       <provider selected="true" editor-type-id="text-editor">
@@ -703,27 +688,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/OperationsRepositoryDaoBeen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="80" column="55" selection-start-line="80" selection-start-column="55" selection-end-line="80" selection-end-column="55" />
-          <folding>
-            <element signature="e#3428#3429#0" expanded="true" />
-            <element signature="e#3489#3490#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/domain/Operation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="51" selection-start-line="10" selection-end-line="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -748,13 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/domain/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="46" selection-start-line="11" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -762,24 +719,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/UsersRepositoryDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/OperationsQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -801,13 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-306">
           <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/StatsQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -835,8 +771,135 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddUserServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-723">
+        <state relative-caret-position="-512">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/domain/OperationType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/domain/Operation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-370">
+          <caret line="32" column="11" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/StatsQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="87" selection-start-line="13" selection-start-column="87" selection-end-line="13" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/OperationsRepositoryDaoBeen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="80" column="55" selection-start-line="80" selection-start-column="55" selection-end-line="80" selection-end-column="55" />
+          <folding>
+            <element signature="e#3428#3429#0" expanded="true" />
+            <element signature="e#3489#3490#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/domain/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/OperationsQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/BooksQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/validation/BookValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/bookDescription.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="43" column="81" selection-start-line="43" selection-start-column="81" selection-end-line="43" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1330">
+          <caret line="132" column="7" lean-forward="true" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfBorrow.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="99" column="25" selection-start-line="99" selection-start-column="25" selection-end-line="99" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfOperations.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1100" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfUsers.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-918" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/userBasket.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1946" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/listOfBooks.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/bookDescription.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="43" column="81" selection-start-line="43" selection-start-column="81" selection-end-line="43" selection-end-column="81" />
         </state>
       </provider>
     </entry>

@@ -43,7 +43,7 @@ public class AddBookServlet extends HttpServlet {
                 .title(req.getParameter("title"))
                 .authorFirstName(req.getParameter("firstName"))
                 .authorLastName(req.getParameter("lastName"))
-                .relaseDate(dateChecked(req))
+                .daterelease(dateChecked(req))
                 .isbn(req.getParameter("isbn"))
                 .build();
     }

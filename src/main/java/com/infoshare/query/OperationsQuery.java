@@ -19,9 +19,9 @@ import static com.infoshare.dao.DBCon.preparedStatement;
 public class OperationsQuery {
 
     String query = "SELECT * FROM `operations` " +
-            "JOIN `users` ON operations.userId = users.id " +
-            "JOIN books ON operations.bookId=books.id " +
-            "WHERE users.id = 10";
+            "JOIN `user` ON operations.userId = user.id " +
+            "JOIN book ON operations.bookId=book.id " +
+            "WHERE user.id = 10";
 
 
     public static ResultSet listOfOperationsByUserId(int userID) throws SQLException, ClassNotFoundException {
@@ -34,8 +34,8 @@ public class OperationsQuery {
 
 
         String query = "SELECT * FROM `operations` " +
-                "JOIN `users` ON operations.userId = users.id " +
-                "JOIN books ON operations.bookId=books.id ";
+                "JOIN `user` ON operations.userId = user.id " +
+                "JOIN book ON operations.bookId=book.id ";
 
         String userQuery = "";
         if (userId != null && userId != 0) {
@@ -74,14 +74,14 @@ public class OperationsQuery {
                     "VALUES ('" +
 
                     user.getId() + "', '" +
-                    basketItem.getBook().getBookID() + "', '" +
+                    basketItem.getBook().getId() + "', '" +
                     currentDate + "', '" +
                     currentDate + "', '" +
                     endDate + "', '" +
                     operationTypeId + "' )";
 
 
-            String changeStatusQuery = "UPDATE books SET status='" + status + "' WHERE id=" + basketItem.getBook().getBookID();
+            String changeStatusQuery = "UPDATE book SET status='" + status + "' WHERE id=" + basketItem.getBook().getId();
 
             try {
                 preparedStatement(query).execute();
@@ -98,8 +98,8 @@ public class OperationsQuery {
     public static ResultSet listOfBorrowedBookByUserId(int userID) throws SQLException, ClassNotFoundException {
         String endDate = "1970.01.01";
         String query = "SELECT * FROM operations " +
-                "JOIN `users` ON operations.userId = users.id " +
-                "JOIN books ON operations.bookId=books.id " +
+                "JOIN `user` ON operations.userId = user.id " +
+                "JOIN book ON operations.bookId=book.id " +
                 "WHERE userID = " + userID + " " +
                 "AND endDate = '" + endDate + "'";
         return preparedStatement(query).executeQuery();
@@ -109,7 +109,7 @@ public class OperationsQuery {
        String endDateString=endDate.toString();
        // UPDATE `librarydb`.`operations` SET `endDate`='1970-01-02' WHERE `id`='25';
         String query = "UPDATE operations SET endDate='" + endDateString + "' WHERE id=" + id;
-        String statusAvailableQuery = "UPDATE books SET status='Dostępna' WHERE id=" + id;
+        String statusAvailableQuery = "UPDATE book SET status='Dostępna' WHERE id=" + id;
         try {
             preparedStatement(query).execute();
             preparedStatement(statusAvailableQuery).execute();

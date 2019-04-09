@@ -2,7 +2,6 @@ package com.infoshare.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,8 +16,7 @@ public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
-    private int bookID;
+    private int id;
 
     @Column (length = 50)
     private String title;
@@ -29,8 +27,8 @@ public class Book implements Serializable {
     @Column (length = 40)
     private String authorLastName;
 
-    @Column(name = "daterelease")
-    private int relaseDate;
+    @Column
+    private int daterelease;
 
     @Column (length = 12)
     private String isbn;
@@ -45,24 +43,24 @@ public class Book implements Serializable {
         // for JPA
     }
 
-    public Book(int bookID, String title, String authorFirstName, String authorLastName, int relaseDate,
+    public Book(int id, String title, String authorFirstName, String authorLastName, int daterelease,
                 String isbn, String description, BookStatus status) {
-        this.bookID = bookID;
+        this.id = id;
         this.title = title;
         this.authorFirstName = authorFirstName;
         this.authorLastName = authorLastName;
-        this.relaseDate = relaseDate;
+        this.daterelease = daterelease;
         this.isbn = isbn;
         this.description = description;
         this.status = status;
     }
 
-    public Book(int bookID, String title, String authorFirstName, String authorLastName, int relaseDate, String isbn, BookStatus status) {
-        this.bookID = bookID;
+    public Book(int id, String title, String authorFirstName, String authorLastName, int daterelease, String isbn, BookStatus status) {
+        this.id = id;
         this.title = title;
         this.authorFirstName = authorFirstName;
         this.authorLastName = authorLastName;
-        this.relaseDate = relaseDate;
+        this.daterelease = daterelease;
         this.isbn = isbn;
         this.status = status;
     }

@@ -50,7 +50,7 @@
                 %>
 
                 <tr class="listofitemps" style="cursor:pointer"
-                    onclick="window.location='bookDescription.jsp?id=<%=book.getBookID()%>'" data-toggle="tooltip"
+                    onclick="window.location='bookDescription.jsp?id=<%=book.getId()%>'" data-toggle="tooltip"
                     title="Zobacz więcej ...">
                     <th scope="row"><%=rowNumber%>
                     </th>
@@ -61,7 +61,7 @@
 
                     <td><%=book.getIsbn()%>
                     </td>
-                    <td><%=book.getRelaseDate()%>
+                    <td><%=book.getDaterelease()%>
                     </td>
                 </tr>
                 <%

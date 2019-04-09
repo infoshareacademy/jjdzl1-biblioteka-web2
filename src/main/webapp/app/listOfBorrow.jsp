@@ -96,6 +96,7 @@
                             <div class="form-group mx-sm-3 mb-2">
                                 <input type="date" name="endDate" class="form-control" value="<%=LocalDate.now()%>">
                             </div>
+                        </form>
                     </td>
                     <td>
                         <form method="POST" action="ReturnBookServlet" class="addUser">

@@ -13,45 +13,45 @@ public class BooksQuery {
     public static ResultSet listOfBooks(String title, String order) throws SQLException, ClassNotFoundException {
 
 
-        String query = "SELECT * FROM books WHERE title LIKE '%" + title + "%' ORDER BY " + order;
+        String query = "SELECT * FROM book WHERE title LIKE '%" + title + "%' ORDER BY " + order;
 
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet listOfBooksFromTo(String order, int from, int to) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM books ORDER BY " + order + " LIMIT " + from + "," + to;
+        String query = "SELECT * FROM book ORDER BY " + order + " LIMIT " + from + "," + to;
 
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet CountAllBooks() throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT COUNT(*) FROM books WHERE 1";
+        String query = "SELECT COUNT(*) FROM book WHERE 1";
         return preparedStatement(query).executeQuery();
 
     }
 
     public static ResultSet findBookById(int id) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM books WHERE id = " + id;
+        String query = "SELECT * FROM book WHERE id = " + id;
         return preparedStatement(query).executeQuery();
 
     }
 
     public static ResultSet findBookByTitle(String title, String order) throws SQLException, ClassNotFoundException {
 
-        String query = "SELECT * FROM books WHERE title LIKE '%" + title + "%' ORDER BY " + order;
+        String query = "SELECT * FROM book WHERE title LIKE '%" + title + "%' ORDER BY " + order;
         return preparedStatement(query).executeQuery();
     }
 
     public static void addNewBook(Book book) {
 
-        String query = "INSERT INTO `books`(`title`, `authorFirstName`, `authorLastName`, `daterelease`, `isbn`) VALUES ('" +
+        String query = "INSERT INTO `book`(`title`, `authorFirstName`, `authorLastName`, `daterelease`, `isbn`) VALUES ('" +
                 book.getTitle() + "', '" +
                 book.getAuthorFirstName() + "', '" +
                 book.getAuthorLastName() + "', '" +
-                book.getRelaseDate() + "', '" +
+                book.getDaterelease() + "', '" +
                 book.getIsbn() + "' )";
         try {
             preparedStatement(query).execute();
