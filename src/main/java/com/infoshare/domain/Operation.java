@@ -27,7 +27,7 @@ public class Operation implements Serializable
     @Column
     private int bookId;
 
-    @Column
+    @Transient
     private String bookTitle;
 
     @Column
