@@ -9,31 +9,31 @@ import java.io.Serializable;
 @Data
 @Builder
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 public class Book implements Serializable {
 
-    private static final long serialVersionUID = -5312181965308946550L;
+    private static final long serialVersionUID = 5436987190449710420L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (length = 50)
+    @Column(length = 50)
     private String title;
 
-    @Column (length = 40)
+    @Column(length = 40)
     private String authorFirstName;
 
-    @Column (length = 40)
+    @Column(length = 40)
     private String authorLastName;
 
     @Column
     private int daterelease;
 
-    @Column (length = 12)
+    @Column(length = 13)
     private String isbn;
 
-    @Column (length = 1000)
+    @Column(length = 1000)
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -66,4 +66,3 @@ public class Book implements Serializable {
     }
 
 }
-
