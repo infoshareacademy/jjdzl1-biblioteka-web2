@@ -6,7 +6,6 @@ import com.infoshare.domain.UserStatus;
 import java.sql.PreparedStatement;
 
 import com.infoshare.dao.DBCon;
-import com.infoshare.domain.User;
 import com.infoshare.utils.Hasher;
 import com.infoshare.utils.PBKDF2Hasher;
 
