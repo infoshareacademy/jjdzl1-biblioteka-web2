@@ -36,7 +36,7 @@ public class User implements Serializable {
     @Column
     private String email;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private UserStatus admin;
 
     @Column

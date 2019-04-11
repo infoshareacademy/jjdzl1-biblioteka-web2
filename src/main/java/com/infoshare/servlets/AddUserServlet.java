@@ -75,13 +75,7 @@ public class AddUserServlet extends HttpServlet {
             validator.validationResult.add("Hasła są różne !");
         }
 
-        try {
-            validator.checkIsLoginOrEmailExist(user.getLogin(), user.getEmail());
-        } catch (SQLException e) {
-            log.error("User validation - SQL error", e);
-        } catch (ClassNotFoundException e) {
-            log.error("User validation - Class not found", e);
-        }
+        // validator.checkIsLoginOrEmailExist(user.getEmail(), user.getLogin());
 
         return validator.validationResult;
     }

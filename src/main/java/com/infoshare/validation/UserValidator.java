@@ -2,8 +2,11 @@ package com.infoshare.validation;
 
 import com.infoshare.domain.User;
 import com.infoshare.query.UsersQuery;
+import com.infoshare.repository.UsersRepositoryDao;
 import lombok.NoArgsConstructor;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +15,9 @@ import java.util.regex.Pattern;
 
 @NoArgsConstructor
 public class UserValidator {
+
+    @EJB
+    private UsersRepositoryDao usersRepository;
 
     private static final int loginLength = 20;
     private static final Pattern loginPattern = Pattern.compile("[$&+,:;=?@#|'<>.-^*()%!\"~]*");
@@ -28,6 +34,7 @@ public class UserValidator {
         user.setFirstName(validateFirstName(user.getFirstName()));
         user.setLastName(validateLastName(user.getLastName()));
         user.setEmail(validateEmail(user.getEmail()));
+        checkIsLoginOrEmailExist(user.getLogin(), user.getEmail());
     }
 
     public String validateLogin(String login) {
@@ -70,7 +77,21 @@ public class UserValidator {
         return email.trim();
     }
 
-    public void checkIsLoginOrEmailExist(String login, String email) throws SQLException, ClassNotFoundException {
+    public void checkIsLoginOrEmailExist(String email, String login) {
+
+        List<User> checkLoginAndEmailList = usersRepository.findUserByEmailOrLogin(email, login);
+
+
+      /*  if (checkLoginAndEmailList.size() > 0) {
+
+            for (User user : checkLoginAndEmailList) {
+                if (!user.getLogin().isEmpty() && user.getLogin().equals(login))
+                    validationResult.add("Login jest zajęty");
+                if (!user.getEmail().isEmpty() && user.getEmail().equals(email))
+                    validationResult.add("Email jest zajęty");
+            }
+        }*/
+/*
         ResultSet rs = UsersQuery.findUserByEmailOrLogin(email, login);
         while (rs.next()) {
             if (!rs.getString("login").isEmpty() && rs.getString("login").equals(login)) {
@@ -81,5 +102,6 @@ public class UserValidator {
             }
         }
         rs.close();
+*/
     }
 }

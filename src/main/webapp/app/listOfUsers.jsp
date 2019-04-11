@@ -75,7 +75,8 @@
                 </thead>
 
                 <tbody>
-                <% UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
+                <%
+                    UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
                     List<User> listOfUsers = usersRepository.listOfUsers(findUserByName);
                     int rowNumber = 1;
                     for (User user : listOfUsers) {
@@ -103,9 +104,9 @@
                         <form method="GET" action="SelectUserServlet" class="addUser">
                             <input type="hidden" name="userid" value="<%=user.getId()%>"/>
                             <input type="hidden" name="operation" value="newoperation"/>
-                            <%if (user.getStatus().equals("Nieaktywny")){%>
+                            <%if (user.getStatus().equals("Nieaktywny")) {%>
                             <button type="submit" class="btn btn-secondary btn-sm" disabled>Wyłączone</button>
-                            <%}else{%>
+                            <%} else {%>
                             <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
                             <%}%>
                         </form>
@@ -115,9 +116,9 @@
                         <form method="GET" action="SelectUserServlet" class="addUser">
                             <input type="hidden" name="userid" value="<%=user.getId()%>"/>
                             <input type="hidden" name="operation" value="returnbook"/>
-                            <%if (user.getStatus().equals("Nieaktywny")){%>
+                            <%if (user.getStatus().equals("Nieaktywny")) {%>
                             <button type="submit" class="btn btn-secondary btn-sm" disabled>Wyłączone</button>
-                            <%}else{%>
+                            <%} else {%>
                             <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
                             <%}%>
                         </form>
