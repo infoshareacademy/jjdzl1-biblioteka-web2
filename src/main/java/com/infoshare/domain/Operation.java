@@ -9,8 +9,9 @@ import java.time.LocalDate;
 @Data
 
 @Entity
-@Table(name = "operations")
+@Table(name = "operation")
 public class Operation implements Serializable {
+
     private static final long serialVersionUID = -2122250031742176764L;
 
     @Id
@@ -26,7 +27,7 @@ public class Operation implements Serializable {
     @Column
     private int bookId;
 
-    @Column
+    @Transient
     private String bookTitle;
 
     @Column

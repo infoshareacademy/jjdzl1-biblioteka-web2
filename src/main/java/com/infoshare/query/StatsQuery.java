@@ -77,17 +77,17 @@ public class StatsQuery {
     }
 
     public static ResultSet countBooks() throws SQLException, ClassNotFoundException {
-        String query = "SELECT COUNT(*) FROM books WHERE 1";
+        String query = "SELECT COUNT(*) FROM book WHERE 1";
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet countActiveUsers() throws SQLException, ClassNotFoundException {
-        String query = "SELECT COUNT(*) FROM users WHERE status='Aktywny'";
+        String query = "SELECT COUNT(*) FROM user WHERE status='Aktywny'";
         return preparedStatement(query).executeQuery();
     }
 
     public static ResultSet countDisabledUsers() throws SQLException, ClassNotFoundException {
-        String query = "SELECT COUNT(*) FROM users WHERE status='Nieaktywny'";
+        String query = "SELECT COUNT(*) FROM user WHERE status='Nieaktywny'";
         return preparedStatement(query).executeQuery();
     }
 

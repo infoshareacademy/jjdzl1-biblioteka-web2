@@ -17,9 +17,10 @@ public class ReturnBookServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int operationID = Integer.parseInt(req.getParameter("operationId"));
+        int bookID = Integer.parseInt(req.getParameter("bookId"));
         LocalDate endDate = LocalDate.parse( req.getParameter("endDate"));
 
-        OperationsQuery.ReturnBook(operationID,endDate);
+        OperationsQuery.ReturnBook(operationID,bookID,endDate);
 
         resp.sendRedirect("listOfBorrow.jsp");
     }

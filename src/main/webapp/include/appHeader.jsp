@@ -70,7 +70,7 @@
 
                     <%} else {%>
 
-                    <a class="dropdown-item" href="listOfUsers.jsp"> Edytuj użytkownika </a>
+                    <a class="dropdown-item" href="GetAttributesUserRepository"> Edytuj użytkownika </a>
                     <%}%>
                 </div>
             </li>
