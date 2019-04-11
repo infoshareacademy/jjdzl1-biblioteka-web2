@@ -82,7 +82,7 @@ public class UserValidator {
         List<User> checkLoginAndEmailList = usersRepository.findUserByEmailOrLogin(email, login);
 
 
-      /*  if (checkLoginAndEmailList.size() > 0) {
+        if (checkLoginAndEmailList.size() > 0) {
 
             for (User user : checkLoginAndEmailList) {
                 if (!user.getLogin().isEmpty() && user.getLogin().equals(login))
@@ -90,7 +90,7 @@ public class UserValidator {
                 if (!user.getEmail().isEmpty() && user.getEmail().equals(email))
                     validationResult.add("Email jest zajęty");
             }
-        }*/
+        }
 /*
         ResultSet rs = UsersQuery.findUserByEmailOrLogin(email, login);
         while (rs.next()) {
