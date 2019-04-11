@@ -55,7 +55,7 @@
                     for (Book book : listOfBooks) {
                 %>
                 <tr class="listofitemps " style="cursor:pointer"
-                    onclick="window.location='bookDescription.jsp?id=<%=book.getBookID()%>'" data-toggle="tooltip"
+                    onclick="window.location='bookDescription.jsp?id=<%=book.getId()%>'" data-toggle="tooltip"
                     title="Zobacz więcej ...">
                     <th scope="row"><%=rowNumber%>
                     </th>
@@ -69,7 +69,7 @@
                         <%=book.getIsbn()%>
                     </td>
                     <td>
-                        <%=book.getRelaseDate()%>
+                        <%=book.getDaterelease()%>
                     </td>
 
                     <% if (session.getAttribute("selectedUser") != null) {
@@ -84,13 +84,13 @@
                     <td>
                         <div>
                             <form method="GET" action="UserBasketServlet" class="addUser">
-                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
+                                <input type="hidden" name="bookId" value="<%=book.getId()%>"/>
                                 <input type="hidden" name="operationType" value="reservation"/>
                                 <button type="submit" class="btn btn-info" data-toggle="tooltip" title="Rezerwuj">R
                                 </button>
                             </form>
                             <form method="GET" action="UserBasketServlet" class="addUser">
-                                <input type="hidden" name="bookId" value="<%=book.getBookID()%>"/>
+                                <input type="hidden" name="bookId" value="<%=book.getId()%>"/>
                                 <input type="hidden" name="operationType" value="borrow"/>
                                 <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Wypożycz">W
                                 </button>

@@ -41,7 +41,7 @@
                 <h5>Autor:<i><%=book.getAuthorLastName() + ", " + book.getAuthorFirstName()%>
                 </i>
                 </h5></br>
-                <h6>ISBN: <%=book.getIsbn()%> Rok wydania: <%=book.getRelaseDate()%>
+                <h6>ISBN: <%=book.getIsbn()%> Rok wydania: <%=book.getDaterelease()%>
                 </h6></br>
                 <br/>
                 <span><%if (book.getDescription()!=null){%>

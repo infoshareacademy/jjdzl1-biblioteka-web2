@@ -83,7 +83,7 @@
                 <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
-                    <td><a href="bookDescription.jsp?id=<%=basket.getBook().getBookID()%>">
+                    <td><a href="bookDescription.jsp?id=<%=basket.getBook().getId()%>">
                         <b><%=basket.getBook().getTitle()%>
                         </b>
                         <br/><i>

@@ -137,6 +137,16 @@
         <url-pattern>app/RefreshStatsServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetAttributesUserRepository</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetAttributesUserRepository</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAttributesUserRepository</servlet-name>
+        <url-pattern>app/GetAttributesUserRepository</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>

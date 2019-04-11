@@ -24,6 +24,9 @@ public class AddUserServlet extends HttpServlet {
     @EJB
     private UsersRepositoryDao usersRepository;
 
+    @EJB
+    private UserValidator validator;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -67,7 +70,7 @@ public class AddUserServlet extends HttpServlet {
 
     private List<String> validate(User user, HttpServletRequest req) throws SQLException, ClassNotFoundException {
 
-        UserValidator validator = new UserValidator();
+        // UserValidator validator = new UserValidator();
         validator.userValidation(user);
 
         String password = user.getPassword();
@@ -75,13 +78,7 @@ public class AddUserServlet extends HttpServlet {
             validator.validationResult.add("Hasła są różne !");
         }
 
-        try {
-            validator.checkIsLoginOrEmailExist(user.getLogin(), user.getEmail());
-        } catch (SQLException e) {
-            log.error("User validation - SQL error", e);
-        } catch (ClassNotFoundException e) {
-            log.error("User validation - Class not found", e);
-        }
+        // validator.checkIsLoginOrEmailExist(user.getEmail(), user.getLogin());
 
         return validator.validationResult;
     }

@@ -20,7 +20,7 @@ public class BookValidator {
         book.setAuthorFirstName(validateAutorName(book.getAuthorFirstName(), "Nazwisko autora: "));
         book.setAuthorLastName(validateAutorName(book.getAuthorLastName(), "Imię autora: "));
         validateIsbn(book.getIsbn());
-        validateRelaseDate(book.getRelaseDate());
+        validateRelaseDate(book.getDaterelease());
 
         return validationResult;
     }
