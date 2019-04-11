@@ -29,9 +29,9 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
         String stringQuery = "select u from User u order by u.lastName";
 
-        if (findUserByName != null) {
-            stringQuery = "select u from User u where u.lastName like '%" + findUserByName + "%' order by u.lastName";
-        }
+//        if (findUserByName != null) {
+//            stringQuery = "select u from User u where u.lastName like '%" + findUserByName + "%' order by u.lastName";
+//        }
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         List<User> userList = query.getResultList();

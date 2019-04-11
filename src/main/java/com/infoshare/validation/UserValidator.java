@@ -33,7 +33,7 @@ public class UserValidator {
         user.setFirstName(validateFirstName(user.getFirstName()));
         user.setLastName(validateLastName(user.getLastName()));
         user.setEmail(validateEmail(user.getEmail()));
-        checkIsLoginOrEmailExist(user.getLogin(), user.getEmail());
+        checkIsLoginOrEmailExist(user.getEmail(), user.getLogin());
     }
 
     public String validateLogin(String login) {

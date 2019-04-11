@@ -76,8 +76,9 @@
 
                 <tbody>
                 <%
-                    UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
-                    List<User> listOfUsers = usersRepository.listOfUsers(findUserByName);
+                    //UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
+                    List<User> listOfUsers = (List<User>) request.getSession().getAttribute("userRepositoryDao");
+
                     int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>
