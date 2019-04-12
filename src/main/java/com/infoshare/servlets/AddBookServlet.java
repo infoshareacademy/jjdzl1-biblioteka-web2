@@ -2,7 +2,6 @@ package com.infoshare.servlets;
 
 import com.infoshare.domain.Book;
 import com.infoshare.repository.BooksRepositoryDao;
-import com.infoshare.repository.BooksRepositoryDaoBean;
 import com.infoshare.validation.BookValidator;
 
 import javax.ejb.EJB;
@@ -19,6 +18,8 @@ public class AddBookServlet extends HttpServlet {
 
     @EJB
     private BooksRepositoryDao booksRepository;
+    @EJB
+    private BookValidator validator;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -60,8 +61,6 @@ public class AddBookServlet extends HttpServlet {
     }
 
     private List<String> validate(Book book) {
-
-        BookValidator validator = new BookValidator();
         validator.bookValidation(book);
         return validator.validationResult;
     }
