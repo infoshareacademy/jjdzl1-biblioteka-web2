@@ -25,10 +25,11 @@ public class GetAttributesUserRepository extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String opertation = req.getParameter("operation");
+        String findUserByName=req.getParameter("findUserByName");
 
         List<User> userList = new ArrayList<>();
         try {
-            userList = usersRepositoryDao.listOfUsers("lastName");
+            userList = usersRepositoryDao.listOfUsers(findUserByName);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
