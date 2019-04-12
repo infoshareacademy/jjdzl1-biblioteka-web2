@@ -20,10 +20,7 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
 
     @Override
     public List<Book> bookList(String order) throws SQLException, ClassNotFoundException {
-        String stringQuery ="";
-        if (order.equals("title"))
-        stringQuery = "select u from Book u order by u.title";
-        else stringQuery = "select u from Book u order by u.authorLastName";
+        String stringQuery = "select u from Book u order by u." + order;
         TypedQuery<Book> query = entityManager.createQuery(stringQuery, Book.class);
         List<Book> bookList = query.getResultList();
         return bookList;

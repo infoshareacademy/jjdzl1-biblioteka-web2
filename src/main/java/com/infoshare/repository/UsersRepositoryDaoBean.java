@@ -12,14 +12,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Stateless
 public class UsersRepositoryDaoBean implements UsersRepositoryDao {
-
-    List<User> listOfUsers = new ArrayList<>();
 
     @PersistenceContext(name = "librarydb")
     private EntityManager entityManager;

@@ -68,11 +68,6 @@ public class StatsQuery {
         } finally {
             rs.close();
         }
-
-
-
-
-
         return statsMap;
     }
 
