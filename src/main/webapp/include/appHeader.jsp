@@ -81,8 +81,8 @@
                    aria-expanded="false" id="submenu2" aria-haspopup="true"> Operacje </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <% if (session.getAttribute("normalUser") == null) {%>
-                    <a class="dropdown-item" href="listOfUsers.jsp?operation=newoperation"> Rezerwuj / Wypożycz </a>
-                    <a class="dropdown-item" href="listOfUsers.jsp?operation=returnbook"> Zwrot książki </a>
+                    <a class="dropdown-item" href="GetAttributesUserRepository?operation=newoperation"> Rezerwuj / Wypożycz </a>
+                    <a class="dropdown-item" href="GetAttributesUserRepository?operation=returnbook"> Zwrot książki </a>
 
                     <% if (session.getAttribute("selectedUser") != null) {%>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj operację </a>

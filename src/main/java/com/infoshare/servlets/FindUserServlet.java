@@ -19,9 +19,9 @@ public class FindUserServlet extends HttpServlet {
 
         resp.setContentType("text/html;charset=UTF-8");
         if (operation != null && !operation.isEmpty() && operation.equals("newoperation"))
-            resp.sendRedirect("listOfUsers.jsp?findUserByName=" + findUserByName + "&operation=" + operation);
+            resp.sendRedirect("GetAttributesUserRepository?findUserByName=" + findUserByName + "&operation=" + operation);
         else {
-            resp.sendRedirect("listOfUsers.jsp?findUserByName=" + findUserByName);
+            resp.sendRedirect("GetAttributesUserRepository?findUserByName=" + findUserByName);
         }
     }
 }

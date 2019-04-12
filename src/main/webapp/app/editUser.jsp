@@ -69,7 +69,7 @@
                 </select>
             </div>
             <br/><br/><br/>
-            <button type="submit" class="btn btn-primary">Edytuj użytkownika</button>
+            <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
         </form>
         <% } %>
     </div>

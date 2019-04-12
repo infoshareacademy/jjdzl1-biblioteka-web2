@@ -1,5 +1,3 @@
-<%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
-<%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.domain.UserStatus" %>
@@ -17,7 +15,6 @@
 </header>
 <%
     String operation = request.getParameter("operation");
-    String findUserByName = request.getParameter("findUserByName");
     if (session.getAttribute("normalUser") == null) {
 %>
 
@@ -31,6 +28,8 @@
                 <div class="mr-auto p-2 align-items-start">
                     <% if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>
                     <h4> Nowa operacja: wybierz użytkownika</h4>
+                    <%} else if (operation != null && !operation.isEmpty() && operation.equals("returnbook")) {%>
+                    <h4> Zwrot książki: wybierz użytkownika</h4>
                     <%} else {%>
                     <h4>Kliknij użytkownika, którego chcesz edytować</h4>
                     <%}%>
@@ -76,9 +75,8 @@
 
                 <tbody>
                 <%
-                    //UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
                     List<User> listOfUsers = (List<User>) request.getSession().getAttribute("userRepositoryDao");
-
+                    request.getSession().removeAttribute("userRepositoryDao");
                     int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>
