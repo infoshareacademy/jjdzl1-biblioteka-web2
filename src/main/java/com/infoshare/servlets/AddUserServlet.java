@@ -70,15 +70,12 @@ public class AddUserServlet extends HttpServlet {
 
     private List<String> validate(User user, HttpServletRequest req) throws SQLException, ClassNotFoundException {
 
-        // UserValidator validator = new UserValidator();
         validator.userValidation(user);
 
         String password = user.getPassword();
         if (password != null && !password.equals(req.getParameter("password2"))) {
             validator.validationResult.add("Hasła są różne !");
         }
-
-        // validator.checkIsLoginOrEmailExist(user.getEmail(), user.getLogin());
 
         return validator.validationResult;
     }

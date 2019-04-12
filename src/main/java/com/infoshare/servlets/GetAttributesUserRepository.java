@@ -18,6 +18,7 @@ import java.util.List;
 
 @WebServlet("/GetAttributesUserRepository")
 public class GetAttributesUserRepository extends HttpServlet {
+
     @EJB
     private UsersRepositoryDao usersRepositoryDao;
 

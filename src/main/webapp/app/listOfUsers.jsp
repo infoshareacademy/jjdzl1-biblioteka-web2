@@ -1,5 +1,3 @@
-<%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
-<%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.domain.UserStatus" %>
@@ -17,7 +15,6 @@
 </header>
 <%
     String operation = request.getParameter("operation");
-    String findUserByName = request.getParameter("findUserByName");
     if (session.getAttribute("normalUser") == null) {
 %>
 
@@ -78,7 +75,6 @@
 
                 <tbody>
                 <%
-                    //UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
                     List<User> listOfUsers = (List<User>) request.getSession().getAttribute("userRepositoryDao");
                     request.getSession().removeAttribute("userRepositoryDao");
                     int rowNumber = 1;
