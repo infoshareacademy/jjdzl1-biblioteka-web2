@@ -26,7 +26,7 @@ public class AddBookServlet extends HttpServlet {
 
         Book book = createBookFromForm(req);
 
-        if (req.getSession().getAttribute("user") != null && validate(book).size() > 0) {
+        if (req.getSession().getAttribute("user") != null && !validate(book).isEmpty()) {
             resp.sendRedirect("addBook.jsp");
         } else {
             booksRepository.addNewBook(book);

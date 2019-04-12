@@ -1,12 +1,12 @@
 package com.infoshare.repository;
 
-import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Book;
 import com.infoshare.domain.BookStatus;
 import com.infoshare.query.BooksQuery;
 
 import javax.ejb.Stateless;
-import java.sql.PreparedStatement;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +14,9 @@ import java.util.List;
 
 @Stateless
 public class BooksRepositoryDaoBean implements BooksRepositoryDao {
+
+    @PersistenceContext(name = "librarydb")
+    private EntityManager entityManager;
 
     @Override
     public List<Book> bookList(String title, String order) throws SQLException, ClassNotFoundException {
@@ -71,6 +74,6 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     }
 
     public void addNewBook(Book book) {
-        BooksQuery.addNewBook(book);
+        entityManager.persist(book);
     }
 }

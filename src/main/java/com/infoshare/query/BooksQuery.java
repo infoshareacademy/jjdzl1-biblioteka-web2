@@ -45,22 +45,22 @@ public class BooksQuery {
         return preparedStatement(query).executeQuery();
     }
 
-    public static void addNewBook(Book book) {
-
-        String query = "INSERT INTO `book`(`title`, `authorFirstName`, `authorLastName`, `daterelease`, `isbn`) VALUES ('" +
-                book.getTitle() + "', '" +
-                book.getAuthorFirstName() + "', '" +
-                book.getAuthorLastName() + "', '" +
-                book.getDaterelease() + "', '" +
-                book.getIsbn() + "' )";
-        try {
-            preparedStatement(query).execute();
-            DBCon.connClose();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void addNewBook(Book book) {
+//
+//        String query = "INSERT INTO `book`(`title`, `authorFirstName`, `authorLastName`, `daterelease`, `isbn`) VALUES ('" +
+//                book.getTitle() + "', '" +
+//                book.getAuthorFirstName() + "', '" +
+//                book.getAuthorLastName() + "', '" +
+//                book.getDaterelease() + "', '" +
+//                book.getIsbn() + "' )";
+//        try {
+//            preparedStatement(query).execute();
+//            DBCon.connClose();
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
