@@ -1,5 +1,3 @@
-<%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
-<%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.domain.UserStatus" %>
@@ -76,9 +74,7 @@
 
                 <tbody>
                 <%
-                    //UsersRepositoryDao usersRepository = new UsersRepositoryDaoBean();
                     List<User> listOfUsers = (List<User>) request.getSession().getAttribute("userRepositoryDao");
-
                     int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>

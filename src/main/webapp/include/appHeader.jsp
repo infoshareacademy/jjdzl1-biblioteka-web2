@@ -34,8 +34,8 @@
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu1" aria-haspopup="true"> Książki </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułów </a>
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autorów </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=title"> Przeglądaj wg tytułów </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=authorLastName"> Przeglądaj wg autorów </a>
 
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item"> --- </a>

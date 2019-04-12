@@ -147,6 +147,17 @@
         <url-pattern>app/GetAttributesUserRepository</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetAttributeBookRepository</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetAttributeBookRepository</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAttributeBookRepository</servlet-name>
+        <url-pattern>app/GetAttributeBookRepository</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>
