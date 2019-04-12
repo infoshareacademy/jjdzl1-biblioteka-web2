@@ -23,6 +23,8 @@ public class GetAttributesUserRepository extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String opertation = req.getParameter("operation");
+
         List<User> userList = new ArrayList<>();
         try {
             userList = usersRepositoryDao.listOfUsers("lastName");
@@ -33,6 +35,12 @@ public class GetAttributesUserRepository extends HttpServlet {
         }
         HttpSession session = req.getSession();
         session.setAttribute("userRepositoryDao", userList);
-        resp.sendRedirect("listOfUsers.jsp");
+        if (opertation.equals("newoperation")) {
+            resp.sendRedirect("listOfUsers.jsp?operation=newoperation");
+        } else if (opertation.equals("returnbook")) {
+            resp.sendRedirect("listOfUsers.jsp?operation=returnbook");
+        } else {
+            resp.sendRedirect("listOfUsers.jsp");
+        }
     }
 }
