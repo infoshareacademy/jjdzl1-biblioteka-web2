@@ -28,29 +28,35 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
 
     @Override
     public Book getBookById(int id) throws SQLException, ClassNotFoundException {
-        Book book = null;
-        try (ResultSet rs = BooksQuery.findBookById(id)) {
-            while (rs.next()) {
-                int bookID = rs.getInt("id");
-                String bookTitle = rs.getString("title");
-                String authorFirstName = rs.getString("authorFirstName");
-                String authorLastName = rs.getString("authorLastName");
-                int relaseDate = rs.getInt("daterelease");
-                String isbn = rs.getString("isbn");
-                String description = rs.getString("description");
-                String statusString = rs.getString("status");
-                BookStatus status;
-                if (statusString.equals("Dostępna"))
-                    status = BookStatus.Dostępna;
-                else if (statusString.equals("Zarezerwowana"))
-                    status = BookStatus.Zarezerwowana;
-                else status = BookStatus.Wypożyczona;
+        String stringQuery = "select u from Book u where u.id=" + id;
 
-                book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn, description, status);
-            }
-            rs.close();
-            return book;
-        }
+        TypedQuery<Book> query = entityManager.createQuery(stringQuery, Book.class);
+        Book book = query.getSingleResult();
+        return book;
+
+//        Book book = null;
+//        try (ResultSet rs = BooksQuery.findBookById(id)) {
+//            while (rs.next()) {
+//                int bookID = rs.getInt("id");
+//                String bookTitle = rs.getString("title");
+//                String authorFirstName = rs.getString("authorFirstName");
+//                String authorLastName = rs.getString("authorLastName");
+//                int relaseDate = rs.getInt("daterelease");
+//                String isbn = rs.getString("isbn");
+//                String description = rs.getString("description");
+//                String statusString = rs.getString("status");
+//                BookStatus status;
+//                if (statusString.equals("Dostępna"))
+//                    status = BookStatus.Dostępna;
+//                else if (statusString.equals("Zarezerwowana"))
+//                    status = BookStatus.Zarezerwowana;
+//                else status = BookStatus.Wypożyczona;
+//
+//                book = new Book(bookID, bookTitle, authorFirstName, authorLastName, relaseDate, isbn, description, status);
+//            }
+//            rs.close();
+//            return book;
+//        }
     }
 
     public void addNewBook(Book book) {

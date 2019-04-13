@@ -33,8 +33,8 @@
                     </form>
 
 
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułu </a>
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autora </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=title"> Przeglądaj wg tytułu </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=authorLastName"> Przeglądaj wg autora </a>
                 </div>
             </li>
 
