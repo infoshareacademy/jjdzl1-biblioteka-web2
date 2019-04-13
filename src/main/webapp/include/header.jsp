@@ -22,7 +22,7 @@
                 <div class="dropdown-menu" aria-labelledby="submenu">
 
 
-                    <form action="FindBookServlet" class="form-inline dropdown-item" method="get">
+                    <form action="GetAttributeBookRepository?order=title" class="form-inline dropdown-item" method="post">
                         <div class="form-row align-items-center">
                             <div class="col-auto inline-block">
                                 <input type="text" name="title" class="form-control" id="inlineFormInput"

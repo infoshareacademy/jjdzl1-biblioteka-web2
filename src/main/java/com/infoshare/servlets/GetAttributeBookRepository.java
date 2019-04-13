@@ -20,22 +20,35 @@ import java.util.List;
 public class GetAttributeBookRepository extends HttpServlet {
     @EJB
     BooksRepositoryDao booksRepositoryDao;
-
+    List<Book> bookList = new ArrayList<>();
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String order = req.getParameter("order");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Book> bookList = new ArrayList<>();
+        String titleOfBook = req.getParameter("title");
         try {
-            bookList = booksRepositoryDao.bookList(order);
+            bookList = booksRepositoryDao.getBookByTitle(titleOfBook);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         HttpSession session = req.getSession();
         session.setAttribute("bookRepositoryDao", bookList);
-        resp.sendRedirect("listOfBooks.jsp?order=" + order);
+        resp.sendRedirect("listOfBooks.jsp?order=title&titleOfBook=" + titleOfBook);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String order = req.getParameter("order");
+            try {
+                bookList = booksRepositoryDao.bookList(order);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            HttpSession session = req.getSession();
+            session.setAttribute("bookRepositoryDao", bookList);
+            resp.sendRedirect("listOfBooks.jsp?order=" + order);
     }
 }

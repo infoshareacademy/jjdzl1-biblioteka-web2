@@ -108,7 +108,7 @@
             <li>&nbsp;&nbsp;&nbsp;</li>
 
             <li>
-                <form action="FindBookServlet" class="form-inline" method="get">
+                <form action="GetAttributeBookRepository?order=title" class="form-inline" method="post">
                     <div class="form-row align-items-center">
                         <div class="col-auto">
                             <input type="text" name="title" class="form-control" id="inlineFormInput"

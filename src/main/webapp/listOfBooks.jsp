@@ -16,7 +16,7 @@
 
 <%
     String order = request.getParameter("order");
-    String bookTitle = request.getParameter("title");
+    String titleOfBook = request.getParameter("titleOfBook");
     String orderTitle;
     if (order == null || order.isEmpty() || order.equals("title")) {
         orderTitle = " (wg tytułu)";
