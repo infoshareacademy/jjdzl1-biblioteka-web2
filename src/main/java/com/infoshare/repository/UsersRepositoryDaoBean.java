@@ -26,28 +26,25 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
         String stringQuery = "select u from User u order by u.lastName";
 
+
+        if (findUserByName != null) {https://www.pepper.pl/
+            stringQuery = "select u from User u where u.lastName like '%" + findUserByName + "%' order by u.lastName";
+        }
+
+
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         List<User> userList = query.getResultList();
         return userList;
     }
 
-    public User getUserById(int id) throws SQLException, ClassNotFoundException {
-        User user = new User();
-        ResultSet rs = UsersQuery.findUserById(id);
-        while (rs.next()) {
-            String login = rs.getString("login");
-            String firstName = rs.getString("firstName");
-            String lastName = rs.getString("lastName");
-            String email = rs.getString("email");
-            String password = rs.getString("password");
-            user.setId(id);
-            user.setLogin(login);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setPassword(password);
-            user.setEmail(email);
-        }
-        rs.close();
+
+    public User getUserById(int id) {
+
+        String stringQuery = "select u from User u where u.id=" + id;
+
+
+        TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
+        User user = query.getSingleResult();
         return user;
     }
 
@@ -67,7 +64,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         while (rs.next()) {
             String firstName = rs.getString("firstName");
             String lastName = rs.getString("lastName");
-            String email = rs.getString("email");
+            String email = rs.getString("email");https://www.pepper.pl/
             String password = rs.getString("password");
             user.setLogin(login);
             user.setFirstName(firstName);
@@ -96,7 +93,4 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         List<User> userList = query.getResultList();
         return userList;
     }
-
 }
-
-

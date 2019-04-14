@@ -18,14 +18,19 @@ import java.util.List;
 
 @WebServlet("/GetAttributesUserRepository")
 public class GetAttributesUserRepository extends HttpServlet {
+
     @EJB
     private UsersRepositoryDao usersRepositoryDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String opertation = req.getParameter("operation");
+        String findUserByName=req.getParameter("findUserByName");
+
         List<User> userList = new ArrayList<>();
         try {
-            userList = usersRepositoryDao.listOfUsers("lastName");
+            userList = usersRepositoryDao.listOfUsers(findUserByName);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -33,6 +38,13 @@ public class GetAttributesUserRepository extends HttpServlet {
         }
         HttpSession session = req.getSession();
         session.setAttribute("userRepositoryDao", userList);
-        resp.sendRedirect("listOfUsers.jsp");
+
+        if (opertation != null && opertation.equals("newoperation")) {
+            resp.sendRedirect("listOfUsers.jsp?operation=newoperation");
+        } else if (opertation != null && opertation.equals("returnbook")) {
+            resp.sendRedirect("listOfUsers.jsp?operation=returnbook");
+        } else {
+            resp.sendRedirect("listOfUsers.jsp");
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.infoshare.validation;
 
 import com.infoshare.domain.User;
-import com.infoshare.query.UsersQuery;
 import com.infoshare.repository.UsersRepositoryDao;
 import lombok.NoArgsConstructor;
 
@@ -80,7 +79,6 @@ public class UserValidator {
 
         List<User> checkLoginAndEmailList = usersRepository.findUserByEmailOrLogin(email, login);
 
-
         if (checkLoginAndEmailList.size() > 0) {
 
             for (User user : checkLoginAndEmailList) {
@@ -90,17 +88,5 @@ public class UserValidator {
                     validationResult.add("Email jest zajęty");
             }
         }
-/*
-        ResultSet rs = UsersQuery.findUserByEmailOrLogin(email, login);
-        while (rs.next()) {
-            if (!rs.getString("login").isEmpty() && rs.getString("login").equals(login)) {
-                validationResult.add("Login jest zajęty");
-            }
-            if (!rs.getString("email").trim().isEmpty() && rs.getString("email").equals(email)) {
-                validationResult.add("E-mail jest zajęty");
-            }
-        }
-        rs.close();
-*/
     }
 }
