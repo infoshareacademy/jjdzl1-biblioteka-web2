@@ -10,7 +10,8 @@ import java.util.List;
 public interface BooksRepositoryDao {
 
 
-    List<Book> bookList(String title, String order) throws SQLException, ClassNotFoundException;
+    List<Book> bookList(String order) throws SQLException, ClassNotFoundException;
     Book getBookById (int id) throws SQLException,ClassNotFoundException;
+    List<Book> getBookByTitle(String title) throws SQLException,ClassNotFoundException;
     void addNewBook(Book book);
 }

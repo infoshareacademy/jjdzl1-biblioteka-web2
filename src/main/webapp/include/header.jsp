@@ -22,7 +22,7 @@
                 <div class="dropdown-menu" aria-labelledby="submenu">
 
 
-                    <form action="FindBookServlet" class="form-inline dropdown-item" method="get">
+                    <form action="GetAttributeBookRepository?order=title" class="form-inline dropdown-item" method="post">
                         <div class="form-row align-items-center">
                             <div class="col-auto inline-block">
                                 <input type="text" name="title" class="form-control" id="inlineFormInput"
@@ -33,8 +33,8 @@
                     </form>
 
 
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułu </a>
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autora </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=title"> Przeglądaj wg tytułu </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=authorLastName"> Przeglądaj wg autora </a>
                 </div>
             </li>
 

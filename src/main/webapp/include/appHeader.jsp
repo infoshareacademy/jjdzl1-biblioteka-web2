@@ -34,8 +34,8 @@
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                    aria-expanded="false" id="submenu1" aria-haspopup="true"> Książki </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=title"> Przeglądaj wg tytułów </a>
-                    <a class="dropdown-item" href="listOfBooks.jsp?order=authorLastName"> Przeglądaj wg autorów </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=title"> Przeglądaj wg tytułów </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=authorLastName"> Przeglądaj wg autorów </a>
 
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item"> --- </a>
@@ -108,7 +108,7 @@
             <li>&nbsp;&nbsp;&nbsp;</li>
 
             <li>
-                <form action="FindBookServlet" class="form-inline" method="get">
+                <form action="GetAttributeBookRepository?order=title" class="form-inline" method="post">
                     <div class="form-row align-items-center">
                         <div class="col-auto">
                             <input type="text" name="title" class="form-control" id="inlineFormInput"

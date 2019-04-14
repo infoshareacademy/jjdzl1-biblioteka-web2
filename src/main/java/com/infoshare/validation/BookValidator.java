@@ -1,11 +1,13 @@
 package com.infoshare.validation;
 
 import com.infoshare.domain.Book;
-
+import javax.ejb.Stateless;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Stateless
 public class BookValidator {
 
     private static final int titleLength = 80;

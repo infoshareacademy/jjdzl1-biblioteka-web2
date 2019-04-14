@@ -12,14 +12,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Stateless
 public class UsersRepositoryDaoBean implements UsersRepositoryDao {
-
-    List<User> listOfUsers = new ArrayList<>();
 
     @PersistenceContext(name = "librarydb")
     private EntityManager entityManager;
@@ -29,18 +26,22 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
         String stringQuery = "select u from User u order by u.lastName";
 
-        if (findUserByName != null) {
+
+        if (findUserByName != null) {https://www.pepper.pl/
             stringQuery = "select u from User u where u.lastName like '%" + findUserByName + "%' order by u.lastName";
         }
+
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         List<User> userList = query.getResultList();
         return userList;
     }
 
+
     public User getUserById(int id) {
 
         String stringQuery = "select u from User u where u.id=" + id;
+
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         User user = query.getSingleResult();
@@ -63,7 +64,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         while (rs.next()) {
             String firstName = rs.getString("firstName");
             String lastName = rs.getString("lastName");
-            String email = rs.getString("email");
+            String email = rs.getString("email");https://www.pepper.pl/
             String password = rs.getString("password");
             user.setLogin(login);
             user.setFirstName(firstName);

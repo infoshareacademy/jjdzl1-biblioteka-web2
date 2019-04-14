@@ -1,5 +1,3 @@
-<%@ page import="com.infoshare.repository.BooksRepositoryDao" %>
-<%@ page import="com.infoshare.repository.BooksRepositoryDaoBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.domain.Book" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -18,7 +16,7 @@
 
 <%
     String order = request.getParameter("order");
-    String bookTitle = request.getParameter("title");
+    String titleOfBook = request.getParameter("titleOfBook");
     String orderTitle;
     if (order == null || order.isEmpty() || order.equals("title")) {
         orderTitle = " (wg tytułu)";
@@ -44,8 +42,7 @@
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    BooksRepositoryDao booksRepository = new BooksRepositoryDaoBean();
-                    List<Book> listOfBooks = booksRepository.bookList(bookTitle, order);
+                    List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookList");
                     for (Book book : listOfBooks) {
                 %>
 

@@ -67,16 +67,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>FindBookServlet</servlet-name>
-        <servlet-class>com.infoshare.servlets.FindBookServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>FindBookServlet</servlet-name>
-        <url-pattern>app/FindBookServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>FindUserServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.FindUserServlet</servlet-class>
     </servlet>
@@ -146,6 +136,17 @@
         <servlet-name>GetAttributesUserRepository</servlet-name>
         <url-pattern>app/GetAttributesUserRepository</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAttributeBookRepository</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetAttributeBookRepository</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAttributeBookRepository</servlet-name>
+        <url-pattern>app/GetAttributeBookRepository</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>

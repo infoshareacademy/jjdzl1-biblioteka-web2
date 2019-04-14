@@ -1,8 +1,6 @@
 package com.infoshare.query;
 
-import com.infoshare.dao.DBCon;
 import com.infoshare.domain.Basket;
-import com.infoshare.domain.Operation;
 import com.infoshare.domain.OperationType;
 import com.infoshare.domain.User;
 import com.infoshare.utils.DateUtil;
