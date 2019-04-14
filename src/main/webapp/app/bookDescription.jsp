@@ -1,6 +1,6 @@
 <%@ page import="com.infoshare.repository.BooksRepositoryDao" %>
-<%@ page import="com.infoshare.repository.BooksRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.Book" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -14,13 +14,19 @@
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-
 <div class="addUserForm">
         <%
         Integer id = Integer.parseInt(request.getParameter("id"));
-        BooksRepositoryDao booksRepository = new BooksRepositoryDaoBean();
-        Book book = booksRepository.getBookById(id);
-    %>
+        BooksRepositoryDao booksRepositoryDao = (BooksRepositoryDao) request.getSession().getAttribute("booksRepositoryDao");
+
+        Book book = null;
+        try {
+        book = booksRepositoryDao.getBookById(id);} catch (SQLException e) {
+        e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        %>
     <br/><br/>
 
     <div class="container">

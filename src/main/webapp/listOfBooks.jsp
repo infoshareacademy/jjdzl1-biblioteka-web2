@@ -42,7 +42,7 @@
                 <tbody>
                 <%
                     int rowNumber = 1;
-                    List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookRepositoryDao");
+                    List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookList");
                     for (Book book : listOfBooks) {
                 %>
 
