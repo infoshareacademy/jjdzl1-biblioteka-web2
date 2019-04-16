@@ -1,10 +1,8 @@
 package com.infoshare.repository;
 
 import com.infoshare.domain.Basket;
-import com.infoshare.domain.Book;
 import com.infoshare.domain.Operation;
 import com.infoshare.domain.User;
-import com.infoshare.query.BooksQuery;
 
 import javax.ejb.Local;
 import java.sql.SQLException;
