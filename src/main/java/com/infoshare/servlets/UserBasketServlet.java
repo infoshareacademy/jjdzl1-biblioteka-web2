@@ -40,7 +40,7 @@ public class UserBasketServlet extends HttpServlet {
         if (operationType.equals("reservation")) operationTypeEnum = OperationType.RESERVATION;
         try {
             Book book = booksRepository.getBookById(bookId);
-            if (operationType.equals(OperationType.BORROW)) {
+            if (operationTypeEnum.equals(OperationType.BORROW)) {
                 endDate = LocalDate.of(1970, 01, 01);
             } else {endDate=LocalDate.now().plusDays(3);}
             basketRepository.addToBasketList(user, book, operationTypeEnum, startDate, endDate);
@@ -51,7 +51,7 @@ public class UserBasketServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        resp.sendRedirect("listOfBooks.jsp");
+        resp.sendRedirect("GetAttributeBookRepository");
     }
 
 }

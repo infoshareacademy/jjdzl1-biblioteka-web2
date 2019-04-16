@@ -49,6 +49,7 @@
                 <%
                     int rowNumber = 1;
                     List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookList");
+                    request.getSession().removeAttribute("bookList");
                     for (Book book : listOfBooks) {
                 %>
                 <tr class="listofitemps " style="cursor:pointer"

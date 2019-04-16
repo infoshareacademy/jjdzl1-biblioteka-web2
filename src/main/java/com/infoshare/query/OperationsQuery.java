@@ -47,52 +47,6 @@ public class OperationsQuery {
         return preparedStatement(query).executeQuery();
     }
 
-    public static void addNewOperation(List userBasket, User selectedUser) {
-
-        Date currentDate = Date.valueOf(DateUtil.currentDate());
-        Date endOfReservationDate = Date.valueOf(DateUtil.currentPlusThreeDays());
-        Date emptyDate = Date.valueOf(DateUtil.emptyDate());
-
-        Date endDate = emptyDate;
-        int operationTypeId = 1;
-        String status = "Wypożyczona";
-
-        User user = selectedUser;
-        List<Basket> basket = userBasket;
-        for (Basket basketItem : basket) {
-
-            if (basketItem.getOperationType() == OperationType.RESERVATION) {
-                endDate = endOfReservationDate;
-                operationTypeId = 0;
-                status = "Zarezerwowana";
-            }
-
-            String query = "INSERT INTO `operation` " +
-                    "(`userId`, `bookId`, `operationDate`, `startDate`, `endDate`, `operationTypeId`) " +
-                    "VALUES ('" +
-
-                    user.getId() + "', '" +
-                    basketItem.getBook().getId() + "', '" +
-                    currentDate + "', '" +
-                    currentDate + "', '" +
-                    endDate + "', '" +
-                    operationTypeId + "' )";
-
-
-            String changeStatusQuery = "UPDATE book SET status='" + status + "' WHERE id=" + basketItem.getBook().getId();
-
-            try {
-                preparedStatement(query).execute();
-                preparedStatement(changeStatusQuery).execute();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public static ResultSet listOfBorrowedBookByUserId(int userID) throws SQLException, ClassNotFoundException {
         String endDate = "1970.01.01";
         String query = "SELECT * FROM operation " +

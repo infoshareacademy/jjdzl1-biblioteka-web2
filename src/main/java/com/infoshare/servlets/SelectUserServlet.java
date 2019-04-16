@@ -42,8 +42,8 @@ public class SelectUserServlet extends HttpServlet {
         basket.clear();
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
-        if (operationType.equals("newoperation")) redirection = "listOfBooks.jsp";
-        if (operationType.equals("returnbook")) redirection = "listOfBorrow.jsp";
+        if (operationType.equals("newoperation")) redirection = "GetAttributeBookRepository";
+        if (operationType.equals("returnbook")) redirection = "GetAttributeBookRepository";
 
         resp.sendRedirect(redirection);
     }

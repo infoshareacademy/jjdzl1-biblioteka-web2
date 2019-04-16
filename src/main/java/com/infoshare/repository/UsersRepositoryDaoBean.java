@@ -42,7 +42,6 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
         String stringQuery = "select u from User u where u.id=" + id;
 
-
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         User user = query.getSingleResult();
         return user;
