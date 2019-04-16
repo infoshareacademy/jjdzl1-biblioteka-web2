@@ -1,5 +1,6 @@
 package com.infoshare.domain;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
-
+@Builder
 @Entity
 @Table(name = "operation")
 public class Operation implements Serializable {

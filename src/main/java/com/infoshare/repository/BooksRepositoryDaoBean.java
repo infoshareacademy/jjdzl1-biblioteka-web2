@@ -14,9 +14,14 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     @PersistenceContext(name = "librarydb")
     private EntityManager entityManager;
 
+    String stringQuery = "";
+
     @Override
     public List<Book> bookList(String order) throws SQLException, ClassNotFoundException {
-        String stringQuery = "select u from Book u order by u." + order;
+        if (order != null) {
+            stringQuery = "select u from Book u order by u." + order;
+        } else
+            stringQuery = "select u from Book u";
         TypedQuery<Book> query = entityManager.createQuery(stringQuery, Book.class);
         List<Book> bookList = query.getResultList();
         return bookList;
