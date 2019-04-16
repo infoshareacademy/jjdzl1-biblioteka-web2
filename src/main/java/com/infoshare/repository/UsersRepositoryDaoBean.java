@@ -27,7 +27,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         String stringQuery = "select u from User u order by u.lastName";
 
 
-        if (findUserByName != null) {https://www.pepper.pl/
+        if (findUserByName != null) {
             stringQuery = "select u from User u where u.lastName like '%" + findUserByName + "%' order by u.lastName";
         }
 
@@ -64,7 +64,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         while (rs.next()) {
             String firstName = rs.getString("firstName");
             String lastName = rs.getString("lastName");
-            String email = rs.getString("email");https://www.pepper.pl/
+            String email = rs.getString("email");
             String password = rs.getString("password");
             user.setLogin(login);
             user.setFirstName(firstName);

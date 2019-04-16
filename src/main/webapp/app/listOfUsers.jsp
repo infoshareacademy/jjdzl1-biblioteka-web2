@@ -82,7 +82,6 @@
                     int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>
-https://www.pepper.pl/
                 <tr class="listofitemps" style="cursor:pointer"
                     onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';">
                     <th scope="row"><%=rowNumber%>
@@ -120,7 +119,7 @@ https://www.pepper.pl/
                             <%if (user.getStatus().equals("Nieaktywny")) {%>
                             <button type="submit" class="btn btn-secondary btn-sm" disabled>Wyłączone</button>
                             <%} else {%>
-                            <button type="https://www.pepper.pl/submit" class="btn btn-success btn-sm">Wybierz</button>
+                            <button type="submit" class="btn btn-success btn-sm">Wybierz</button>
                             <%}%>
                         </form>
                     </td>

@@ -1,4 +1,5 @@
 <%@ page import="com.infoshare.domain.User" %>
+<%@ page import="com.infoshare.domain.UserStatus" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -24,6 +25,8 @@
                 String firstName = user.getFirstName();
                 String lastName = user.getLastName();
                 String email = user.getEmail();
+                String status = user.getStatus();
+                UserStatus userIsAdmin = user.getAdmin();
         %>
         <h4>Edytuj użytkownika <%= firstName + " " + lastName%>
 
@@ -34,6 +37,7 @@
 
             <div class="form-row">
                 <div>
+                    <input type="hidden" name="id" value="<%= id%>">
                     <input type="text" class="form-control" name="login" placeholder="Login" value="<%= login%>">
                 </div>
                 <div>&nbsp;</div>
@@ -56,16 +60,38 @@
             <div class="form-row">
                 <select class="form-control" id="adminUser" name="adminUser">
                     <option selected>Wybierz rodzaj użytkownika</option>
-                    <option value="1">Administrator</option>
+
+                    <%if (userIsAdmin.equals(UserStatus.ADMIN)) {%>
+
+                    <option selected value="1">Administrator</option>
                     <option value="2">Czytelnik</option>
+
+                    <%} else {%>
+
+                    <option value="1">Administrator</option>
+                    <option selected value="2">Czytelnik</option>
+
+                    <%}%>
+
                 </select>
             </div>
             <br/>
             <div class="form-row">
-                <select class="form-control" id="status" name="status">
+                <select class="form-control" id="status" name="status" value=""<%=status%>>
                     <option selected>Wybierz status konta użytkownika</option>
-                    <option value="1">Aktywny</option>
+
+                    <%if (status.equals("Aktywny")) {%>
+
+                    <option selected value="1">Aktywny</option>
                     <option value="2">Nieaktywny</option>
+
+                    <%} else {%>
+
+                    <option value="1">Aktywny</option>
+                    <option selected value="2">Nieaktywny</option>
+
+                    <%}%>
+
                 </select>
             </div>
             <br/><br/><br/>
