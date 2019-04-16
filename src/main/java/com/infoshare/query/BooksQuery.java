@@ -7,7 +7,7 @@ import static com.infoshare.dao.DBCon.preparedStatement;
 
 public class BooksQuery {
 
-    public static ResultSet listOfBooksFromTo(String order, int from, int to) throws SQLException, ClassNotFoundException {
+    public static ResultSet listOfBooksFomTo(String order, int from, int to) throws SQLException, ClassNotFoundException {
 
         String query = "SELECT * FROM book ORDER BY " + order + " LIMIT " + from + "," + to;
 

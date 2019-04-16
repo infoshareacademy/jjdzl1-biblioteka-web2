@@ -7,6 +7,7 @@ import com.infoshare.utils.DateUtil;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -86,20 +87,21 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     public void addNewOperation(List<Basket> basket, User user) {
 
         LocalDate currentDate = LocalDate.now();
-       // Date endOfReservationDate = Date.valueOf(DateUtil.currentPlusThreeDays());
-       // Date emptyDate = Date.valueOf(DateUtil.emptyDate());
 
-        //Date endDate = emptyDate;
-       // int operationTypeId = 1;
-        String status = "Wypożyczona";
+        int id;
+        String querySelectBook = "";
 
         for (Basket basketItem : basket) {
+            BookStatus status = BookStatus.Wypożyczona;
 
-            if (basketItem.getOperationType() == OperationType.RESERVATION) {
-//                endDate = endOfReservationDate;
-//                operationTypeId = 0;
-                status = "Zarezerwowana";
+            if (basketItem.getOperationType().equals(OperationType.RESERVATION)) {
+                status = BookStatus.Zarezerwowana;
             }
+            id = basketItem.getBook().getId();
+            querySelectBook = "select u from Book u where u.id=" + id;
+            TypedQuery<Book> book = entityManager.createQuery(querySelectBook, Book.class);
+            Book selectedBook = book.getSingleResult();
+            selectedBook.setStatus(status);
 
             Operation operation = Operation.builder()
                     .author(basketItem.getBook().getAuthorLastName() + ", " + basketItem.getBook().getAuthorFirstName())
@@ -113,7 +115,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
                     .build();
 
             entityManager.persist(operation);
-
+            entityManager.merge(selectedBook);
         }
     }
 
