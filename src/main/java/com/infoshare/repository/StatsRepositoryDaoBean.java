@@ -56,7 +56,7 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
         return countBooks;
     }
 
-    public String countUsers(String status){
+    public String countUsers(String status) {
         String stringQuery = null;
         if (status.equals("all")) {
             stringQuery = "select count(u) from User u";
@@ -68,8 +68,8 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
             stringQuery = "select count(b) from Book b where b.status='Nieaktywny'";
         }
 
-        Query query=entityManager.createQuery(stringQuery);
-        String countUser=String.valueOf(query.getSingleResult());
+        Query query = entityManager.createQuery(stringQuery);
+        String countUser = String.valueOf(query.getSingleResult());
         return countUser;
     }
 
