@@ -1,6 +1,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="com.infoshare.query.StatsQuery" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.util.HashMap" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -10,7 +11,6 @@
 </head>
 <%
     String selectedUser = request.getParameter("selectedUser");
-
     if (selectedUser != null && !selectedUser.isEmpty() && selectedUser.equals("remove")) {
         session.removeAttribute("selectedUser");
     }
@@ -74,9 +74,13 @@
     <%
         String time = null;
         String countBooks = null;
+        String borrowBooks=null;
+        String reservationBooks=null;
+        String availableBooks=null;
         String activeUsers = null;
         String disabledUsers = null;
-        Map<String, String> stats = StatsQuery.statsMap;
+        Map<String, String> stats = (HashMap) session.getAttribute("stats");
+/*
         if (stats.size() == 0) {
             try {
                 StatsQuery.generateStats();
@@ -84,10 +88,15 @@
                 e.printStackTrace();
             }
         }
+*/
         time = stats.get("time");
-        countBooks = stats.get("booksCount");
+        countBooks = stats.get("allBooksCount");
+        borrowBooks= stats.get("borowedBooksCount");
+        reservationBooks=stats.get("reservedBooksCount");
+        availableBooks=stats.get("availableBooksCount");
         activeUsers = stats.get("activeUsers");
         disabledUsers = stats.get("disabledUsers");
+
     %>
 
     <% if (session.getAttribute("normalUser") == null) {%>
@@ -127,13 +136,16 @@
                     <thead class="listofitemps">
                     <tr>
                         <td>Aktualnie wypożyczonych:</td>
-                        <td>5</td>
+                        <td><%=borrowBooks%></td>
                         <td>Ilość rezerwacji:</td>
-                        <td>10</td>
+                        <td><%=reservationBooks%></td>
                     </tr>
                     <tr>
                         <td>Przeterminowanych wypożyczeń:</td>
                         <td>10</td>
+                        <td>Dostępnych książek:</td>
+                        <td><%=availableBooks%></td>
+                    </tr>
                     </tr>
 
                     </thead>

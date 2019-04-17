@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 session.setAttribute("normalUser", "normalUser");
                 session.setAttribute("nameOfUser", userName);
             }
-            response.sendRedirect("app/loginSuccess.jsp");
+            response.sendRedirect("CreateStatsServlet");
         } else {
             response.sendRedirect("index.jsp");
             HttpSession session = request.getSession();
