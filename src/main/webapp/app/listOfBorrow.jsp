@@ -15,7 +15,6 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
 <article>
     <div class="content">
         <div class="contentInside">
@@ -25,8 +24,8 @@
                 if (session.getAttribute("selectedUser") != null) {
                     User user = (User) session.getAttribute("selectedUser");
                     operations = (List<Operation>) session.getAttribute("borrowOperationDao");
+                    session.removeAttribute("borrowOperationDao");
             %>
-
 
             <div class="d-flex">
                 <div class="mr-auto p-2 align-items-start"><h4>Lista
