@@ -5,13 +5,17 @@ import com.infoshare.query.OperationsQuery;
 import com.infoshare.utils.DateUtil;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.infoshare.dao.DBCon.preparedStatement;
 
 
 @Stateless
@@ -123,9 +127,32 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     @Override
     public List<Operation> operationListBorrowByUser(int userId) throws SQLException, ClassNotFoundException {
 
-        List<Operation> operationBorrowedByUserList = new ArrayList<>();
-        OperationType operationType;
+        //List<Operation> operationBorrowedByUserList = new ArrayList<>();
 
+        //OperationType operationType;
+
+        String endDate = "1970.01.01";
+     /*   String query1 = "SELECT * FROM operation " +
+                "JOIN `user` ON operation.userId = user.id " +
+                "JOIN book ON operation.bookId=book.id " +
+                "WHERE userID = " + userId + " " +
+                "AND endDate = '" + endDate + "'";*/
+
+        userId = 65;
+
+        String query = "select o from Operation o " +
+                "inner join User u on o.userId=u.id " +
+                "inner join Book b on o.bookId=b.id " +
+                "where " +
+                "u.id=" + userId + " and " +
+                "o.endDate='" + endDate + "'";
+
+        TypedQuery<Operation> borrowedBook = entityManager.createQuery(query, Operation.class);
+        List<Operation> operationBorrowedByUserList = borrowedBook.getResultList();
+
+        return operationBorrowedByUserList;
+
+        /*
         try (ResultSet rs = OperationsQuery.listOfBorrowedBookByUserId(userId)) {
 
             while (rs.next()) {
@@ -146,8 +173,8 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
             }
             rs.close();
-            return operationBorrowedByUserList;
+        */
+        //  return operationBorrowedByUserList;
 
-        }
     }
 }
