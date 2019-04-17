@@ -73,29 +73,29 @@
 
     <%
         String time = null;
+
         String countBooks = null;
         String borrowBooks=null;
         String reservationBooks=null;
         String availableBooks=null;
-        String activeUsers = null;
-        String disabledUsers = null;
+
+        String allUsers=null;
+        String admins=null;
+        String users=null;
+        String disabledUsers=null;
+
         Map<String, String> stats = (HashMap) session.getAttribute("stats");
-/*
-        if (stats.size() == 0) {
-            try {
-                StatsQuery.generateStats();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-*/
         time = stats.get("time");
+
         countBooks = stats.get("allBooksCount");
         borrowBooks= stats.get("borowedBooksCount");
         reservationBooks=stats.get("reservedBooksCount");
         availableBooks=stats.get("availableBooksCount");
-        activeUsers = stats.get("activeUsers");
-        disabledUsers = stats.get("disabledUsers");
+
+        allUsers = stats.get("allUsers");
+        users = stats.get("users");
+        admins = stats.get("admins");
+        disabledUsers = stats.get("disabled");
 
     %>
 
@@ -122,12 +122,21 @@
                     </tr>
                     <tr>
                         <td>Ilość aktywnych użytkowników:</td>
-                        <td><%=activeUsers%>
+                        <td><%=allUsers%>
                         </td>
                         <td>Ilość zablokowanych użytkowników:</td>
                         <td><%=disabledUsers%>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Ilość administratorów:</td>
+                        <td><%=admins%>
+                        </td>
+                        <td>Ilość użytkowników:</td>
+                        <td><%=users%>
+                        </td>
+                    </tr>
+
                     </thead>
                 </table>
 

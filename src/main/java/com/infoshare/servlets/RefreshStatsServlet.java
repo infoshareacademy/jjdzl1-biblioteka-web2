@@ -1,7 +1,9 @@
 package com.infoshare.servlets;
 
 import com.infoshare.query.StatsQuery;
+import com.infoshare.repository.StatsRepositoryDao;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,14 +15,13 @@ import java.sql.SQLException;
 @WebServlet("/RefreshStatsServlet")
 public class RefreshStatsServlet extends HttpServlet {
 
+    @EJB
+    private StatsRepositoryDao statsRepositoryDao;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        try {
-            StatsQuery.generateStats();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        statsRepositoryDao.generateStats();
         resp.sendRedirect("loginSuccess.jsp");
 
     }

@@ -30,6 +30,12 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
         statsMap.put("reservedBooksCount", countBooks("reservation"));
         statsMap.put("availableBooksCount", countBooks("available"));
 
+        statsMap.put("allUsers", countUsers("all"));
+        statsMap.put("users", countUsers("user"));
+        statsMap.put("admins", countUsers("admin"));
+        statsMap.put("disabled", countUsers("disabled"));
+
+
         return statsMap;
     }
 
@@ -48,6 +54,23 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
         Query query = entityManager.createQuery(stringQuery);
         String countBooks = String.valueOf(query.getSingleResult());
         return countBooks;
+    }
+
+    public String countUsers(String status){
+        String stringQuery = null;
+        if (status.equals("all")) {
+            stringQuery = "select count(u) from User u";
+        } else if (status.equals("user")) {
+            stringQuery = "select count(u) from User u where u.admin='USER'";
+        } else if (status.equals("admin")) {
+            stringQuery = "select count(u) from User u where u.admin='ADMIN'";
+        } else if (status.equals("disabled")) {
+            stringQuery = "select count(b) from Book b where b.status='Nieaktywny'";
+        }
+
+        Query query=entityManager.createQuery(stringQuery);
+        String countUser=String.valueOf(query.getSingleResult());
+        return countUser;
     }
 
 }
