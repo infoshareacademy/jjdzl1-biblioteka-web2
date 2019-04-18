@@ -10,9 +10,12 @@ import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Properties;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet implements Serializable {
@@ -35,6 +38,19 @@ public class LoginServlet extends HttpServlet implements Serializable {
         boolean admin = false;
         String status = "";
         String userName = "";
+        int recordPerPage;
+
+        try {
+            Properties properties = new Properties();
+            InputStream inputStream = Thread.currentThread()
+                    .getContextClassLoader()
+                    .getResource("settings.properties")
+                    .openStream();
+            properties.load(inputStream);
+            recordPerPage=Integer.parseInt(properties.getProperty("records-per-page"));
+        } catch (IOException e) {
+            throw new FileNotFoundException();
+        }
 
         List<User> userList = usersRepositoryDao.findUserByLogin(formLogin);
         if (userList.size() > 0) {
@@ -61,6 +77,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
             loginCookie.setMaxAge(30 * 60);
             response.addCookie(loginCookie);
             session.setAttribute("nameOfUser", userName);
+            session.setAttribute("recordsPerPage", recordPerPage);
             if (!admin) {
                 session.setAttribute("normalUser", "normalUser");
                 session.setAttribute("nameOfUser", userName);
