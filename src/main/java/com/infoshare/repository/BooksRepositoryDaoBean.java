@@ -1,12 +1,20 @@
 package com.infoshare.repository;
 
 import com.infoshare.domain.Book;
+import com.infoshare.utils.RecordPerPage;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.servlet.http.HttpSession;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 @Stateless
 public class BooksRepositoryDaoBean implements BooksRepositoryDao {
@@ -17,13 +25,31 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     String stringQuery = "";
 
     @Override
-    public List<Book> bookList(String order) throws SQLException, ClassNotFoundException {
+    public List<Book> bookList(String order, Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException {
+
+        Integer recordPerPage = null;
+        Integer offset= null;
+
+        try {
+            recordPerPage = RecordPerPage.readProperties();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (page == null) page = 1;
+        offset=recordPerPage*page-recordPerPage;
+
+
+
         if (order != null) {
             stringQuery = "select u from Book u order by u." + order;
         } else
             stringQuery = "select u from Book u";
         TypedQuery<Book> query = entityManager.createQuery(stringQuery, Book.class);
-        List<Book> bookList = query.getResultList();
+        List<Book> bookList = query
+                .setMaxResults(recordPerPage)
+                .setFirstResult(offset)
+                .getResultList();
         return bookList;
     }
 
@@ -49,4 +75,5 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     public void addNewBook(Book book) {
         entityManager.persist(book);
     }
+
 }

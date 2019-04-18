@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.domain.Book" %>
 <%@ page import="com.infoshare.domain.BookStatus" %>
+<%@ page import="com.infoshare.utils.RecordPerPage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -17,8 +18,15 @@
 
 <%
     String order = request.getParameter("order");
+    String pageString = request.getParameter("page");
+
+    if (pageString == null ||pageString.isEmpty()) pageString = "1";
+    int pageNumber=Integer.parseInt(pageString);
     String titleOfBook = request.getParameter("titleOfBook");
+
     String orderTitle;
+    int recordsPerPage = RecordPerPage.readProperties();
+
     if (order == null || order.isEmpty() || order.equals("title")) {
         orderTitle = " (wg tytułu)";
         order = "title";
@@ -27,9 +35,36 @@
 <article>
     <div class="content">
         <div class="contentInside">
-            <br/>
-            <h4>Spis książek<%=orderTitle%>
-            </h4>
+
+            <div class="d-flex">
+                <div class="mr-auto p-2 align-items-start">
+                    <br/>
+                    <h4>Spis książek<%=orderTitle%> Strona: <%=pageNumber%>
+                    </h4>
+                </div>
+                <div class="p-2 align-items-end ">
+                    <br/>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Wcześniejsza</a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber%>"><%=pageNumber%>
+                            </a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>"><%=pageNumber + 1%>
+                            </a></li>
+                            <li class="page-item"><a class="page-link" href="GetAttributeBookRepository">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Następna</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
@@ -47,7 +82,7 @@
                 </thead>
                 <tbody>
                 <%
-                    int rowNumber = 1;
+                    int rowNumber = 1 + (pageNumber * recordsPerPage) - recordsPerPage;
                     List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookList");
                     request.getSession().removeAttribute("bookList");
                     for (Book book : listOfBooks) {
@@ -90,7 +125,8 @@
                             <form method="GET" action="UserBasketServlet" class="addUser">
                                 <input type="hidden" name="bookId" value="<%=book.getId()%>"/>
                                 <input type="hidden" name="operationType" value="borrow"/>
-                                <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Wypożycz">W
+                                <button type="submit" class="btn btn-success" data-toggle="tooltip"
+                                        title="Wypożycz">W
                                 </button>
                             </form>
                         </div>
@@ -105,19 +141,6 @@
                     }%>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
             <br/><br/><br/>
         </div>
     </div>
