@@ -45,7 +45,7 @@ public class GetAttributeBookRepository extends HttpServlet {
         String page= req.getParameter("page");
 
         if (page == null) page = "1";
-
+        if (order==null) order="title";
         try {
             bookList = booksRepositoryDao.bookList(order, Integer.parseInt(page));
         } catch (SQLException e) {
