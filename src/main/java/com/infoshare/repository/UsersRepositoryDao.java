@@ -15,4 +15,5 @@ public interface UsersRepositoryDao {
     void addNewUser(User user);
     List<User> findUserByLogin(String login);
     List<User> findUserByEmailOrLogin(String email, String login);
+    void updateUserAfterEdit(User user);
 }

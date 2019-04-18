@@ -1,6 +1,7 @@
 package com.infoshare.repository;
 
 import com.infoshare.domain.User;
+import com.infoshare.domain.UserStatus;
 import com.infoshare.query.UsersQuery;
 import com.infoshare.utils.Hasher;
 import com.infoshare.utils.PBKDF2Hasher;
@@ -10,9 +11,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
+import static com.infoshare.dao.DBCon.preparedStatement;
 
 
 @Stateless
@@ -26,17 +30,14 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
         String stringQuery = "select u from User u order by u.lastName";
 
-
         if (findUserByName != null) {
             stringQuery = "select u from User u where u.lastName like '%" + findUserByName + "%' order by u.lastName";
         }
-
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         List<User> userList = query.getResultList();
         return userList;
     }
-
 
     public User getUserById(int id) {
 
@@ -91,5 +92,10 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         List<User> userList = query.getResultList();
         return userList;
+    }
+
+    public void updateUserAfterEdit(User user) {
+
+        entityManager.merge(user);
     }
 }
