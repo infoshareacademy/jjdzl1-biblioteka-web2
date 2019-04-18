@@ -1,6 +1,7 @@
 package com.infoshare.servlets;
 
 import com.infoshare.domain.Book;
+import com.infoshare.domain.BookStatus;
 import com.infoshare.repository.BooksRepositoryDao;
 import com.infoshare.validation.BookValidator;
 
@@ -46,6 +47,7 @@ public class AddBookServlet extends HttpServlet {
                 .authorLastName(req.getParameter("lastName"))
                 .daterelease(dateChecked(req))
                 .isbn(req.getParameter("isbn"))
+                .status(BookStatus.Dostępna)
                 .build();
     }
 

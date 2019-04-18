@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0cb2ea21-1755-4bc9-b5ab-3405b5bfdef3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,11 +55,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
+            <state relative-caret-position="460">
               <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -131,11 +140,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfOperations.jsp">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfUsers.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2412">
@@ -191,7 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7a0754a6-1eb1-455e-8870-7fea81e0b3f5/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/3f800800-2ddc-464f-8818-dfd0f8c6107f/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/bookDescription.jsp" />
@@ -242,6 +245,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/repository/UsersRepositoryDaoBean.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/app/accountSettings.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java" />
       </list>
     </option>
   </component>
@@ -330,15 +334,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infoshare" type="462c0819:PsiDirectoryNode" />
               <item name="servlets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
@@ -557,12 +552,12 @@
       <workItem from="1555508972683" duration="7715000" />
       <workItem from="1555516918472" duration="113000" />
       <workItem from="1555565407513" duration="14322000" />
-      <workItem from="1555602962592" duration="1966000" />
+      <workItem from="1555602962592" duration="2640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134275000" />
+    <option name="totallyTimeSpent" value="134949000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -575,6 +570,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1032" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.66137564" visible="true" weight="0.25725028" />
       <window_info id="Structure" order="1" sideWeight="0.3283582" side_tool="true" weight="0.3705693" />
@@ -704,13 +700,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/UserBasketServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="50" column="32" lean-forward="true" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://f892185a-63d4-471a-a199-81ac6a416bc9/schema/librarydb/table/operation" />
     <entry file="das://f892185a-63d4-471a-a199-81ac6a416bc9/schema/librarydb/table/book" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/query/BooksQuery.java" />
@@ -1068,8 +1057,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="460">
           <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
         </state>
       </provider>
     </entry>
