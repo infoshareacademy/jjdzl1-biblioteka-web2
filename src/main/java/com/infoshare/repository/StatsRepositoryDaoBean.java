@@ -65,7 +65,7 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
         } else if (status.equals("admin")) {
             stringQuery = "select count(u) from User u where u.admin='ADMIN'";
         } else if (status.equals("disabled")) {
-            stringQuery = "select count(b) from Book b where b.status='Nieaktywny'";
+            stringQuery = "select count(u) from User u where u.status='Nieaktywny'";
         }
 
         Query query = entityManager.createQuery(stringQuery);
