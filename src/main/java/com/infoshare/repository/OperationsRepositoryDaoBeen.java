@@ -66,7 +66,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
         if (userId != null) query += " and o.userId=" + userId;
 
-        TypedQuery<Operation> operationResult = entityManager.createQuery(query,Operation.class);
+        TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
         List<Operation> operationsList = operationResult.getResultList();
 
         return operationsList;
@@ -97,7 +97,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
                     .bookTitle(basketItem.getBook().getTitle())
                     .bookId(basketItem.getBook().getId())
                     .userId(basketItem.getUser().getId())
-                    .userName(basketItem.getUser().getLogin())
+                    .userName(basketItem.getUser().getLastName() + ", " + basketItem.getUser().getFirstName())
                     .operationType(basketItem.getOperationType())
                     .operationDate(currentDate)
                     .startDate(basketItem.getStartDate())
