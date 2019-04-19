@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @WebServlet("/EditAccountServlet")
 public class EditAccountServlet extends HttpServlet implements Serializable {
@@ -30,8 +31,11 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
     private String email = "";
     private String hashedPass = "";
 
+    private static final Logger LOGGER = Logger.getLogger(EditAccountServlet.class.getName());
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 
         id = Integer.parseInt(req.getParameter("userId"));
         firstName = req.getParameter("firstName");
@@ -62,6 +66,7 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
             user.setPassword(hashedPass);
 
             usersRepository.updateUserAfterEdit(user);
+            LOGGER.info("User account : " + user.getLogin() + " was edited");
         }
 
         req.getSession().setAttribute("userEdited", "userEdited");
