@@ -33,8 +33,6 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
-
         id = Integer.parseInt(req.getParameter("userId"));
         firstName = req.getParameter("firstName");
         lastName = req.getParameter("lastName");
@@ -44,6 +42,7 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
         password3 = req.getParameter("password3");
 
         User user = null;
+        Hasher hasher = new PBKDF2Hasher();
 
         try {
             user = usersRepository.getUserById(id);
@@ -54,9 +53,9 @@ public class EditAccountServlet extends HttpServlet implements Serializable {
         }
 
         emptyInputValidation(user);
-        Hasher hasher = new PBKDF2Hasher();
 
         if (hasher.checkPassword(password3, user.getPassword())) {
+
             user.setEmail(email);
             user.setFirstName(firstName);
             user.setLastName(lastName);
