@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@WebServlet("/GetAttributesOperationRepository")
-public class GetAttributesOperationRepository extends HttpServlet {
+@WebServlet("/GetAttributeUserOperationRepository")
+public class GetAttributeUserOperationRepository extends HttpServlet {
 
     @EJB
     private OperationsRepositoryDao operationsRepository;

@@ -43,7 +43,7 @@ public class SelectUserServlet extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
         if (operationType.equals("newoperation")) redirection = "GetAttributeBookRepository";
-        if (operationType.equals("returnbook")) redirection = "GetAttributesOperationRepository";
+        if (operationType.equals("returnbook")) redirection = "GetAttributeUserOperationRepository";
 
         resp.sendRedirect(redirection);
     }
