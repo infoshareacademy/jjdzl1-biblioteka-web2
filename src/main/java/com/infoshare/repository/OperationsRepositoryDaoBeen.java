@@ -6,12 +6,12 @@ import com.infoshare.query.OperationsQuery;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Stateless
 public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
@@ -53,12 +53,33 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     }
 
     @Override
-    public List<Operation> AllOperationList(String typoOfOperations, Integer userId) throws SQLException, ClassNotFoundException {
+    public List<Operation> AllOperationList(String operationType, String userId) throws SQLException, ClassNotFoundException {
 
-        List<Operation> allOperationsList = new ArrayList<>();
-        OperationType operationType;
+        String query = "select o from Operation o " +
+                "inner join User u on o.userId=u.id " +
+                "inner join Book b on o.bookId=b.id ";
 
+        if (operationType.equals("reservation")) {
+            query += "where o.operationType='RESERVATION'";
+        } else if (operationType.equals("borrow")) {
+            query += "where o.operationType='BORROW'";
+        }
+
+        if (userId != null) query += " and o.userId=" + userId;
+
+        TypedQuery<Operation> operationResult = entityManager.createQuery(query,Operation.class);
+        List<Operation> operationsList = operationResult.getResultList();
+
+        return operationsList;
+    }
+
+
+
+
+
+/*
         try (ResultSet rs = OperationsQuery.allOperations(typoOfOperations, userId)) {
+
 
             while (rs.next()) {
                 userId = rs.getInt("userId");
@@ -79,7 +100,9 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             rs.close();
             return allOperationsList;
         }
-    }
+}
+*/
+
 
     @Override
     public void addNewOperation(List<Basket> basket, User user) {

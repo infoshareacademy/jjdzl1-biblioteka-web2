@@ -158,6 +158,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>GetAttributeOperationRepository</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetAttributeOperationRepository</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAttributeOperationRepository</servlet-name>
+        <url-pattern>app/GetAttributeOperationRepository</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>EditAccountServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.EditAccountServlet</servlet-class>
     </servlet>

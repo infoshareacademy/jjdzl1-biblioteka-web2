@@ -37,16 +37,10 @@
                 </thead>
                 <tbody>
                 <%
-
-                    Integer userId = 0;
-                    String operationType = request.getParameter("operationType");
-                    String stringUserId = request.getParameter("userId");
-                    if (stringUserId != null && !stringUserId.isEmpty()) userId = Integer.parseInt(stringUserId);
-                    if (operationType == null || operationType.isEmpty()) operationType = "all";
                     int rowNumber = 1;
-                    OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
-                    List<Operation> operationList = operationsRepository.AllOperationList(operationType, userId);
-                    for (Operation operation : operationList) {
+
+                    List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
+                    for (Operation operation : operations) {
                 %>
                 <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
