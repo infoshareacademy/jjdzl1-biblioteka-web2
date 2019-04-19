@@ -2,7 +2,6 @@ package com.infoshare.repository;
 
 import com.infoshare.domain.*;
 import com.infoshare.query.OperationsQuery;
-import com.infoshare.utils.DateUtil;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -47,7 +46,6 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             return operationsByUserId;
         }
     }
-
 
     @Override
     public List<Operation> operationListBookId(int bookId) throws SQLException, ClassNotFoundException {
@@ -105,6 +103,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
             Operation operation = Operation.builder()
                     .author(basketItem.getBook().getAuthorLastName() + ", " + basketItem.getBook().getAuthorFirstName())
+                    .bookTitle(basketItem.getBook().getTitle())
                     .bookId(basketItem.getBook().getId())
                     .userId(basketItem.getUser().getId())
                     .userName(basketItem.getUser().getLogin())
@@ -119,35 +118,38 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         }
     }
 
-
     @Override
     public List<Operation> operationListBorrowByUser(int userId) throws SQLException, ClassNotFoundException {
 
-        List<Operation> operationBorrowedByUserList = new ArrayList<>();
-        OperationType operationType;
+        String endDate = "1970.01.01";
+        String query = "select o from Operation o " +
+                "inner join User u on o.userId=u.id " +
+                "inner join Book b on o.bookId=b.id " +
+                "where " +
+                "u.id=" + userId + " and " +
+                "o.endDate='" + endDate + "'";
 
-        try (ResultSet rs = OperationsQuery.listOfBorrowedBookByUserId(userId)) {
+        TypedQuery<Operation> borrowedBook = entityManager.createQuery(query, Operation.class);
+        List<Operation> operationBorrowedByUserList = borrowedBook.getResultList();
 
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                userId = rs.getInt("userId");
-                String userName = rs.getString("lastName") + ", " + rs.getString("firstName");
-                int bookID = rs.getInt("bookId");
-                String bookTitle = rs.getString("title");
-                String author = rs.getString("authorLastName") + ", " + rs.getString("authorFirstName");
-                LocalDate operationDate = rs.getDate("operationDate").toLocalDate();
-                LocalDate startDate = rs.getDate("startDate").toLocalDate();
-                LocalDate endDate = rs.getDate("endDate").toLocalDate();
-                int operationTypeId = rs.getInt("operationTypeId");
-                if (operationTypeId == 0) operationType = OperationType.RESERVATION;
-                else operationType = OperationType.BORROW;
+        return operationBorrowedByUserList;
+    }
 
-                operationBorrowedByUserList.add(new Operation(id, userId, userName, bookID, bookTitle, author, operationDate, startDate, endDate, operationType));
+    public void ReturnBook(int id, int bookId, LocalDate endDate) {
 
-            }
-            rs.close();
-            return operationBorrowedByUserList;
+        String operationQuery = "select o from Operation o where o.id=" + id;
+        String bookQuery = "select b from Book b where b.id=" + bookId;
 
-        }
+        TypedQuery<Operation> operationResult = entityManager.createQuery(operationQuery, Operation.class);
+        Operation operation = operationResult.getSingleResult();
+
+        TypedQuery<Book> bookResult = entityManager.createQuery(bookQuery, Book.class);
+        Book book = bookResult.getSingleResult();
+
+        operation.setEndDate(endDate);
+        book.setStatus(BookStatus.Dostępna);
+
+        entityManager.merge(operation);
+        entityManager.merge(book);
     }
 }

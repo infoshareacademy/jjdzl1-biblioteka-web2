@@ -8,19 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/RefreshStatsServlet")
-public class RefreshStatsServlet extends HttpServlet {
+@WebServlet("/CreateStatsServlet")
+public class CreateStatsServlet extends HttpServlet {
 
     @EJB
-    private StatsRepositoryDao statsRepositoryDao;
+    private StatsRepositoryDao statsRepository;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        statsRepositoryDao.generateStats();
-        resp.sendRedirect("loginSuccess.jsp");
+        HttpSession session=req.getSession();
+        session.setAttribute("stats", statsRepository.generateStats());
 
+        resp.sendRedirect("app/loginSuccess.jsp");
     }
 }

@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="com.infoshare.repository.*" %>
 <%@ page import="com.infoshare.domain.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -15,19 +15,17 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
             <%
-                List<Operation> operations = null;
+                List<Operation> operations = new ArrayList<>();
                 if (session.getAttribute("selectedUser") != null) {
                     User user = (User) session.getAttribute("selectedUser");
-                    OperationsRepositoryDao operationsRepository = new OperationsRepositoryDaoBeen();
-                    operations = operationsRepository.operationListBorrowByUser(user.getId());
+                    operations = (List<Operation>) session.getAttribute("borrowOperationDao");
+                    session.removeAttribute("borrowOperationDao");
             %>
-
 
             <div class="d-flex">
                 <div class="mr-auto p-2 align-items-start"><h4>Lista
@@ -43,6 +41,7 @@
                     </form>
                 </div>
                 <%}%>
+
                 <div class="p2 align-items-end">
                     &nbsp;&nbsp;
                 </div>

@@ -1,7 +1,8 @@
 package com.infoshare.servlets;
 
-import com.infoshare.query.OperationsQuery;
+import com.infoshare.repository.OperationsRepositoryDao;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,15 +14,18 @@ import java.time.LocalDate;
 @WebServlet("ReturnBookServlet")
 public class ReturnBookServlet extends HttpServlet {
 
+    @EJB
+    private OperationsRepositoryDao operationsRepository;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int operationID = Integer.parseInt(req.getParameter("operationId"));
-        int bookID = Integer.parseInt(req.getParameter("bookId"));
-        LocalDate endDate = LocalDate.parse( req.getParameter("endDate"));
+        int operationId = Integer.parseInt(req.getParameter("operationId"));
+        int bookId = Integer.parseInt(req.getParameter("bookId"));
+        LocalDate endDate = LocalDate.parse(req.getParameter("endDate"));
 
-        OperationsQuery.ReturnBook(operationID,bookID,endDate);
+        operationsRepository.ReturnBook(operationId, bookId, endDate);
 
-        resp.sendRedirect("listOfBorrow.jsp");
+        resp.sendRedirect("GetAttributesOperationRepository");
     }
 }

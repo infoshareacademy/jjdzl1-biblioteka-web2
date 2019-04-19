@@ -40,9 +40,14 @@ public class GetAttributeBookRepository extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String order = req.getParameter("order");
+        String page= req.getParameter("page");
+
+        if (page == null) page = "1";
+        if (order==null) order="title";
         try {
-            bookList = booksRepositoryDao.bookList(order);
+            bookList = booksRepositoryDao.bookList(order, Integer.parseInt(page));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -51,6 +56,6 @@ public class GetAttributeBookRepository extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("bookList", bookList);
         session.setAttribute("booksRepositoryDao", booksRepositoryDao);
-        resp.sendRedirect("listOfBooks.jsp?order=" + order);
+        resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page);
     }
 }

@@ -147,6 +147,27 @@
         <url-pattern>app/GetAttributeBookRepository</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetAttributesOperationRepository</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetAttributesOperationRepository</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAttributesOperationRepository</servlet-name>
+        <url-pattern>app/GetAttributesOperationRepository</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateStatsServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.CreateStatsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateStatsServlet</servlet-name>
+        <url-pattern>app/CreateStatsServlet</url-pattern>
+    </servlet-mapping>
+
+
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
