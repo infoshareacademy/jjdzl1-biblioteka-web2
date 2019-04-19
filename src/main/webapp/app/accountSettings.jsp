@@ -16,8 +16,10 @@
 
 
 <%
-    UsersRepositoryDao user = new UsersRepositoryDaoBean();
-    User userData = user.getUserByLogin(userName);%>
+    User user = (User) session.getAttribute("UserObject");
+%>
+
+
 <article>
     <div class="addUserForm">
         <br/><br/><br/>
@@ -27,24 +29,24 @@
             <div class="form-row">
                 <div>
                     <input type="text" class="form-control" name="login" placeholder="Login"
-                           value="<%= userData.getLogin()%>">
+                           value="<%= user.getLogin()%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
                     <input type="email" class="form-control" name="e-mail" placeholder="E-mail"
-                           value="<%= userData.getEmail()%>">
+                           value="<%= user.getEmail()%>">
                 </div>
             </div>
             <br/>
             <div class="form-row">
                 <div>
                     <input type="text" class="form-control" name="firstName" placeholder="Imię"
-                           value="<%= userData.getFirstName()%>">
+                           value="<%= user.getFirstName()%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
                     <input type="text" class="form-control" name="lastName" placeholder="Nazwisko"
-                           value="<%= userData.getLastName()%>">
+                           value="<%= user.getLastName()%>">
                 </div>
             </div>
             <br/>

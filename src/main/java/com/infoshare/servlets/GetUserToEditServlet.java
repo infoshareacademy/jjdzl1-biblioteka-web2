@@ -26,11 +26,13 @@ public class GetUserToEditServlet extends HttpServlet implements Serializable {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String userID = req.getParameter("userID");
+        String userId = req.getParameter("userId");
+        String edit = req.getParameter("edit");
+        if (edit == null) edit = "user";
 
         User user = null;
         try {
-            user = usersRepository.getUserById(Integer.parseInt(userID));
+            user = usersRepository.getUserById(Integer.parseInt(userId));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -40,6 +42,7 @@ public class GetUserToEditServlet extends HttpServlet implements Serializable {
         HttpSession session = req.getSession();
         session.setAttribute("UserObject", user);
 
-        resp.sendRedirect("editUser.jsp");
+        if (edit.equals("user")) resp.sendRedirect("editUser.jsp");
+        if (edit.equals("account"))resp.sendRedirect("accountSettings.jsp");
     }
 }

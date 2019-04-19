@@ -13,6 +13,7 @@
         }
     }
     String nameOfUser = (String) session.getAttribute("nameOfUser");
+    Integer userId= (Integer)session.getAttribute("userId");
 %>
 <nav class="navbar navbar-default "></nav>
 <nav class="navbar navbar-dark bg navbar-expand-lg fixed-top">
@@ -163,7 +164,7 @@
                    aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=nameOfUser%>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu3">
-                    <a class="dropdown-item" href="accountSettings.jsp"> Ustawienia konta </a>
+                    <a class="dropdown-item" href="GetUserToEditServlet?edit=account&userId=<%=userId%>"> Ustawienia konta </a>
                     <a class="dropdown-item" href="#"> Powiadomienia </a>
                 </div>
             </li>

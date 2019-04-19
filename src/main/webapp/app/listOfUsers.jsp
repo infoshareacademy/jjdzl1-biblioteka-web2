@@ -83,7 +83,7 @@
                     for (User user : listOfUsers) {
                 %>
                 <tr class="listofitemps" style="cursor:pointer"
-                    onclick="window.location='GetUserToEditServlet?userID=<%=user.getId()%>';">
+                    onclick="window.location='GetUserToEditServlet?userId=<%=user.getId()%>';">
                     <th scope="row"><%=rowNumber%>
                     </th>
                     <td><%= user.getLogin()%>
