@@ -13,6 +13,7 @@
         }
     }
     String nameOfUser = (String) session.getAttribute("nameOfUser");
+    Integer userId= (Integer)session.getAttribute("userId");
 %>
 <nav class="navbar navbar-default "></nav>
 <nav class="navbar navbar-dark bg navbar-expand-lg fixed-top">
@@ -89,11 +90,11 @@
                     <%}%>
 
                     <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation"> Wszystkie
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=reservation"> Wszystkie
                         rezerwacje </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow"> Wszystkie
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=borrow"> Wszystkie
                         wypożyczenia </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=all"> Razem wszystkie
+                    <a class="dropdown-item" href="GetAttributeOperationRepository"> Razem wszystkie
                         operacje </a>
 
                     <% } else { %>
@@ -145,9 +146,9 @@
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="#"> Aktualne rezerwacje i wypożyczenia </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=reservation&userId=<%=userID%>">
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=reservation&userId=<%=userID%>">
                         Historia rezerwacji </a>
-                    <a class="dropdown-item" href="listOfOperations.jsp?operationType=borrow&userId=<%=userID%>">
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=borrow&userId=<%=userID%>">
                         Historia wypożyczeń </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="#"> Wyślij przypomnienie (email) </a>
@@ -163,7 +164,7 @@
                    aria-expanded="false" id="submenu4" aria-haspopup="true">Witaj <%=nameOfUser%>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu3">
-                    <a class="dropdown-item" href="accountSettings.jsp"> Ustawienia konta </a>
+                    <a class="dropdown-item" href="GetUserToEditServlet?edit=account&userId=<%=userId%>"> Ustawienia konta </a>
                     <a class="dropdown-item" href="#"> Powiadomienia </a>
                 </div>
             </li>

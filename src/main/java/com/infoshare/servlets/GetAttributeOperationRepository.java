@@ -3,6 +3,7 @@ package com.infoshare.servlets;
 import com.infoshare.domain.Operation;
 import com.infoshare.domain.User;
 import com.infoshare.repository.OperationsRepositoryDao;
+import com.infoshare.repository.UsersRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -16,32 +17,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@WebServlet("/GetAttributesOperationRepository")
-public class GetAttributesOperationRepository extends HttpServlet {
+@WebServlet("/GetAttributeOperationRepository")
+public class GetAttributeOperationRepository extends HttpServlet {
 
     @EJB
     private OperationsRepositoryDao operationsRepository;
 
-    private List<Operation> operationsBorrowList = new ArrayList<>();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
-        int userId = ((User) session.getAttribute("selectedUser")).getId();
+        List<Operation> operationsList = new ArrayList<>();
+        String operationType = req.getParameter("operationType");
+        String userId = req.getParameter("userId");
+        if (operationType == null || operationType.isEmpty()) operationType = "all";
 
         try {
-            operationsBorrowList = operationsRepository.operationListBorrowByUser(userId);
+            operationsList = operationsRepository.AllOperationList(operationType, userId);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        HttpSession session = req.getSession();
+        session.setAttribute("operationRepositoryDao", operationsList);
 
-        session.setAttribute("borrowOperationDao", operationsBorrowList);
-
-        resp.sendRedirect("listOfBorrow.jsp");
+        resp.sendRedirect("listOfOperations.jsp");
     }
 }
 

@@ -1,6 +1,4 @@
-<%@ page import="com.infoshare.repository.UsersRepositoryDaoBean" %>
 <%@ page import="com.infoshare.domain.User" %>
-<%@ page import="com.infoshare.repository.UsersRepositoryDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -14,37 +12,40 @@
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-
 <%
-    UsersRepositoryDao user = new UsersRepositoryDaoBean();
-    User userData = user.getUserByLogin(userName);%>
+    User user = (User) request.getSession(true).getAttribute("UserObject");
+
+%>
+
 <article>
     <div class="addUserForm">
         <br/><br/><br/>
-        <h4>Edytuj swoje konto</h4>
+        <h4>Edycja konta: <%=user.getLastName() + ", " + user.getFirstName()%>
+        </h4>
         <br/>
         <form method="POST" action="EditAccountServlet" class="addUser">
             <div class="form-row">
                 <div>
-                    <input type="text" class="form-control" name="login" placeholder="Login"
-                           value="<%= userData.getLogin()%>">
+                    <input type="text" disabled class="form-control" name="login" placeholder="Login"
+                           value="<%= user.getLogin()%>">
+                    <input type="hidden" name="userId" value="<%=user.getId()%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
                     <input type="email" class="form-control" name="e-mail" placeholder="E-mail"
-                           value="<%= userData.getEmail()%>">
+                           value="<%= user.getEmail()%>">
                 </div>
             </div>
             <br/>
             <div class="form-row">
                 <div>
                     <input type="text" class="form-control" name="firstName" placeholder="Imię"
-                           value="<%= userData.getFirstName()%>">
+                           value="<%= user.getFirstName()%>">
                 </div>
                 <div>&nbsp;</div>
                 <div>
                     <input type="text" class="form-control" name="lastName" placeholder="Nazwisko"
-                           value="<%= userData.getLastName()%>">
+                           value="<%= user.getLastName()%>">
                 </div>
             </div>
             <br/>
@@ -60,7 +61,7 @@
             <br/><br/><br/>
             <h6>Wpisz aktualne hasło, aby zatwierdzić wprowadzone zmiany</h6>
             <div class="form-row">
-                <input type="password" class="form-control" name="password3" placeholder="Hasło">
+                <input type="password" class="form-control" name="password3" placeholder="Aktualne hasło">
             </div>
             <br/><br/>
             <button type="submit" class="btn btn-primary">Aktualizuj dane</button>

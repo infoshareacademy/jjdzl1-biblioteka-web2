@@ -26,6 +26,6 @@ public class ReturnBookServlet extends HttpServlet {
 
         operationsRepository.ReturnBook(operationId, bookId, endDate);
 
-        resp.sendRedirect("GetAttributesOperationRepository");
+        resp.sendRedirect("GetAttributeUserOperationRepository");
     }
 }

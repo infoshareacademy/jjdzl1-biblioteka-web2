@@ -13,7 +13,7 @@ import java.util.List;
 public interface OperationsRepositoryDao {
     List<Operation> operationListByUserId(int userId) throws SQLException, ClassNotFoundException;
     List<Operation> operationListBookId(int bookId) throws SQLException, ClassNotFoundException;
-    List<Operation> AllOperationList(String typoOfOperations, Integer userId) throws SQLException, ClassNotFoundException;
+    List<Operation> AllOperationList(String typoOfOperations, String userId) throws SQLException, ClassNotFoundException;
     void addNewOperation(List<Basket> basket, User user);
     List<Operation> operationListBorrowByUser(int userId) throws SQLException, ClassNotFoundException;
     void ReturnBook(int id, int bookId, LocalDate endDate);

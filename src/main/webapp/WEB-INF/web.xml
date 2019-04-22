@@ -25,6 +25,7 @@
         <servlet-name>GetUserToEditServlet</servlet-name>
         <url-pattern>app/GetUserToEditServlet</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>EditUserServlet</servlet-name>
         <servlet-class>com.infoshare.servlets.EditUserServlet</servlet-class>
@@ -148,26 +149,31 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>GetAttributesOperationRepository</servlet-name>
-        <servlet-class>com.infoshare.servlets.GetAttributesOperationRepository</servlet-class>
+        <servlet-name>GetAttributeUserOperationRepository</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetAttributeUserOperationRepository</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>GetAttributesOperationRepository</servlet-name>
-        <url-pattern>app/GetAttributesOperationRepository</url-pattern>
+        <servlet-name>GetAttributeUserOperationRepository</servlet-name>
+        <url-pattern>app/GetAttributeUserOperationRepository</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>CreateStatsServlet</servlet-name>
-        <servlet-class>com.infoshare.servlets.CreateStatsServlet</servlet-class>
+        <servlet-name>GetAttributeOperationRepository</servlet-name>
+        <servlet-class>com.infoshare.servlets.GetAttributeOperationRepository</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>CreateStatsServlet</servlet-name>
-        <url-pattern>app/CreateStatsServlet</url-pattern>
+        <servlet-name>GetAttributeOperationRepository</servlet-name>
+        <url-pattern>app/GetAttributeOperationRepository</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.EditAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <url-pattern>app/EditAccountServlet</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>

@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Stateless
 public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
@@ -53,32 +52,24 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     }
 
     @Override
-    public List<Operation> AllOperationList(String typoOfOperations, Integer userId) throws SQLException, ClassNotFoundException {
+    public List<Operation> AllOperationList(String operationType, String userId) throws SQLException, ClassNotFoundException {
 
-        List<Operation> allOperationsList = new ArrayList<>();
-        OperationType operationType;
+        String query = "select o from Operation o " +
+                "inner join User u on o.userId=u.id " +
+                "inner join Book b on o.bookId=b.id ";
 
-        try (ResultSet rs = OperationsQuery.allOperations(typoOfOperations, userId)) {
-
-            while (rs.next()) {
-                userId = rs.getInt("userId");
-                String userName = rs.getString("lastName") + ", " + rs.getString("firstName");
-                int bookID = rs.getInt("bookId");
-                String bookTitle = rs.getString("title");
-                String author = rs.getString("authorLastName") + ", " + rs.getString("authorFirstName");
-                LocalDate operationDate = rs.getDate("operationDate").toLocalDate();
-                LocalDate startDate = rs.getDate("startDate").toLocalDate();
-                LocalDate endDate = rs.getDate("endDate").toLocalDate();
-                int operationTypeId = rs.getInt("operationTypeId");
-                if (operationTypeId == 0) operationType = OperationType.RESERVATION;
-                else operationType = OperationType.BORROW;
-
-                allOperationsList.add(new Operation(userId, userName, bookID, bookTitle, author, operationDate, startDate, endDate, operationType));
-
-            }
-            rs.close();
-            return allOperationsList;
+        if (operationType.equals("reservation")) {
+            query += "where o.operationType='RESERVATION'";
+        } else if (operationType.equals("borrow")) {
+            query += "where o.operationType='BORROW'";
         }
+
+        if (userId != null) query += " and o.userId=" + userId;
+
+        TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
+        List<Operation> operationsList = operationResult.getResultList();
+
+        return operationsList;
     }
 
     @Override
@@ -106,7 +97,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
                     .bookTitle(basketItem.getBook().getTitle())
                     .bookId(basketItem.getBook().getId())
                     .userId(basketItem.getUser().getId())
-                    .userName(basketItem.getUser().getLogin())
+                    .userName(basketItem.getUser().getLastName() + ", " + basketItem.getUser().getFirstName())
                     .operationType(basketItem.getOperationType())
                     .operationDate(currentDate)
                     .startDate(basketItem.getStartDate())

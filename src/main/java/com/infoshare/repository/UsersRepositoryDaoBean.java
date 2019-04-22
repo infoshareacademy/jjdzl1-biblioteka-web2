@@ -1,8 +1,6 @@
 package com.infoshare.repository;
 
 import com.infoshare.domain.User;
-import com.infoshare.domain.UserStatus;
-import com.infoshare.query.UsersQuery;
 import com.infoshare.utils.Hasher;
 import com.infoshare.utils.PBKDF2Hasher;
 
@@ -11,12 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-
-import static com.infoshare.dao.DBCon.preparedStatement;
 
 
 @Stateless
@@ -55,25 +48,6 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
         user.setPassword(hasher.hash(user.getPassword()));
         entityManager.persist(user);
-    }
-
-
-    public User getUserByLogin(String login) throws SQLException, ClassNotFoundException {
-        User user = new User();
-        ResultSet rs = UsersQuery.findUserByLogin(login);
-        while (rs.next()) {
-            String firstName = rs.getString("firstName");
-            String lastName = rs.getString("lastName");
-            String email = rs.getString("email");
-            String password = rs.getString("password");
-            user.setLogin(login);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setPassword(password);
-            user.setEmail(email);
-        }
-        rs.close();
-        return user;
     }
 
     public List<User> findUserByLogin(String login) {

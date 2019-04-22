@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
         boolean admin = false;
         String status = "";
         String userName = "";
+        Integer userId = null;
 
         List<User> userList = usersRepositoryDao.findUserByLogin(formLogin);
         if (userList.size() > 0) {
@@ -44,6 +45,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
                 if (user.getAdmin().equals(UserStatus.ADMIN)) admin = true;
                 status = user.getStatus();
                 userName = user.getFirstName() + ", " + user.getLastName();
+                userId = user.getId();
             }
         }
 
@@ -61,6 +63,7 @@ public class LoginServlet extends HttpServlet implements Serializable {
             loginCookie.setMaxAge(30 * 60);
             response.addCookie(loginCookie);
             session.setAttribute("nameOfUser", userName);
+            session.setAttribute("userId", userId);
             if (!admin) {
                 session.setAttribute("normalUser", "normalUser");
                 session.setAttribute("nameOfUser", userName);
