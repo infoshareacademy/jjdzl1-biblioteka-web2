@@ -48,6 +48,7 @@ public class AddBookServlet extends HttpServlet {
                 .daterelease(dateChecked(req))
                 .isbn(req.getParameter("isbn"))
                 .status(BookStatus.Dostępna)
+                .description(req.getParameter("description"))
                 .build();
     }
 
