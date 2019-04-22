@@ -1,22 +1,15 @@
 body {
 
- /*
- background-color: #1E2225;
- */
     background-color: #F2F2F2;
-
- /*   color: #efefef;
- */
     font-family: 'Open Sans', sans-serif;
-color: #1E2225;
-
+    color: #1E2225;
     font-size: 1vw;
 }
 
 .mainpage {
     background: url(../img/background2.jpg);
     background-repeat: no-repeat;
-    background-position: center center ;
+    background-position: center center;
     background-size: cover;
     display: block;
     text-align: center;
@@ -53,7 +46,7 @@ color: #1E2225;
     background-color: #2F3336;
     color: white;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .footer a:link {
@@ -81,10 +74,7 @@ color: #1E2225;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    /*
-    background-color: #1E2225;
-    */
-background-color: #F2F2F2;
+    background-color: #F2F2F2;
 }
 
 .contentInside {
@@ -172,7 +162,14 @@ ul {
     border: 0;
 }
 
+.practice-area .inner p {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
 .practice-area .inner h3 {
+
     color: #3c3c3c;
     font-size: 24px;
     font-weight: 500;
@@ -180,28 +177,21 @@ ul {
     padding: 10px 0;
 }
 
-.practice-area .inner p {
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 400;
-}
-
 .practice-area .inner img {
     display: inline-block;
 }
 
-
 .our-webcoderskull {
-    background-color: #1E2225;
+    background-color: #F2F2F2;
     height: 100vh;
-
 }
 
 .our-webcoderskull .cnt-block {
     float: left;
     width: 100%;
-    background: #6c757d;
-    padding: 30px 20px;
+
+   /* background: #6c757d;
+   */ padding: 30px 20px;
     text-align: center;
     border: 2px solid #d5d5d5;
     margin: 0 0 28px;
@@ -216,9 +206,7 @@ ul {
 }
 
 .our-webcoderskull .cnt-block img {
-    width: 148px;
-    height: 148px;
-    border-radius: 100%;
+   border-radius: 100%;
 }
 
 .our-webcoderskull .cnt-block h3 {
@@ -285,10 +273,7 @@ ul {
 }
 
 .listofitemps {
-    /*
-    color: white;
-    */
-color: #1E2225;
+    color: #1E2225;
 }
 
 .listofitemps a {
@@ -302,7 +287,7 @@ color: #1E2225;
     -moz-appearance: textfield;
 }
 
-#timeOfStat{
+#timeOfStat {
     font-size: 10px;
     color: #6c757d;
     align-items: end;

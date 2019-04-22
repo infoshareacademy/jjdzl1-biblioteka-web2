@@ -21,56 +21,77 @@
 
 <%}%>
 
-
 <section class="our-webcoderskull padding-lg">
     <div class="container">
-        <div class="d-flex justify-content-center">
-            <h2>Nasz zespół</h2>
+        <h2>Nasz zespół</h2>
+        <div class="justify-content-left">
+            Nieniejszy aplikacja webowa - Biblioteka online jest aplikacją wykonany przez nas jako projekt zaliczeniowy
+            na zakończenie sześcio miesiącznego szkolenia z programowania w języku Java.
+            <br/>
+            W projekcie użyto technologii Java Standard Edition i JAVA Enterprise Edition
+            <br/>
+            Jako narzędzie programistyczne używaliśny oprogramowania firmy JetBrains IntelliJ IDEA 2018 w wersji
+            Ultimate.
+            W projekcie użyto technologii Hibernate jako implemantacja Java Persistance API, Enterprise Java Beans, Java
+            Server Pages, MySQL, Bootstrap, Html, CSS, JavaScript
         </div>
-        <br/><br/>
+        <br/>
+        <div class="d-flex justify-content-left">
+            <br/>
+            <br/>
+            Więcej o nas znajdziesz w linkach do GitHub i linkedIn
+        </div>
+        <br/>
         <ul class="row">
             <li class="col-12 col-md-6 col-lg-4">
-                <div class="cnt-block equal-hight" style="height: 349px;">
+                <div class="cnt-block">
                     <figure><img
                             src="https://mini-figurki.pl/3731-thickbox_default/lego-minifig-the-big-bang-theory.jpg"
-                            class="img-responsive" alt=""></figure>
-                    <h3><a href="#">Arkadiusz Kałka</a></h3>
+                            class="img-responsive" alt="" width="148px" height="148px"></figure>
+                    <h3><a href="mailto:arkadiusz.kalka@gmail.com">Arkadiusz Kałka</a></h3>
                     <p>Student infoShare Academy Lublin</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <ul>
+                        <a href="https://www.linkedin.com/in/arkadiusz-kalka/"><img src="img/linked.png" width="50px"
+                                                                                    height="50px"/></a>
+                        <a href="https://github.com/ArkadiuszKalka"><img src="img/github.png" width="50px"
+                                                                         height="50px"/></a>
                     </ul>
+
                 </div>
             </li>
             <li class="col-12 col-md-6 col-lg-4">
-                <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="https://mini-figurki.pl/1210-thickbox_default/lego-minifig-mutt-williams.jpg"
-                                 class="img-responsive" alt=""></figure>
+                <div class="cnt-block">
+                    <figure><img
+                            src="https://mini-figurki.pl/1210-thickbox_default/lego-minifig-mutt-williams.jpg"
+                            class="img-responsive" alt="" width="148px" height="148px"></figure>
                     <h3><a href="#">Łukasz Bezłada</a></h3>
                     <p>Student infoShare Academy Lublin</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <ul>
+                        <a href="#"><img src="img/linked.png" width="50px" height="50px"/></a>
+                        <a href="#"><img src="img/github.png" width="50px" height="50px"/></a>
                     </ul>
+
                 </div>
             </li>
             <li class="col-12 col-md-6 col-lg-4">
-                <div class="cnt-block equal-hight" style="height: 349px;">
+                <div class="cnt-block">
                     <figure><img
                             src="https://mini-figurki.pl/3987-thickbox_default/figurka-lego-custom-android-vs-apple.jpg"
-                            class="img-responsive" alt=""></figure>
+                            class="img-responsive" alt="" width="148px" height="148px"></figure>
                     <h3><a href="#">Michał Mrozik</a></h3>
                     <p>Student infoShare Academy Lublin</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="false"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="false"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="false"></i></a></li>
+                    <ul>
+                        <a href="#"><img src="img/linked.png" width="50px" height="50px"/></a>
+                        <a href="#"><img src="img/github.png" width="50px" height="50px"/></a>
                     </ul>
+
                 </div>
             </li>
         </ul>
+        <div class="d-flex justify-content-center">
+            <a href="https://infoshareacademy.com/"><img src="img/logo.svg" width="150px"></a>
+        </div>
+
     </div>
 </section>
 
