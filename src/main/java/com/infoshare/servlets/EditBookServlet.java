@@ -71,7 +71,7 @@ public class EditBookServlet extends HttpServlet {
 
         emptyInputValidation(book);
 
-        book.builder()
+        Book editedBook = book.builder()
                 .id(Integer.parseInt(id))
                 .title(title)
                 .authorFirstName(authorFirstName)
@@ -81,16 +81,22 @@ public class EditBookServlet extends HttpServlet {
                 .description(description)
                 .build();
 
-        booksRepositoryDao.editBook(book);
+        booksRepositoryDao.editBook(editedBook);
+
+        req.getSession().setAttribute("opertationSuccess", "success");
+        if (req.getSession().getAttribute("user") != null)
+            resp.sendRedirect("loginSuccess.jsp");
+        else
+            resp.sendRedirect("index.jsp");
     }
 
     private void emptyInputValidation(Book book) {
 
         if (title.isEmpty()) title = book.getTitle();
-        if (authorFirstName.isEmpty()) authorFirstName = book.getAuthorFirstName() ;
-        if (authorLastName.isEmpty())authorLastName=book.getAuthorLastName();
-        if (isbn.isEmpty()) isbn= book.getIsbn();
-        if (daterelase.isEmpty()) daterelase=String.valueOf(book.getDaterelease());
-        if (description.isEmpty()) description=book.getDescription();
+        if (authorFirstName.isEmpty()) authorFirstName = book.getAuthorFirstName();
+        if (authorLastName.isEmpty()) authorLastName = book.getAuthorLastName();
+        if (isbn.isEmpty()) isbn = book.getIsbn();
+        if (daterelase.isEmpty()) daterelase = String.valueOf(book.getDaterelease());
+        if (description == null || description.isEmpty()) description = "Brak opisu";
     }
 }

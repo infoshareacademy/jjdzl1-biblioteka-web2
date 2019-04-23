@@ -48,12 +48,12 @@
         <br/>
         <div class="form-row">
             <div>
-                <input type="text" class="form-control" name="lastName"
+                <input type="text" class="form-control" name="authorLastName"
                        placeholder="Nazwisko autora" value="<%=book.getAuthorLastName()%>">
             </div>
             <div>&nbsp;</div>
             <div>
-                <input type="text" class="form-control" name="firstName"
+                <input type="text" class="form-control" name="authorFirstName"
                        placeholder="Imię autora" value="<%=book.getAuthorFirstName()%>">
             </div>
         </div>
@@ -65,7 +65,7 @@
             </div>
             <div>&nbsp;</div>
             <div>
-                <input type="number" class="form-control no-spin" name="daterelease"
+                <input type="number" class="form-control no-spin" name="daterelase"
                        placeholder="Rok wydania (tylko cyfry)" value="<%=book.getDaterelease()%>">
             </div>
         </div>
