@@ -19,6 +19,7 @@
 <%
     String order = request.getParameter("order");
     String pageString = request.getParameter("page");
+    String edit = request.getParameter("edit");
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
@@ -52,7 +53,9 @@
                                     <%}else{%>
                             <li class="page-item">
                                 <%}%>
-                                <a class="page-link" href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>" tabindex="-1">Wcześniejsza</a>
+                                <a class="page-link"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>"
+                                   tabindex="-1">Wcześniejsza</a>
                             </li>
                             <li class="page-item"><a class="page-link"
                                                      href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber%>"><%=pageNumber%>
@@ -60,9 +63,12 @@
                             <li class="page-item"><a class="page-link"
                                                      href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>"><%=pageNumber + 1%>
                             </a></li>
-                            <li class="page-item"><a class="page-link" href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+2%>"><%=pageNumber + 2%></a></li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+2%>"><%=pageNumber + 2%>
+                            </a></li>
                             <li class="page-item">
-                                <a class="page-link" href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
+                                <a class="page-link"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
                             </li>
                         </ul>
                     </nav>
@@ -93,7 +99,11 @@
                     for (Book book : listOfBooks) {
                 %>
                 <tr class="listofitemps " style="cursor:pointer"
+                        <%if (edit.equals("true")) {%>
+                    onclick="window.location='EditBookServlet?id=<%=book.getId()%>'" data-toggle="tooltip"
+                        <%} else {%>
                     onclick="window.location='bookDescription.jsp?id=<%=book.getId()%>'" data-toggle="tooltip"
+                        <%}%>
                     title="Zobacz więcej ...">
                     <th scope="row"><%=rowNumber%>
                     </th>

@@ -35,34 +35,36 @@ public class GetAttributeBookRepository extends HttpServlet {
 
         if (session.getAttribute("nameOfUser") != null) {
             resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=title&titleOfBook=" + titleOfBook);
-        }else{
+        } else {
             resp.sendRedirect("listOfBooks.jsp?order=title&titleOfBook=" + titleOfBook);
         }
     }
 
-        @Override
-        protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            String order = req.getParameter("order");
-            String page = req.getParameter("page");
+        String order = req.getParameter("order");
+        String page = req.getParameter("page");
+        String edit = req.getParameter("edit");
 
-            if (page == null) page = "1";
-            if (order == null) order = "title";
-            try {
-                bookList = booksRepositoryDao.bookList(order, Integer.parseInt(page));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            HttpSession session = req.getSession();
-            session.setAttribute("bookList", bookList);
-            session.setAttribute("booksRepositoryDao", booksRepositoryDao);
+        if (page == null) page = "1";
+        if (order == null) order = "title";
+        if (edit == null || edit.isEmpty()) edit = "false";
+        try {
+            bookList = booksRepositoryDao.bookList(order, Integer.parseInt(page));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        HttpSession session = req.getSession();
+        session.setAttribute("bookList", bookList);
+        session.setAttribute("booksRepositoryDao", booksRepositoryDao);
 
-            if (session.getAttribute("nameOfUser") != null) {
-                resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=" + order + "&page=" + page);
-            } else {
-                resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page);
-            }
+        if (session.getAttribute("nameOfUser") != null) {
+            resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=" + order + "&page=" + page + "&edit=" + edit);
+        } else {
+            resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page);
         }
     }
+}
