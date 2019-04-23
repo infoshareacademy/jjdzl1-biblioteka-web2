@@ -175,6 +175,16 @@
         <url-pattern>app/EditAccountServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>EditBookServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.EditBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditBookServlet</servlet-name>
+        <url-pattern>app/EditBookServlet</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>
