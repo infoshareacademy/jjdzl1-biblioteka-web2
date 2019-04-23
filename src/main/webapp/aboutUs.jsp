@@ -33,7 +33,9 @@
             Jako narzędzie programistyczne używaliśny oprogramowania firmy JetBrains IntelliJ IDEA 2018 w wersji
             Ultimate.
             W projekcie użyto technologii Hibernate jako implemantacja Java Persistance API, Enterprise Java Beans, Java
-            Server Pages, MySQL, Bootstrap, Html, CSS, JavaScript
+            Server Pages, Maven, MySQL, Bootstrap, Html, CSS, JavaScript.
+        <br/>
+            Aplikacja została uruchomiona na serwerze aplikacyjnym WildFly a baza danych na Dockerze - kontener z serwerem MySQL.
         </div>
         <br/>
         <div class="d-flex justify-content-left">
