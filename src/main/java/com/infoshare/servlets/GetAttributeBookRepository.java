@@ -32,34 +32,37 @@ public class GetAttributeBookRepository extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("bookList", bookList);
         session.setAttribute("booksRepositoryDao", booksRepositoryDao);
-        resp.sendRedirect("listOfBooks.jsp?order=title&titleOfBook=" + titleOfBook);
-    }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        String order = req.getParameter("order");
-        String page = req.getParameter("page");
-
-        if (page == null) page = "1";
-        if (order == null) order = "title";
-        try {
-            bookList = booksRepositoryDao.bookList(order, Integer.parseInt(page));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        HttpSession session = req.getSession();
-        session.setAttribute("bookList", bookList);
-        session.setAttribute("booksRepositoryDao", booksRepositoryDao);
-
-
-        Cookie[] cookies = req.getCookies();
         if (session.getAttribute("nameOfUser") != null) {
-            resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=" + order + "&page=" + page);
-        } else {
-            resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page);
+            resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=title&titleOfBook=" + titleOfBook);
+        }else{
+            resp.sendRedirect("listOfBooks.jsp?order=title&titleOfBook=" + titleOfBook);
         }
     }
-}
+
+        @Override
+        protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+            String order = req.getParameter("order");
+            String page = req.getParameter("page");
+
+            if (page == null) page = "1";
+            if (order == null) order = "title";
+            try {
+                bookList = booksRepositoryDao.bookList(order, Integer.parseInt(page));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            HttpSession session = req.getSession();
+            session.setAttribute("bookList", bookList);
+            session.setAttribute("booksRepositoryDao", booksRepositoryDao);
+
+            if (session.getAttribute("nameOfUser") != null) {
+                resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=" + order + "&page=" + page);
+            } else {
+                resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page);
+            }
+        }
+    }
