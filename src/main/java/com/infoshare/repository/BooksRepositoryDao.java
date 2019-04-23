@@ -15,4 +15,5 @@ public interface BooksRepositoryDao {
     Book getBookById (int id) throws SQLException,ClassNotFoundException;
     List<Book> getBookByTitle(String title) throws SQLException,ClassNotFoundException;
     void addNewBook(Book book);
+    void editBook (Book book);
 }

@@ -63,6 +63,12 @@
             </div>
         </div>
         <br/>
+        <div>
+            <div>
+                <textarea name="description" class="form-control" placeholder="Opis książki"rows="5"></textarea>
+            </div>
+        </div>
+        <br/>
         <br/>
         <button type="submit" class="btn btn-primary">Dodaj książkę</button>
     </form>

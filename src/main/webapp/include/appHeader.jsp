@@ -41,7 +41,7 @@
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="addBook.jsp"> Dodaj książkę </a>
-                    <a class="dropdown-item" href="#"> Edytuj książkę </a>
+                    <a class="dropdown-item" href="GetAttributeBookRepository?order=title&edit=true"> Edytuj książkę </a>
                     <%}%>
 
                 </div>

@@ -28,7 +28,7 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     public List<Book> bookList(String order, Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException {
 
         Integer recordPerPage = null;
-        Integer offset= null;
+        Integer offset = null;
 
         try {
             recordPerPage = RecordPerPage.readProperties();
@@ -37,8 +37,7 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
         }
 
         if (page == null) page = 1;
-        offset=recordPerPage*page-recordPerPage;
-
+        offset = recordPerPage * page - recordPerPage;
 
 
         if (order != null) {
@@ -74,6 +73,11 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     @Override
     public void addNewBook(Book book) {
         entityManager.persist(book);
+    }
+
+    @Override
+    public void editBook(Book book) {
+        entityManager.merge(book);
     }
 
 }
