@@ -76,4 +76,9 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
         entityManager.persist(book);
     }
 
+    @Override
+    public void editBook(Book book) {
+        entityManager.merge(book);
+    }
+
 }
