@@ -7,10 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb2ea21-1755-4bc9-b5ab-3405b5bfdef3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/repository/BooksRepositoryDaoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/repository/BooksRepositoryDaoBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/editBook.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/editBook.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,6 +52,20 @@
         <item name="librarydb: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="book: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="librarydb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="librarydb: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="operation: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="librarydb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="librarydb: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -63,115 +76,39 @@
     <favorites_list name="jjdzl1-biblioteka-web2" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
+            <state relative-caret-position="510">
+              <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/editBook.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/utils/DateUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="55" column="69" selection-start-line="55" selection-start-column="69" selection-end-line="55" selection-end-column="69" />
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/utils/RecordPerPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/aboutUs.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditAccountServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="75" column="43" lean-forward="true" selection-start-line="71" selection-start-column="7" selection-end-line="75" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/LoginServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="64" column="57" lean-forward="true" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/loginSuccess.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="58" column="77" selection-start-line="58" selection-start-column="70" selection-end-line="58" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/BooksRepositoryDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/BooksRepositoryDaoBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="79" column="34" lean-forward="true" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#44#1" expanded="true" />
-                <element signature="e#0#20#1" expanded="true" />
-                <element signature="e#0#44#1" expanded="true" />
-                <element signature="e#0#56#1" expanded="true" />
-                <element signature="e#2373#2374#0" expanded="true" />
-                <element signature="e#2416#2417#0" expanded="true" />
-                <element signature="e#2469#2470#0" expanded="true" />
-                <element signature="e#2510#2511#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+            <state relative-caret-position="603">
+              <caret line="75" column="22" lean-forward="true" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -227,7 +164,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="JZL1BI-arek_03-04" />
+        <entry key="$PROJECT_DIR$" value="newbranch" />
       </map>
     </option>
   </component>
@@ -276,7 +213,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddBookServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/include/head.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/main.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/repository/BooksRepositoryDao.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/include/appHeader.jsp" />
@@ -285,6 +221,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/app/editBook.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/repository/BooksRepositoryDaoBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" />
       </list>
     </option>
   </component>
@@ -322,16 +259,12 @@
     <option name="width" value="1390" />
     <option name="height" value="1000" />
   </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -371,66 +304,7 @@
               <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
-              <item name="servlets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
-              <item name="validation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
@@ -440,18 +314,11 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -459,7 +326,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555436035458" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556051007203" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/app" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -492,7 +359,7 @@
     </option>
   </component>
   <component name="RunManager" selected="JBoss Server.JBoss 15.0.1.Final3">
-    <configuration name="JBoss 15.0.1.Final3" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 15.0.1.Final3" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="JBoss 15.0.1.Final3" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 15.0.1.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
@@ -506,7 +373,7 @@
         <option name="DOMAIN" value="false" />
         <option name="SERVER_GROUP" />
         <option name="USERNAME" value="" />
-        <option name="CREDENTIAL_ALIAS" />
+        <option name="PASSWORD" value="" />
       </server-settings>
       <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
@@ -651,7 +518,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172196000" />
+    <option name="totallyTimeSpent" value="173637000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -663,9 +530,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1032" extended-state="6" />
+    <frame x="55" y="25" width="1865" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65753424" visible="true" weight="0.27604726" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65753424" visible="true" weight="0.17097306" />
       <window_info id="Structure" order="1" sideWeight="0.3283582" side_tool="true" weight="0.3705693" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -676,7 +544,7 @@
       <window_info id="Persistence" order="8" sideWeight="0.34246576" side_tool="true" weight="0.26852846" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295063" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49838883" visible="true" weight="0.34902412" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49838883" weight="0.34902412" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37543055" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -684,8 +552,8 @@
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3295063" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5016112" side_tool="true" weight="0.36280137" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.24569461" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3272101" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.24514039" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3261339" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" weight="0.3295063" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.3295063" />
       <window_info anchor="bottom" id="Database Console" order="14" sideWeight="0.4989259" weight="0.3295063" />
@@ -696,12 +564,12 @@
       <window_info anchor="bottom" id="Java Enterprise" order="19" weight="0.3295063" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="2" weight="0.13748658" />
+      <window_info anchor="right" id="Maven" order="2" weight="0.13743815" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="JSF" order="5" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.24973147" />
-      <window_info anchor="right" id="Database" order="7" weight="0.16487648" />
+      <window_info anchor="right" id="Database" order="7" visible="true" weight="0.16437604" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="CDI" order="10" weight="0.32975295" />
@@ -808,34 +676,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/UsersRepositoryDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/repository/UsersRepositoryDaoBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#40#1" expanded="true" />
-            <element signature="e#0#79#1" expanded="true" />
-            <element signature="e#0#44#1" expanded="true" />
-            <element signature="e#0#49#1" expanded="true" />
-            <element signature="e#0#75#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/SaveBasketServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/app/userBasket.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -881,13 +721,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://8d1f46b7-df15-4de0-ae6a-62c1ce77f8cf/schema/librarydb/table/operation">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://8d1f46b7-df15-4de0-ae6a-62c1ce77f8cf/schema/librarydb/table/operation" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/img/linkedin.png" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/img/github.png">
       <provider selected="true" editor-type-id="images" />
@@ -927,13 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="864">
           <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/aboutUs.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1202,6 +1029,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/dao/DBCon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/utils/DateUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/utils/RecordPerPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/aboutUs.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="75" column="22" lean-forward="true" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1213,6 +1068,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1260,6 +1116,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
