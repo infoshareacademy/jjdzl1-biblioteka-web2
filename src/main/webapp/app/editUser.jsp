@@ -1,5 +1,6 @@
 <%@ page import="com.infoshare.domain.User" %>
 <%@ page import="com.infoshare.domain.UserStatus" %>
+<%@ page import="com.infoshare.validation.UserValidator" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -16,6 +17,21 @@
 
 <article>
     <div class="addUserForm">
+        <%
+            List<String> validationResult = UserValidator.validationResult;
+            if (validationResult.size() > 0) { %>
+        <br/><br/><br/>
+        <ul class="list-group" style="vertical-align: center">
+            <%
+                for (String s : validationResult) {
+            %>
+            <li>
+                <%=s%>
+            </li>
+            <%}%>
+        </ul>
+        <%}%>
+
         <br/><br/><br/>
         <% User user = (User) request.getSession(true).getAttribute("UserObject");
 

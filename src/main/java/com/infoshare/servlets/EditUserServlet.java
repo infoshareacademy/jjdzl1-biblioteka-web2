@@ -4,6 +4,7 @@ package com.infoshare.servlets;
 import com.infoshare.domain.User;
 import com.infoshare.domain.UserStatus;
 import com.infoshare.repository.UsersRepositoryDao;
+import com.infoshare.validation.UserValidator;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 
 @WebServlet("/EditUserServlet")
 public class EditUserServlet extends HttpServlet implements Serializable {
@@ -23,12 +25,36 @@ public class EditUserServlet extends HttpServlet implements Serializable {
     @EJB
     private UsersRepositoryDao usersRepository;
 
+    @EJB
+    private UserValidator validator;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("UserObject");
 
+        createUserToEdit(user, req);
+
+        validator.userToEditValidation(user);
+        List<String> validationResult = validator.validationResult;
+
+
+        if (!validationResult.isEmpty())
+            resp.sendRedirect("editUser.jsp");
+        else {
+            usersRepository.updateUserAfterEdit(user);
+            req.removeAttribute("UserObject");
+            req.getSession().setAttribute("userEdited", "userEdited");
+
+            if (req.getSession().getAttribute("user") != null)
+                resp.sendRedirect("loginSuccess.jsp");
+            else
+                resp.sendRedirect("index.jsp");
+        }
+    }
+
+    private void createUserToEdit(User user, HttpServletRequest req) {
         String login = req.getParameter("login");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
@@ -37,7 +63,7 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         UserStatus enumAdmin = admin[0].equals("1") ? UserStatus.ADMIN : UserStatus.USER;
         String status = req.getParameter("status");
         if (status.equals("1"))
-        status = "Aktywny";
+            status = "Aktywny";
         else status = "Nieaktywny";
 
         user.setLogin(login);
@@ -46,14 +72,5 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         user.setEmail(email);
         user.setAdmin(enumAdmin);
         user.setStatus(status);
-
-        usersRepository.updateUserAfterEdit(user);
-
-        req.removeAttribute("UserObject");
-        req.getSession().setAttribute("userEdited", "userEdited");
-        if (req.getSession().getAttribute("user") != null)
-            resp.sendRedirect("loginSuccess.jsp");
-        else
-            resp.sendRedirect("index.jsp");
     }
 }

@@ -25,10 +25,14 @@ public class UserValidator {
     public static List<String> validationResult = new ArrayList<>();
 
     public void userValidation(User user) {
+        userToEditValidation(user);
+        validationResult.clear();
+        validatePassword(user.getPassword());
+    }
 
+    public void userToEditValidation(User user) {
         validationResult.clear();
         user.setLogin(validateLogin(user.getLogin()));
-        validatePassword(user.getPassword());
         user.setFirstName(validateFirstName(user.getFirstName()));
         user.setLastName(validateLastName(user.getLastName()));
         user.setEmail(validateEmail(user.getEmail()));
