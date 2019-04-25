@@ -79,6 +79,7 @@ public class EditBookServlet extends HttpServlet {
                 .isbn(isbn)
                 .daterelease(Integer.parseInt(daterelase))
                 .description(description)
+                .status(book.getStatus())
                 .build();
 
         booksRepositoryDao.editBook(editedBook);
@@ -98,5 +99,6 @@ public class EditBookServlet extends HttpServlet {
         if (isbn.isEmpty()) isbn = book.getIsbn();
         if (daterelase.isEmpty()) daterelase = String.valueOf(book.getDaterelease());
         if (description == null || description.isEmpty()) description = "Brak opisu";
+
     }
 }
