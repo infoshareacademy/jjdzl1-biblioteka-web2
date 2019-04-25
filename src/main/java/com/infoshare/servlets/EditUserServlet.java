@@ -36,9 +36,10 @@ public class EditUserServlet extends HttpServlet implements Serializable {
 
         List<String> validationResult = validator.validationResult;
         validationResult.clear();
-        isEmailOrLoginExist(user, req);
+        validator.isEmailOrLoginExist(user, req);
         createUserToEdit(user, req);
         validator.userToEditValidation(user);
+
         if (!validationResult.isEmpty())
             resp.sendRedirect("editUser.jsp");
         else {
@@ -73,17 +74,5 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         user.setStatus(status);
 
         return user;
-    }
-
-    private void isEmailOrLoginExist (User user, HttpServletRequest req) {
-        String login = req.getParameter("login");
-        String email = req.getParameter("e-mail");
-
-        if (!user.getLogin().equals(login)) {
-            validator.checkIsLoginExist(login);
-        }
-        if (!user.getEmail().equals(email)) {
-            validator.checkIsEmailExist(email);
-        }
     }
 }

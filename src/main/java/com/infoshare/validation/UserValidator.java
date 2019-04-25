@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,18 @@ public class UserValidator {
         user.setFirstName(validateFirstName(user.getFirstName()));
         user.setLastName(validateLastName(user.getLastName()));
         user.setEmail(validateEmail(user.getEmail()));
+    }
+
+    public void isEmailOrLoginExist(User user, HttpServletRequest req) {
+        String login = req.getParameter("login");
+        String email = req.getParameter("e-mail");
+
+        if (!user.getLogin().equals(login)) {
+            checkIsLoginExist(login);
+        }
+        if (!user.getEmail().equals(email)) {
+            checkIsEmailExist(email);
+        }
     }
 
     private String validateLogin(String login) {
@@ -80,7 +93,7 @@ public class UserValidator {
         return email.trim();
     }
 
-    public void checkIsLoginExist(String login) {
+    private void checkIsLoginExist(String login) {
 
         List<User> checkLoginList = usersRepository.findUserByLogin(login);
 
@@ -92,7 +105,7 @@ public class UserValidator {
         }
     }
 
-    public void checkIsEmailExist(String email) {
+    private void checkIsEmailExist(String email) {
 
         List<User> checkEmailList = usersRepository.findUserByEmail(email);
 
@@ -103,5 +116,4 @@ public class UserValidator {
             }
         }
     }
-
 }
