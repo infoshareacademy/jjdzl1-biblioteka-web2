@@ -34,12 +34,11 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("UserObject");
 
-        createUserToEdit(user, req);
-
-        validator.userToEditValidation(user);
         List<String> validationResult = validator.validationResult;
-
-
+        validationResult.clear();
+        isEmailOrLoginExist(user, req);
+        createUserToEdit(user, req);
+        validator.userToEditValidation(user);
         if (!validationResult.isEmpty())
             resp.sendRedirect("editUser.jsp");
         else {
@@ -54,7 +53,7 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         }
     }
 
-    private void createUserToEdit(User user, HttpServletRequest req) {
+    private User createUserToEdit(User user, HttpServletRequest req) {
         String login = req.getParameter("login");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
@@ -72,5 +71,19 @@ public class EditUserServlet extends HttpServlet implements Serializable {
         user.setEmail(email);
         user.setAdmin(enumAdmin);
         user.setStatus(status);
+
+        return user;
+    }
+
+    private void isEmailOrLoginExist (User user, HttpServletRequest req) {
+        String login = req.getParameter("login");
+        String email = req.getParameter("e-mail");
+
+        if (!user.getLogin().equals(login)) {
+            validator.checkIsLoginExist(login);
+        }
+        if (!user.getEmail().equals(email)) {
+            validator.checkIsEmailExist(email);
+        }
     }
 }
