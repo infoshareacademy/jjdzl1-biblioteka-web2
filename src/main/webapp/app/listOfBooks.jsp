@@ -99,9 +99,9 @@
                     for (Book book : listOfBooks) {
                 %>
                 <tr class="listofitemps " style="cursor:pointer"
-                        <%if (edit.equals("true")) {%>
+                        <%if (edit != null && edit.equals("true")) {%>
                     onclick="window.location='EditBookServlet?id=<%=book.getId()%>'" data-toggle="tooltip"
-                        <%} else {%>
+                        <%} else if (edit == null || edit.isEmpty() || edit != "truegi") {%>
                     onclick="window.location='bookDescription.jsp?id=<%=book.getId()%>'" data-toggle="tooltip"
                         <%}%>
                     title="Zobacz więcej ...">
