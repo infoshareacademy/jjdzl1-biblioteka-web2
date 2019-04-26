@@ -98,7 +98,7 @@
         <div class="d-flex justify-content-center">
             <a href="https://infoshareacademy.com/"><img src="img/logo.svg" width="150px"></a>
         </div>
-
+<br/><br/>
     </div>
 </section>
 
