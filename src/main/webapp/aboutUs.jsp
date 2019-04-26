@@ -25,8 +25,8 @@
     <div class="container">
         <h2>Nasz zespół</h2>
         <div class="justify-content-left">
-            Nieniejszy aplikacja webowa - Biblioteka online jest aplikacją wykonany przez nas jako projekt zaliczeniowy
-            na zakończenie sześcio miesiącznego szkolenia z programowania w języku Java.
+            Niniejsza aplikacja webowa - Biblioteka online jest aplikacją wykonaną przez nas jako projekt zaliczeniowy
+            na zakończenie sześciomiesiącznego szkolenia z programowania w języku Java.
             <br/>
             W projekcie użyto technologii Java Standard Edition i JAVA Enterprise Edition
             <br/>
@@ -41,7 +41,7 @@
         <div class="d-flex justify-content-left">
             <br/>
             <br/>
-            Więcej o nas znajdziesz w linkach do GitHub i linkedIn
+            Więcej o nas znajdziesz w linkach do GitHub i LinkedIn
         </div>
         <br/>
         <ul class="row">
@@ -69,8 +69,8 @@
                     <h3><a href="#">Łukasz Bezłada</a></h3>
                     <p>Student infoShare Academy Lublin</p>
                     <ul>
-                        <a href="#"><img src="img/linked.png" width="50px" height="50px"/></a>
-                        <a href="#"><img src="img/github.png" width="50px" height="50px"/></a>
+                        <a href="https://www.linkedin.com/in/lukaszbezlada/"><img src="img/linked.png" width="50px" height="50px"/></a>
+                        <a href="https://github.com/lukaszbezlada"><img src="img/github.png" width="50px" height="50px"/></a>
                     </ul>
 
                 </div>

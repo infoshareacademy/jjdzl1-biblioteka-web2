@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -25,17 +27,33 @@ public class UserValidator {
     public static List<String> validationResult = new ArrayList<>();
 
     public void userValidation(User user) {
-
         validationResult.clear();
-        user.setLogin(validateLogin(user.getLogin()));
+        userToEditValidation(user);
         validatePassword(user.getPassword());
+        checkIsEmailExist(user.getEmail());
+        checkIsLoginExist(user.getLogin());
+    }
+
+    public void userToEditValidation(User user) {
+        user.setLogin(validateLogin(user.getLogin()));
         user.setFirstName(validateFirstName(user.getFirstName()));
         user.setLastName(validateLastName(user.getLastName()));
         user.setEmail(validateEmail(user.getEmail()));
-        checkIsLoginOrEmailExist(user.getEmail(), user.getLogin());
     }
 
-    public String validateLogin(String login) {
+    public void isEmailOrLoginExist(User user, HttpServletRequest req) {
+        String login = req.getParameter("login");
+        String email = req.getParameter("e-mail");
+
+        if (!user.getLogin().equals(login)) {
+            checkIsLoginExist(login);
+        }
+        if (!user.getEmail().equals(email)) {
+            checkIsEmailExist(email);
+        }
+    }
+
+    private String validateLogin(String login) {
 
         if ((login == null || login.trim().isEmpty() || login.contains(" ")) ||
                 (login.length() > loginLength || loginPattern.matcher(login).matches())) {
@@ -44,14 +62,14 @@ public class UserValidator {
         return login.trim();
     }
 
-    public void validatePassword(String password) {
+    private void validatePassword(String password) {
 
         if (password == null || password.length() > loginLength) {
             validationResult.add("Hasło nie może być puste ani przekraczać 20 znaków");
         }
     }
 
-    public String validateFirstName(String firstName) {
+    private String validateFirstName(String firstName) {
 
         if (firstName == null || firstName.trim().isEmpty() || firstName.length() > loginLength || namePattern.matcher(firstName).matches()) {
             validationResult.add("Imię nie może być puste ani przekraczać 20 znaków (typu litery i cyfry)");
@@ -59,7 +77,7 @@ public class UserValidator {
         return firstName.trim();
     }
 
-    public String validateLastName(String lastName) {
+    private String validateLastName(String lastName) {
 
         if (lastName == null || lastName.trim().isEmpty() || lastName.length() > loginLength || namePattern.matcher(lastName).matches()) {
             validationResult.add("Nazwisko nie może być puste ani przekraczać 20 znaków (typu litery i cyfry)");
@@ -67,7 +85,7 @@ public class UserValidator {
         return lastName;
     }
 
-    public String validateEmail(String email) {
+    private String validateEmail(String email) {
 
         if (email == null || email.trim().isEmpty() || emailPattern.matcher(email).matches()) {
             validationResult.add("E-mail musi być prawidłowy");
@@ -75,15 +93,24 @@ public class UserValidator {
         return email.trim();
     }
 
-    public void checkIsLoginOrEmailExist(String email, String login) {
+    private void checkIsLoginExist(String login) {
 
-        List<User> checkLoginAndEmailList = usersRepository.findUserByEmailOrLogin(email, login);
+        List<User> checkLoginList = usersRepository.findUserByLogin(login);
 
-        if (checkLoginAndEmailList.size() > 0) {
-
-            for (User user : checkLoginAndEmailList) {
+        if (checkLoginList.size() > 0) {
+            for (User user : checkLoginList) {
                 if (!user.getLogin().isEmpty() && user.getLogin().equals(login))
                     validationResult.add("Login jest zajęty");
+            }
+        }
+    }
+
+    private void checkIsEmailExist(String email) {
+
+        List<User> checkEmailList = usersRepository.findUserByEmail(email);
+
+        if (!checkEmailList.isEmpty()) {
+            for (User user : checkEmailList) {
                 if (!user.getEmail().isEmpty() && user.getEmail().equals(email))
                     validationResult.add("Email jest zajęty");
             }

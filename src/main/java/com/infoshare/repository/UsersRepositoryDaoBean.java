@@ -59,9 +59,9 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return userList;
     }
 
-    public List<User> findUserByEmailOrLogin(String email, String login) {
+    public List<User> findUserByEmail(String email) {
 
-        String stringQuery = "select u from User u where u.email='" + email + "' or u.login='" + login + "'";
+        String stringQuery = "select u from User u where u.email='" + email + "'";
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
         List<User> userList = query.getResultList();

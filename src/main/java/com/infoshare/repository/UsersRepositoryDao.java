@@ -13,6 +13,6 @@ public interface UsersRepositoryDao {
     User getUserById(int id) throws SQLException, ClassNotFoundException;
     void addNewUser(User user);
     List<User> findUserByLogin(String login);
-    List<User> findUserByEmailOrLogin(String email, String login);
+    List<User> findUserByEmail(String email);
     void updateUserAfterEdit(User user);
 }
