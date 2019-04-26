@@ -33,7 +33,7 @@
             </li>
             <%}%>
         </ul>
-        <%}%>
+        <%validationResult.clear();}%>
 
         <br/><br/><br/>
         <h4>Edycja konta: <%=user.getLastName() + ", " + user.getFirstName()%>

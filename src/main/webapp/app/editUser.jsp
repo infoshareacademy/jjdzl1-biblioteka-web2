@@ -30,7 +30,7 @@
             </li>
             <%}%>
         </ul>
-        <%}%>
+        <% validationResult.clear();}%>
 
         <br/><br/><br/>
         <% User user = (User) request.getSession(true).getAttribute("UserObject");

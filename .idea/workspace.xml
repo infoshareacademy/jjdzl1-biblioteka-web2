@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb2ea21-1755-4bc9-b5ab-3405b5bfdef3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditAccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditAccountServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/validation/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infoshare/validation/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/accountSettings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/accountSettings.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/editUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/editUser.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,12 +76,48 @@
     <favorites_list name="jjdzl1-biblioteka-web2" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/AddUserServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/editBook.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="39" column="18" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="70" />
+            <state relative-caret-position="990">
+              <caret line="55" column="69" selection-start-line="55" selection-start-column="69" selection-end-line="55" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/validation/BookValidator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/include/appHeader.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1890">
+              <caret line="105" column="22" selection-start-line="105" selection-start-column="22" selection-end-line="105" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,9 +126,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditAccountServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-520">
+              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/editUser.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/validation/UserValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
+            <state relative-caret-position="1856">
               <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -103,83 +164,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/editUser.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/loginSuccess.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditAccountServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="55" column="51" lean-forward="true" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/include/appHeader.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/app/accountSettings.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://f892185a-63d4-471a-a199-81ac6a416bc9/schema/librarydb/table/user">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+            <state relative-caret-position="1044">
+              <caret line="58" column="77" selection-start-line="58" selection-start-column="70" selection-end-line="58" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -285,7 +274,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/repository/BooksRepositoryDaoBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/aboutUs.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/app/editUser.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/repository/UsersRepositoryDaoBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/repository/UsersRepositoryDao.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
@@ -293,6 +281,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/app/accountSettings.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditAccountServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/app/editUser.jsp" />
       </list>
     </option>
   </component>
@@ -330,12 +319,16 @@
     <option name="width" value="1390" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -376,6 +369,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="infoshare" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infoshare" type="462c0819:PsiDirectoryNode" />
               <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -401,6 +403,21 @@
               <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -419,11 +436,18 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="jjdzl1-biblioteka-web2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jjdzl1-biblioteka-web2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -465,7 +489,7 @@
     </option>
   </component>
   <component name="RunManager" selected="JBoss Server.JBoss 15.0.1.Final3">
-    <configuration name="JBoss 15.0.1.Final3" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 15.0.1.Final" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="JBoss 15.0.1.Final3" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 15.0.1.Final3" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
@@ -479,7 +503,7 @@
         <option name="DOMAIN" value="false" />
         <option name="SERVER_GROUP" />
         <option name="USERNAME" value="" />
-        <option name="PASSWORD" value="" />
+        <option name="CREDENTIAL_ALIAS" />
       </server-settings>
       <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
@@ -627,7 +651,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193670000" />
+    <option name="totallyTimeSpent" value="195484000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -639,9 +663,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="25" width="1865" height="1055" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1032" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65753424" visible="true" weight="0.19791093" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.65753424" visible="true" weight="0.23308271" />
       <window_info id="Structure" order="1" sideWeight="0.3283582" side_tool="true" weight="0.3705693" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -652,7 +676,7 @@
       <window_info id="Persistence" order="8" sideWeight="0.34246576" side_tool="true" weight="0.26852846" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295063" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49838883" visible="true" weight="0.31965443" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49838883" visible="true" weight="0.31917337" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37473002" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -661,7 +685,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5016112" side_tool="true" weight="0.36280137" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.24406047" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3261339" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.326062" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" weight="0.3295063" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.3295063" />
       <window_info anchor="bottom" id="Database Console" order="14" sideWeight="0.4989259" weight="0.3295063" />
@@ -920,8 +944,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/app/listOfBooks.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
+        <state>
+          <caret line="103" column="36" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1002,15 +1026,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/app/loginSuccess.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1106">
-          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        <state relative-caret-position="1044">
+          <caret line="58" column="77" selection-start-line="58" selection-start-column="70" selection-end-line="58" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/GetAttributeBookRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+        <state relative-caret-position="540">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
@@ -1050,14 +1074,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/app/editBook.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
+        <state relative-caret-position="990">
           <caret line="55" column="69" selection-start-line="55" selection-start-column="69" selection-end-line="55" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/validation/BookValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="108">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
@@ -1092,8 +1116,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditBookServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="264">
+          <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1112,8 +1136,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/include/appHeader.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
+        <state relative-caret-position="1890">
+          <caret line="105" column="22" selection-start-line="105" selection-start-column="22" selection-end-line="105" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1124,16 +1148,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/validation/UserValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/app/accountSettings.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1141,37 +1155,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://f892185a-63d4-471a-a199-81ac6a416bc9/schema/librarydb/table/user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="das://f892185a-63d4-471a-a199-81ac6a416bc9/schema/librarydb/table/user" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/editUser.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/validation/UserValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state relative-caret-position="1856">
+          <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditAccountServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="55" column="51" lean-forward="true" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-520">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infoshare/servlets/EditUserServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app/editUser.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="247">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
         </state>
       </provider>
     </entry>
