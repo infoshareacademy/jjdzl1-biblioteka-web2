@@ -28,6 +28,9 @@
             Niniejsza aplikacja webowa - Biblioteka online jest aplikacją wykonaną przez nas jako projekt zaliczeniowy
             na zakończenie sześciomiesiącznego szkolenia z programowania w języku Java.
             <br/>
+            Aplikacja tworzona była w metodologi Scrum i rozwijana w trzech sprintach od aplikacji konsolowej,
+            przez aplikację webową, kończąc na aplikacji webowej z REST API, EJB i Hibernate
+            <br/>
             W projekcie użyto technologii Java Standard Edition i JAVA Enterprise Edition
             <br/>
             Jako narzędzie programistyczne używaliśny oprogramowania firmy JetBrains IntelliJ IDEA 2018 w wersji
@@ -35,7 +38,9 @@
             W projekcie użyto technologii Hibernate jako implemantacja Java Persistance API, Enterprise Java Beans, Java
             Server Pages, Maven, MySQL, Bootstrap, Html, CSS, JavaScript.
         <br/>
-            Aplikacja została uruchomiona na serwerze aplikacyjnym WildFly a baza danych na Dockerze - kontener z serwerem MySQL.
+            Aplikacja została uruchomiona na serwerze aplikacyjnym WildFly 15(JBoss) a baza danych na Dockerze - kontener z serwerem MySQL.
+            <br/>
+            Podczas tworzenia aplikacji używaliśmy również narządzi pomocniczych Jira (Scrum), Slack (komunikator).
         </div>
         <br/>
         <div class="d-flex justify-content-left">
