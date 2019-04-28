@@ -1,7 +1,7 @@
-package com.infoshare.validation;
+package com.infoshare.logic.validation;
 
 import com.infoshare.logic.domain.User;
-import com.infoshare.repository.UsersRepositoryDao;
+import com.infoshare.logic.repository.UsersRepositoryDao;
 import lombok.NoArgsConstructor;
 
 import javax.ejb.EJB;

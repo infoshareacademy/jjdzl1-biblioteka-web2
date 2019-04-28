@@ -1,4 +1,4 @@
-package com.infoshare.repository;
+package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.Basket;
 import com.infoshare.logic.domain.Operation;
@@ -11,7 +11,6 @@ import java.util.List;
 
 @Local
 public interface OperationsRepositoryDao {
-//    List<Operation> operationListByUserId(int userId) throws SQLException, ClassNotFoundException;
     List<Operation> operationListBookId(int booperationListByUserIdokId) throws SQLException, ClassNotFoundException;
     List<Operation> AllOperationList(String typoOfOperations, String userId) throws SQLException, ClassNotFoundException;
     void addNewOperation(List<Basket> basket, User user);

@@ -2,8 +2,8 @@ package com.infoshare.servlets;
 
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.BookStatus;
-import com.infoshare.repository.BooksRepositoryDao;
-import com.infoshare.validation.BookValidator;
+import com.infoshare.logic.repository.BooksRepositoryDao;
+import com.infoshare.logic.validation.BookValidator;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

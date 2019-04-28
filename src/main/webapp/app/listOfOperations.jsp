@@ -1,5 +1,5 @@
-<%@ page import="com.infoshare.repository.OperationsRepositoryDao" %>
-<%@ page import="com.infoshare.repository.OperationsRepositoryDaoBeen" %>
+<%@ page import="com.infoshare.logic.repository.OperationsRepositoryDao" %>
+<%@ page import="com.infoshare.logic.repository.OperationsRepositoryDaoBeen" %>
 <%@ page import="com.infoshare.logic.domain.Operation" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>

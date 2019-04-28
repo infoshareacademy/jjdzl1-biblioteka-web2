@@ -1,4 +1,4 @@
-package com.infoshare.validation;
+package com.infoshare.logic.validation;
 
 import com.infoshare.logic.domain.Book;
 import javax.ejb.Stateless;

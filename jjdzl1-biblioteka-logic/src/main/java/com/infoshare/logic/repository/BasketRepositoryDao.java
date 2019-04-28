@@ -1,4 +1,4 @@
-package com.infoshare.repository;
+package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.OperationType;

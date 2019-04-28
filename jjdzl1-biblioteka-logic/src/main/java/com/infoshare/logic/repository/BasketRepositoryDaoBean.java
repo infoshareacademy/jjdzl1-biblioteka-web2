@@ -1,12 +1,12 @@
-package com.infoshare.repository;
+package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.Basket;
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.OperationType;
 import com.infoshare.logic.domain.User;
-import com.infoshare.servlets.SelectUserServlet;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +14,17 @@ import java.util.List;
 @Stateless
 public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
-    public List<Basket> basket = SelectUserServlet.basket;
+    @Inject
+    private SelectUserData selectUserData;
 
     @Override
     public void addToBasketList(User user, Book book, OperationType operationType, LocalDate startDate, LocalDate endDate) {
-        basket.add(new Basket(book, user, operationType, startDate, endDate));
+        selectUserData.basket().add(new Basket(book, user, operationType, startDate, endDate));
     }
 
     @Override
     public List basketList() {
-        return basket;
+        return selectUserData.basket();
     }
 
     @Override
@@ -34,6 +35,6 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     @Override
     public void removeItemFromBasket(int itemNumber) {
-        basket.remove(itemNumber);
+        selectUserData.basket().remove(itemNumber);
     }
 }

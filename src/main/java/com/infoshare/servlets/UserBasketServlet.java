@@ -3,8 +3,8 @@ package com.infoshare.servlets;
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.OperationType;
 import com.infoshare.logic.domain.User;
-import com.infoshare.repository.BasketRepositoryDao;
-import com.infoshare.repository.BooksRepositoryDao;
+import com.infoshare.logic.repository.BasketRepositoryDao;
+import com.infoshare.logic.repository.BooksRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

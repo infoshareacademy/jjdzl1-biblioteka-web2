@@ -2,7 +2,7 @@ package com.infoshare.servlets;
 
 import com.infoshare.logic.domain.Basket;
 import com.infoshare.logic.domain.User;
-import com.infoshare.repository.UsersRepositoryDao;
+import com.infoshare.logic.repository.UsersRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

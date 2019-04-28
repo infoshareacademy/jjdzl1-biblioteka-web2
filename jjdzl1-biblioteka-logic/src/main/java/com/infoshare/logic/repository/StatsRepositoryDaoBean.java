@@ -1,4 +1,4 @@
-package com.infoshare.repository;
+package com.infoshare.logic.repository;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

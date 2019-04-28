@@ -1,6 +1,6 @@
 package com.infoshare.servlets;
 
-import com.infoshare.repository.BasketRepositoryDao;
+import com.infoshare.logic.repository.BasketRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
