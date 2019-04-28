@@ -28,7 +28,7 @@
             Niniejsza aplikacja webowa - Biblioteka online jest aplikacją wykonaną przez nas jako projekt zaliczeniowy
             na zakończenie sześciomiesiącznego szkolenia z programowania w języku Java.
             <br/>
-            W projekcie użyto technologii Java Standard Edition i JAVA Enterprise Edition
+            W projekcie użyto technologii Java Standard Edition i Java Enterprise Edition
             <br/>
             Jako narzędzie programistyczne używaliśny oprogramowania firmy JetBrains IntelliJ IDEA 2018 w wersji
             Ultimate.
