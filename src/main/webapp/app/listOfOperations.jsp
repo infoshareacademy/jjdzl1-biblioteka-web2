@@ -1,10 +1,10 @@
 <%@ page import="com.infoshare.repository.OperationsRepositoryDao" %>
 <%@ page import="com.infoshare.repository.OperationsRepositoryDaoBeen" %>
-<%@ page import="com.infoshare.domain.Operation" %>
+<%@ page import="com.infoshare.logic.domain.Operation" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="com.infoshare.servlets.SaveBasketServlet" %>
-<%@ page import="com.infoshare.domain.OperationType" %>
+<%@ page import="com.infoshare.logic.domain.OperationType" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>

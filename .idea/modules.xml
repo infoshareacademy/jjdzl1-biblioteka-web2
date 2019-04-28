@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/jjdzl1-biblioteka-web2.iml" filepath="$PROJECT_DIR$/.idea/jjdzl1-biblioteka-web2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jjdzl1-biblioteka-logic/jjdzl1bibliotekalogic.iml" filepath="$PROJECT_DIR$/jjdzl1-biblioteka-logic/jjdzl1bibliotekalogic.iml" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package com.infoshare.utils;
+package com.infoshare.logic.utils;
 
 public interface Hasher {
 

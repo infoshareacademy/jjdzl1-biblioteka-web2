@@ -1,4 +1,4 @@
-package com.infoshare.utils;
+package com.infoshare.logic.utils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

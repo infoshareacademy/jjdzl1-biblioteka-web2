@@ -1,8 +1,8 @@
 package com.infoshare.repository;
 
-import com.infoshare.domain.User;
-import com.infoshare.utils.Hasher;
-import com.infoshare.utils.PBKDF2Hasher;
+import com.infoshare.logic.domain.User;
+import com.infoshare.logic.utils.Hasher;
+import com.infoshare.logic.utils.PBKDF2Hasher;
 
 
 import javax.ejb.Stateless;

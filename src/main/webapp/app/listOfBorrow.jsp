@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="com.infoshare.domain.*" %>
+<%@ page import="com.infoshare.logic.domain.*" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 

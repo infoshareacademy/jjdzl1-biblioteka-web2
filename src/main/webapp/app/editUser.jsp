@@ -1,5 +1,5 @@
-<%@ page import="com.infoshare.domain.User" %>
-<%@ page import="com.infoshare.domain.UserStatus" %>
+<%@ page import="com.infoshare.logic.domain.User" %>
+<%@ page import="com.infoshare.logic.domain.UserStatus" %>
 <%@ page import="com.infoshare.validation.UserValidator" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 

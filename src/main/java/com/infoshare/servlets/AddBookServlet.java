@@ -1,7 +1,7 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.Book;
-import com.infoshare.domain.BookStatus;
+import com.infoshare.logic.domain.Book;
+import com.infoshare.logic.domain.BookStatus;
 import com.infoshare.repository.BooksRepositoryDao;
 import com.infoshare.validation.BookValidator;
 

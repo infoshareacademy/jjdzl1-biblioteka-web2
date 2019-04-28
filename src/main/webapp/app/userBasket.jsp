@@ -1,8 +1,8 @@
 <%@ page import="com.infoshare.repository.BasketRepositoryDaoBean" %>
-<%@ page import="com.infoshare.domain.Basket" %>
+<%@ page import="com.infoshare.logic.domain.Basket" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.repository.BasketRepositoryDao" %>
-<%@ page import="com.infoshare.domain.OperationType" %>
+<%@ page import="com.infoshare.logic.domain.OperationType" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 

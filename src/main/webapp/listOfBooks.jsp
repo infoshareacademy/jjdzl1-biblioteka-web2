@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.infoshare.domain.Book" %>
-<%@ page import="com.infoshare.utils.RecordPerPage" %>
+<%@ page import="com.infoshare.logic.domain.Book" %>
+<%@ page import="com.infoshare.logic.utils.RecordPerPage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>

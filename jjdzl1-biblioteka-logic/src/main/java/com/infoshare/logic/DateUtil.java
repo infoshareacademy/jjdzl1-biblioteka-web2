@@ -1,4 +1,4 @@
-package com.infoshare.utils;
+package com.infoshare.logic;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

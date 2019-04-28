@@ -1,13 +1,12 @@
 package com.infoshare.validation;
 
-import com.infoshare.domain.User;
+import com.infoshare.logic.domain.User;
 import com.infoshare.repository.UsersRepositoryDao;
 import lombok.NoArgsConstructor;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;

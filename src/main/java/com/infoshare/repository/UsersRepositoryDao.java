@@ -1,9 +1,8 @@
 package com.infoshare.repository;
 
-import com.infoshare.domain.User;
+import com.infoshare.logic.domain.User;
 
 import javax.ejb.Local;
-import javax.ejb.Stateless;
 import java.sql.SQLException;
 import java.util.List;
 

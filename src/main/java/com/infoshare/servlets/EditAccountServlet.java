@@ -1,9 +1,9 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.User;
+import com.infoshare.logic.domain.User;
 import com.infoshare.repository.UsersRepositoryDao;
-import com.infoshare.utils.Hasher;
-import com.infoshare.utils.PBKDF2Hasher;
+import com.infoshare.logic.utils.Hasher;
+import com.infoshare.logic.utils.PBKDF2Hasher;
 import com.infoshare.validation.UserValidator;
 
 import javax.ejb.EJB;

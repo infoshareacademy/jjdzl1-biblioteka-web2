@@ -1,11 +1,9 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.Basket;
-import com.infoshare.domain.User;
+import com.infoshare.logic.domain.Basket;
+import com.infoshare.logic.domain.User;
 import com.infoshare.repository.BasketRepositoryDao;
-import com.infoshare.repository.BasketRepositoryDaoBean;
 import com.infoshare.repository.OperationsRepositoryDao;
-import com.infoshare.repository.OperationsRepositoryDaoBeen;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

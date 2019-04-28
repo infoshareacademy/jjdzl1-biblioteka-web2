@@ -1,8 +1,7 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.User;
+import com.infoshare.logic.domain.User;
 import com.infoshare.repository.UsersRepositoryDao;
-import com.infoshare.repository.UsersRepositoryDaoBean;
 import lombok.Data;
 
 import javax.ejb.EJB;

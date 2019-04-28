@@ -1,7 +1,7 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.User;
-import com.infoshare.domain.UserStatus;
+import com.infoshare.logic.domain.User;
+import com.infoshare.logic.domain.UserStatus;
 import com.infoshare.repository.UsersRepositoryDao;
 import com.infoshare.validation.UserValidator;
 import lombok.extern.slf4j.Slf4j;

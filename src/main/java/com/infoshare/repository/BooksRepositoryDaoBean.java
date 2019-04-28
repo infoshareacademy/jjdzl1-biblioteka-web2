@@ -1,20 +1,15 @@
 package com.infoshare.repository;
 
-import com.infoshare.domain.Book;
-import com.infoshare.utils.RecordPerPage;
+import com.infoshare.logic.domain.Book;
+import com.infoshare.logic.utils.RecordPerPage;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.servlet.http.HttpSession;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Properties;
 
 @Stateless
 public class BooksRepositoryDaoBean implements BooksRepositoryDao {

@@ -1,8 +1,8 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.Book;
-import com.infoshare.domain.OperationType;
-import com.infoshare.domain.User;
+import com.infoshare.logic.domain.Book;
+import com.infoshare.logic.domain.OperationType;
+import com.infoshare.logic.domain.User;
 import com.infoshare.repository.BasketRepositoryDao;
 import com.infoshare.repository.BooksRepositoryDao;
 

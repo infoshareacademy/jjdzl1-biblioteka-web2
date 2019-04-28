@@ -1,6 +1,6 @@
 package com.infoshare.repository;
 
-import com.infoshare.domain.Book;
+import com.infoshare.logic.domain.Book;
 
 import javax.ejb.Local;
 import java.io.FileNotFoundException;

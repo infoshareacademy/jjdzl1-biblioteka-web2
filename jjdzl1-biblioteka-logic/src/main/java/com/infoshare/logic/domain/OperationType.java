@@ -1,4 +1,4 @@
-package com.infoshare.domain;
+package com.infoshare.logic.domain;
 
 public enum OperationType {
     RESERVATION,
