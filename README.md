@@ -30,7 +30,7 @@ Funkcjonalność zaimplementowana w aplikacji:
  - Maven
  - Bootstrap
  - Jira
- - Hiberante (JPA)
+ - Hibernante (JPA)
  - Jenkins
  - Slack - jako komunikator dla grupy
 
