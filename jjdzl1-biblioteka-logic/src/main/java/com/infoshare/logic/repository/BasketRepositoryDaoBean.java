@@ -14,17 +14,30 @@ import java.util.List;
 @Stateless
 public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
-    @Inject
-    private SelectUserData selectUserData;
+    public List<Basket> basket = basket();
+//    @Inject
+//    private SelectUserData selectUserData;
+
+    //    public List<Basket> basket = selectUserData.basket();
+
+    @Override
+    public List<Basket> basket() {
+        if (basket != null) {
+            return basket;
+        } else {
+            List<Basket> basket = new ArrayList<>();
+        }
+        return basket;
+    }
 
     @Override
     public void addToBasketList(User user, Book book, OperationType operationType, LocalDate startDate, LocalDate endDate) {
-        selectUserData.basket().add(new Basket(book, user, operationType, startDate, endDate));
+        basket.add(new Basket(book, user, operationType, startDate, endDate));
     }
 
     @Override
     public List basketList() {
-        return selectUserData.basket();
+        return basket;
     }
 
     @Override
@@ -35,6 +48,6 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     @Override
     public void removeItemFromBasket(int itemNumber) {
-        selectUserData.basket().remove(itemNumber);
+        basket().remove(itemNumber);
     }
 }

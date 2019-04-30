@@ -2,6 +2,7 @@ package com.infoshare.servlets;
 
 import com.infoshare.logic.domain.Basket;
 import com.infoshare.logic.domain.User;
+import com.infoshare.logic.repository.BasketRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 
 import javax.ejb.EJB;
@@ -19,7 +20,8 @@ import java.util.List;
 @WebServlet("/SelectUserServlet")
 public class SelectUserServlet extends HttpServlet {
 
-    public static List<Basket> basket = new ArrayList<>();
+    @EJB
+    private BasketRepositoryDao basketRepositoryDao;
 
     @EJB
     private UsersRepositoryDao usersRepository;
@@ -30,6 +32,8 @@ public class SelectUserServlet extends HttpServlet {
         int userId = Integer.parseInt(req.getParameter("userid"));
         String operationType = req.getParameter("operation");
         String redirection = "";
+
+        List<Basket> basket = basketRepositoryDao.basket();
 
         User user = null;
         try {
