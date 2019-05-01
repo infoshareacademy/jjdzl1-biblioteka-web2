@@ -62,7 +62,7 @@
                 <tr class="listofitemps">
                     <th scope="col">#</th>
                     <th scope="col"> Login</th>
-                    <th scope="col"> Imię, Nazwisko</th>
+                    <th scope="col"> Nazwisko, Imię</th>
                     <th scope="col"> Email</th>
                     <th scope="col"> Administrator</th>
                     <th scope="col"> Status</th>

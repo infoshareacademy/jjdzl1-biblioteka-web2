@@ -1,6 +1,4 @@
 <%@ page import="com.infoshare.logic.domain.User" %>
-<%@ page import="com.infoshare.logic.repository.BasketRepositoryDao" %>
-<%@ page import="com.infoshare.logic.repository.BasketRepositoryDaoBean" %>
 <%@ page import="com.infoshare.logic.domain.Basket" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -133,8 +131,6 @@
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                    aria-haspopup="true">
                     <%
-                        //BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
-                        //List<Basket> basketList = basketRepositoryDaoBean.basketList();
                         List<Basket> basketList = new ArrayList<>();
                         if (request.getSession().getAttribute("basket") != null)
                             basketList = (List<Basket>) request.getSession().getAttribute("basket");

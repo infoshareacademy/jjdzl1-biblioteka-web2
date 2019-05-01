@@ -1,5 +1,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
+<%@ page import="com.infoshare.logic.repository.BasketRepositoryDao" %>
+<%@ page import="com.infoshare.logic.repository.BasketRepositoryDaoBean" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>

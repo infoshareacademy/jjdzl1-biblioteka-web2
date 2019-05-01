@@ -7,7 +7,6 @@ import com.infoshare.logic.domain.User;
 
 import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +15,10 @@ import java.util.List;
 public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     public List<Basket> basket = basket();
-//    @Inject
-//    private SelectUserData selectUserData;
-
-    //    public List<Basket> basket = selectUserData.basket();
 
     @Override
     public List<Basket> basket() {
-            List<Basket> basket = new ArrayList<>();
+        List<Basket> basket = new ArrayList<>();
         return basket;
     }
 
@@ -57,6 +52,7 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     @Override
     public void clearBasketList(List<Basket> basketToClear) {
-        basketToClear.clear();
+        if (basketToClear != null)
+            basketToClear.clear();
     }
 }

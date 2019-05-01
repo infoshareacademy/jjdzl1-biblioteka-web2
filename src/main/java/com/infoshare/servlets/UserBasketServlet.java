@@ -1,6 +1,5 @@
 package com.infoshare.servlets;
 
-import com.infoshare.logic.domain.Basket;
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.OperationType;
 import com.infoshare.logic.domain.User;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
 
 @WebServlet("/UserBasketServlet")
 public class UserBasketServlet extends HttpServlet {

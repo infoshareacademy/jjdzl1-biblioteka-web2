@@ -10,7 +10,6 @@ import java.util.List;
 @Local
 public interface BooksRepositoryDao {
 
-
     List<Book> bookList(String order, Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException;
     Book getBookById (int id) throws SQLException,ClassNotFoundException;
     List<Book> getBookByTitle(String title) throws SQLException,ClassNotFoundException;

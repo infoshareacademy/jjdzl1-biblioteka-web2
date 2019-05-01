@@ -1,18 +1,17 @@
 package com.infoshare.servlets;
 
+
 import com.infoshare.logic.domain.Basket;
 import com.infoshare.logic.repository.BasketRepositoryDao;
-import com.infoshare.logic.repository.SelectUserData;
 
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/OperationCancelServlet")
 public class OperationCancelServlet extends HttpServlet {
@@ -22,15 +21,17 @@ public class OperationCancelServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String canelOperation = req.getParameter("selectedUser");
 
+        String selectedUser = req.getParameter("selectedUser");
 
-        if (canelOperation.equals("remove")) {
-            HttpSession session = req.getSession();
-            session.removeAttribute("selectedUser");
-            basketRepositoryDao.basket().clear();
+        if (selectedUser != null && !selectedUser.isEmpty() && selectedUser.equals("remove")) {
+            req.getSession().removeAttribute("selectedUser");
+
+            List<Basket> basketToClear = (List<Basket>) req.getSession().getAttribute("basket");
+            basketRepositoryDao.clearBasketList(basketToClear);
+            req.getSession().removeAttribute("basket");
+
+            resp.sendRedirect("loginSuccess.jsp");
         }
-        resp.sendRedirect("loginSuccess.jsp");
-
     }
 }

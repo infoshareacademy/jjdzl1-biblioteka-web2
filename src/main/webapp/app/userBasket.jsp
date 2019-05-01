@@ -18,8 +18,6 @@
 </header>
 
 <%
-    //    BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
-//    List<Basket> basketList = basketRepositoryDaoBean.basketList();
     List<Basket> basketList = new ArrayList<>();
     if (request.getSession().getAttribute("basket") != null)
         basketList = (List<Basket>) request.getSession().getAttribute("basket");
