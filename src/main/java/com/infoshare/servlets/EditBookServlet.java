@@ -1,7 +1,7 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.Book;
-import com.infoshare.repository.BooksRepositoryDao;
+import com.infoshare.logic.domain.Book;
+import com.infoshare.logic.repository.BooksRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

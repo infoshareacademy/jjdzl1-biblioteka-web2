@@ -1,9 +1,7 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.Operation;
-import com.infoshare.domain.User;
-import com.infoshare.repository.OperationsRepositoryDao;
-import com.infoshare.repository.UsersRepositoryDao;
+import com.infoshare.logic.domain.Operation;
+import com.infoshare.logic.repository.OperationsRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

@@ -1,5 +1,5 @@
-<%@ page import="com.infoshare.repository.BooksRepositoryDao" %>
-<%@ page import="com.infoshare.domain.Book" %>
+<%@ page import="com.infoshare.logic.repository.BooksRepositoryDao" %>
+<%@ page import="com.infoshare.logic.domain.Book" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 

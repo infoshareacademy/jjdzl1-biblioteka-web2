@@ -1,5 +1,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
+<%@ page import="com.infoshare.logic.repository.BasketRepositoryDao" %>
+<%@ page import="com.infoshare.logic.repository.BasketRepositoryDaoBean" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -11,6 +13,11 @@
     String selectedUser = request.getParameter("selectedUser");
     if (selectedUser != null && !selectedUser.isEmpty() && selectedUser.equals("remove")) {
         session.removeAttribute("selectedUser");
+        List<Basket> basketToClear = (List<Basket>) session.getAttribute("basket");
+        BasketRepositoryDao basketRepository = new BasketRepositoryDaoBean();
+        basketRepository.clearBasketList(basketToClear);
+        session.removeAttribute("basket");
+
     }
 %>
 <body>

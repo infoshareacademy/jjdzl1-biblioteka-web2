@@ -1,6 +1,6 @@
 package com.infoshare.servlets;
 
-import com.infoshare.repository.StatsRepositoryDao;
+import com.infoshare.logic.repository.StatsRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

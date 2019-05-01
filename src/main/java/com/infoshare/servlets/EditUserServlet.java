@@ -1,10 +1,10 @@
 package com.infoshare.servlets;
 
 
-import com.infoshare.domain.User;
-import com.infoshare.domain.UserStatus;
-import com.infoshare.repository.UsersRepositoryDao;
-import com.infoshare.validation.UserValidator;
+import com.infoshare.logic.domain.User;
+import com.infoshare.logic.domain.UserStatus;
+import com.infoshare.logic.repository.UsersRepositoryDao;
+import com.infoshare.logic.validation.UserValidator;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

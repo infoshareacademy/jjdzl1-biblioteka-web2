@@ -1,8 +1,8 @@
-<%@ page import="com.infoshare.repository.BasketRepositoryDaoBean" %>
-<%@ page import="com.infoshare.domain.Basket" %>
+<%@ page import="com.infoshare.logic.repository.BasketRepositoryDaoBean" %>
+<%@ page import="com.infoshare.logic.domain.Basket" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.infoshare.repository.BasketRepositoryDao" %>
-<%@ page import="com.infoshare.domain.OperationType" %>
+<%@ page import="com.infoshare.logic.repository.BasketRepositoryDao" %>
+<%@ page import="com.infoshare.logic.domain.OperationType" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -18,8 +18,9 @@
 </header>
 
 <%
-    BasketRepositoryDao basketRepositoryDaoBean = new BasketRepositoryDaoBean();
-    List<Basket> basketList = basketRepositoryDaoBean.basketList();
+    List<Basket> basketList = new ArrayList<>();
+    if (request.getSession().getAttribute("basket") != null)
+        basketList = (List<Basket>) request.getSession().getAttribute("basket");
 %>
 
 <article>
@@ -36,7 +37,7 @@
                     operacji: <%=user.getLastName() + ", " + user.getFirstName()%>
                 </h4>
                 </div>
-               <% if (basketList.size()!=0){%>
+                <% if (basketList.size() != 0) {%>
 
                 <div class="p2 align-items-end">
                     <form method="POST" action="SaveBasketServlet" class="addUser">
@@ -51,9 +52,9 @@
                 <div class="p2 align-items-end">
                     <form method="GET" action="OperationCancelServlet" class="addUser">
                         <input type="hidden" name="selectedUser" value="remove"/>
-                        <% if (basketList.size()!=0){%>
+                        <% if (basketList.size() != 0) {%>
                         <button type="submit" class="btn btn-secondary">Anuluj</button>
-                        <%}else{%>
+                        <%} else {%>
                         <button type="submit" class="btn btn-secondary">Anuluj operację</button>
                         <%}%>
                     </form>
@@ -91,7 +92,7 @@
                     </i></a></td>
                     <td><% if (basket.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja<%} else {%>
                         Wypożyczenie<%}%>
-                    </a>
+                        </a>
                     </td>
 
                     <td>
@@ -100,13 +101,14 @@
                         </div>
                     </td>
                     <td>
-                        <%if (basket.getOperationType().equals(OperationType.RESERVATION)){%>
+                        <%if (basket.getOperationType().equals(OperationType.RESERVATION)) {%>
                         <div class="form-group mx-sm-3 mb-2">
                             <input type="date" name="endDate" class="form-control" value="<%=basket.getEndDate()%>">
-                        </div><%}else {%>
+                        </div>
+                        <%} else {%>
                         <div class="form-group mx-sm-3 mb-2">
                             <input type="text" name="endDate" class="form-control" disabled value=" --- ">
-                            <%}%>
+                                <%}%>
                     </td>
                     <td>
                         <form method="POST" action="RemoveItemFromBasketServlet" class="addUser">

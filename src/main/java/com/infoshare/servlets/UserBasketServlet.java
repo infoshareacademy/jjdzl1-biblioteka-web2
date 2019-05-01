@@ -1,10 +1,10 @@
 package com.infoshare.servlets;
 
-import com.infoshare.domain.Book;
-import com.infoshare.domain.OperationType;
-import com.infoshare.domain.User;
-import com.infoshare.repository.BasketRepositoryDao;
-import com.infoshare.repository.BooksRepositoryDao;
+import com.infoshare.logic.domain.Book;
+import com.infoshare.logic.domain.OperationType;
+import com.infoshare.logic.domain.User;
+import com.infoshare.logic.repository.BasketRepositoryDao;
+import com.infoshare.logic.repository.BooksRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -43,7 +43,7 @@ public class UserBasketServlet extends HttpServlet {
             if (operationTypeEnum.equals(OperationType.BORROW)) {
                 endDate = LocalDate.of(1970, 01, 01);
             } else {endDate=LocalDate.now().plusDays(3);}
-            basketRepository.addToBasketList(user, book, operationTypeEnum, startDate, endDate);
+            basketRepository.addToBasketList(user, book, operationTypeEnum, startDate, endDate, req);
 
         } catch (SQLException e) {
             e.printStackTrace();

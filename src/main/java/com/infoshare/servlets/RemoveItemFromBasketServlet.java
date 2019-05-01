@@ -1,6 +1,6 @@
 package com.infoshare.servlets;
 
-import com.infoshare.repository.BasketRepositoryDao;
+import com.infoshare.logic.repository.BasketRepositoryDao;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -19,9 +19,9 @@ public class RemoveItemFromBasketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Integer itemNumber=Integer.parseInt(req.getParameter("removeItem"));
+        Integer itemNumber = Integer.parseInt(req.getParameter("removeItem"));
 
-        basketRepository.removeItemFromBasket(itemNumber);
+        basketRepository.removeItemFromBasket(itemNumber, req);
 
         resp.sendRedirect("userBasket.jsp");
     }

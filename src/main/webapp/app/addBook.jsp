@@ -1,4 +1,4 @@
-<%@ page import="com.infoshare.validation.BookValidator" %>
+<%@ page import="com.infoshare.logic.validation.BookValidator" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
