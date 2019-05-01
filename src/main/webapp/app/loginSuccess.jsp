@@ -11,6 +11,11 @@
     String selectedUser = request.getParameter("selectedUser");
     if (selectedUser != null && !selectedUser.isEmpty() && selectedUser.equals("remove")) {
         session.removeAttribute("selectedUser");
+        List<Basket> basketToClear = (List<Basket>) session.getAttribute("basket");
+        BasketRepositoryDao basketRepository = new BasketRepositoryDaoBean();
+        basketRepository.clearBasketList(basketToClear);
+        session.removeAttribute("basket");
+
     }
 %>
 <body>

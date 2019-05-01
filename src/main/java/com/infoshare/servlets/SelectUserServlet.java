@@ -43,7 +43,7 @@ public class SelectUserServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        basket.clear();
+        if (basket != null && !basket.isEmpty()) basket.clear();
         HttpSession session = req.getSession();
         session.setAttribute("selectedUser", user);
         if (operationType.equals("newoperation")) redirection = "GetAttributeBookRepository";
