@@ -6,7 +6,6 @@ import com.infoshare.logic.domain.OperationType;
 import com.infoshare.logic.domain.User;
 
 import javax.ejb.Local;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +17,7 @@ public interface BasketRepositoryDao {
     List basketList();
     List<Basket> basket();
     List createBasketList();
-    void removeItemFromBasket(int itemNumber);
-    void basket1(HttpServletRequest request, List<Basket> basket);
+    void removeItemFromBasket(int itemNumber, HttpServletRequest request);
+    List<Basket> setBasketToAttribute(HttpServletRequest request, List<Basket> basket);
     void clearBasketList(List<Basket> basketToClear);
 }

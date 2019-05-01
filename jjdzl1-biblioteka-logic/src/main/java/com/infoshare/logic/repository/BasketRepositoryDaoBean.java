@@ -6,9 +6,8 @@ import com.infoshare.logic.domain.OperationType;
 import com.infoshare.logic.domain.User;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +28,15 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
     }
 
     @Override
-    public void basket1(HttpServletRequest request, List<Basket> basket) {
+    public List<Basket> setBasketToAttribute(HttpServletRequest request, List<Basket> basket) {
         request.getSession().setAttribute("basket", basket);
+        return basket;
     }
 
     @Override
     public void addToBasketList(User user, Book book, OperationType operationType, LocalDate startDate, LocalDate endDate, HttpServletRequest request) {
         basket.add(new Basket(book, user, operationType, startDate, endDate));
-        basket1(request, basket);
+        setBasketToAttribute(request, basket);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     @Override
     public void removeItemFromBasket(int itemNumber, HttpServletRequest request) {
-        basket1(request, basket).remove(itemNumber);
+        setBasketToAttribute(request, basket).remove(itemNumber);
     }
 
     @Override
