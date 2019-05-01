@@ -28,6 +28,7 @@
             Niniejsza aplikacja webowa - Biblioteka online jest aplikacją wykonaną przez nas jako projekt zaliczeniowy
             na zakończenie sześciomiesiącznego szkolenia z programowania w języku Java.
             <br/>
+
             Aplikacja tworzona była w metodologi Scrum i rozwijana w trzech sprintach od aplikacji konsolowej,
             przez aplikację webową, kończąc na aplikacji webowej z REST API, EJB i Hibernate
             <br/>
