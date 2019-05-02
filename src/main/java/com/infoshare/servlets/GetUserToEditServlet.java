@@ -2,7 +2,6 @@ package com.infoshare.servlets;
 
 import com.infoshare.logic.domain.User;
 import com.infoshare.logic.repository.UsersRepositoryDao;
-import lombok.Data;
 
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +14,6 @@ import java.io.Serializable;
 import java.sql.SQLException;
 
 
-@Data
 @WebServlet("/GetUserToEditServlet")
 public class GetUserToEditServlet extends HttpServlet implements Serializable {
     private static final long serialVersionUID = -6564924863409642949L;

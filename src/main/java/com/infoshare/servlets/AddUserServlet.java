@@ -4,7 +4,6 @@ import com.infoshare.logic.domain.User;
 import com.infoshare.logic.domain.UserStatus;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 import com.infoshare.logic.validation.UserValidator;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -17,7 +16,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-@Slf4j
 @WebServlet("/AddUserServlet")
 public class AddUserServlet extends HttpServlet {
 
