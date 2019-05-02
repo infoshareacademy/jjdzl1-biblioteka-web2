@@ -13,11 +13,11 @@ Funkcjonalność zaimplementowana w aplikacji:
  - Rezerwacja książki, wypozyczenie książki, zwrot książki
  - Historia wypożyczeń, rezerwacji ogólna i dla konkretnego użytkownika
  - Proste statystyki
- - RESTApi
- - Aplikacja została podzielona na 3 moduły 
-   - moduł logika
-   - moduł web
-   - moduł RESTApi
+ - **REST Api**
+ - **Aplikacja została podzielona na 3 moduły** 
+   - **moduł logika**
+   - **moduł web**
+   - **moduł REST Api** 
  
  ![Imgur](https://i.imgur.com/uKmR1XJ.png)
  
@@ -30,8 +30,8 @@ Funkcjonalność zaimplementowana w aplikacji:
  - Maven
  - Bootstrap
  - Jira
- - Hibernate (JPA)
- - Jenkins
+ - **Hibernate (JPA)**
+ - **Jenkins**
  - Slack - jako komunikator dla grupy
 
 Szkolenie było prowadzone przez **[infoShare Academy sp z o.o.](https://infoshareacademy.com/)** w Lublinie
