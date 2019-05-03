@@ -1,12 +1,16 @@
 package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.Book;
+import com.infoshare.logic.domain.BookStatus;
 import com.infoshare.logic.utils.RecordPerPage;
+import com.infoshare.logic.validation.BookValidator;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.servlet.http.HttpServletRequest;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,6 +20,9 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
 
     @PersistenceContext(name = "librarydb")
     private EntityManager entityManager;
+
+    @EJB
+    BookValidator validator;
 
     String stringQuery = "";
 
@@ -73,6 +80,36 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     @Override
     public void editBook(Book book) {
         entityManager.merge(book);
+    }
+
+    @Override
+    public Book createBookFromForm(HttpServletRequest req) {
+        return Book.builder()
+                .title(req.getParameter("title"))
+                .authorFirstName(req.getParameter("firstName"))
+                .authorLastName(req.getParameter("lastName"))
+                .daterelease(dateChecked(req))
+                .isbn(req.getParameter("isbn"))
+                .status(BookStatus.Dostępna)
+                .description(req.getParameter("description"))
+                .build();
+    }
+
+    private Integer dateChecked(HttpServletRequest req) {
+
+        Integer date;
+        try {
+            date = Integer.parseInt(req.getParameter("daterelease"));
+        } catch (NumberFormatException e) {
+            date = 0;
+        }
+        return date;
+    }
+
+    @Override
+    public List<String> validate(Book book) {
+        validator.bookValidation(book);
+        return validator.validationResult;
     }
 
 }
