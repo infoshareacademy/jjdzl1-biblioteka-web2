@@ -14,10 +14,17 @@ import java.util.List;
 public interface BasketRepositoryDao {
 
     void addToBasketList(User user, Book book, OperationType operationType, LocalDate startDate, LocalDate endDate, HttpServletRequest request);
+
     List basketList();
+
     List<Basket> basket();
+
     List createBasketList();
+
     void removeItemFromBasket(int itemNumber, HttpServletRequest request);
+
     List<Basket> setBasketToAttribute(HttpServletRequest request, List<Basket> basket);
+
     void clearBasketList(List<Basket> basketToClear);
+
 }

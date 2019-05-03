@@ -1,6 +1,7 @@
 package com.infoshare.rest.service;
 
 import com.infoshare.logic.domain.Book;
+import com.infoshare.logic.domain.BookStatus;
 import com.infoshare.logic.domain.User;
 import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
@@ -50,6 +51,26 @@ public class Service {
             return Response.noContent().build();
         }
         return Response.ok(books).build();
+    }
+
+    @POST
+    @Path("/addBook")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addBook(Book book) throws FileNotFoundException, SQLException, ClassNotFoundException {
+
+        book = Book.builder()
+                .title(book.getTitle())
+                .authorFirstName(book.getAuthorFirstName())
+                .authorLastName(book.getAuthorLastName())
+                .daterelease(book.getDaterelease())
+                .isbn(book.getIsbn())
+                .status(BookStatus.Dostępna)
+                .description(book.getDescription())
+                .build();
+
+        booksRepository.addNewBook(book);
+        return Response.ok(book).build();
     }
 
 }

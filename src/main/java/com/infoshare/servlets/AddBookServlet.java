@@ -3,6 +3,7 @@ package com.infoshare.servlets;
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.BookStatus;
 import com.infoshare.logic.repository.BooksRepositoryDao;
+import com.infoshare.logic.repository.BooksRepositoryDaoBean;
 import com.infoshare.logic.validation.BookValidator;
 
 import javax.ejb.EJB;
@@ -39,8 +40,14 @@ public class AddBookServlet extends HttpServlet {
         }
     }
 
-    private Book createBookFromForm(HttpServletRequest req) {
 
+    private List<String> validate(Book book) {
+        validator.bookValidation(book);
+        return validator.validationResult;
+    }
+
+
+    private Book createBookFromForm(HttpServletRequest req) {
         return Book.builder()
                 .title(req.getParameter("title"))
                 .authorFirstName(req.getParameter("firstName"))
@@ -52,6 +59,7 @@ public class AddBookServlet extends HttpServlet {
                 .build();
     }
 
+
     private Integer dateChecked(HttpServletRequest req) {
 
         Integer date;
@@ -61,10 +69,5 @@ public class AddBookServlet extends HttpServlet {
             date = 0;
         }
         return date;
-    }
-
-    private List<String> validate(Book book) {
-        validator.bookValidation(book);
-        return validator.validationResult;
     }
 }
