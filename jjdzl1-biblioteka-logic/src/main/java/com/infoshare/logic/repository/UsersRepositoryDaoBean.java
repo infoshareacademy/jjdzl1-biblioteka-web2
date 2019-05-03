@@ -23,7 +23,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
         String stringQuery = "select u from User u order by u.lastName";
 
-        if (findUserByName != null) {
+        if (findUserByName != null || !findUserByName.isEmpty()) {
             stringQuery = "select u from User u where u.lastName like '%" + findUserByName + "%' order by u.lastName";
         }
 
