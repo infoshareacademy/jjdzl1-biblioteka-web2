@@ -19,8 +19,6 @@ public interface BasketRepositoryDao {
 
     List<Basket> basket();
 
-    List createBasketList();
-
     void removeItemFromBasket(int itemNumber, HttpServletRequest request);
 
     List<Basket> setBasketToAttribute(HttpServletRequest request, List<Basket> basket);

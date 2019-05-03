@@ -37,12 +37,6 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
     }
 
     @Override
-    public List createBasketList() {
-        List<Basket> basket = new ArrayList<>();
-        return basket;
-    }
-
-    @Override
     public void removeItemFromBasket(int itemNumber, HttpServletRequest request) {
         setBasketToAttribute(request, basket).remove(itemNumber);
     }

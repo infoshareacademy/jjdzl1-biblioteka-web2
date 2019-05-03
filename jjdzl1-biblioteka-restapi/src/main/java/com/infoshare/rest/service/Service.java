@@ -57,7 +57,7 @@ public class Service {
     @Path("/addBook")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addBook(Book book) throws FileNotFoundException, SQLException, ClassNotFoundException {
+    public Response addBook(Book book) {
 
         book = Book.builder()
                 .title(book.getTitle())
