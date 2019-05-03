@@ -17,12 +17,12 @@
     </properties>
 
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>com.infoshareacademy</groupId>
             <artifactId>biblioteka-restapi</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
