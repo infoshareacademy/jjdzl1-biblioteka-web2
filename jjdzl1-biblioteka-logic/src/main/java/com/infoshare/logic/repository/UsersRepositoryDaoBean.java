@@ -1,14 +1,19 @@
 package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.User;
+import com.infoshare.logic.domain.UserStatus;
 import com.infoshare.logic.utils.Hasher;
 import com.infoshare.logic.utils.PBKDF2Hasher;
+import com.infoshare.logic.validation.UserValidator;
 
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -17,6 +22,9 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
 
     @PersistenceContext(name = "librarydb")
     private EntityManager entityManager;
+
+    @EJB
+    UserValidator validator;
 
     @Override
     public List<User> listOfUsers(String findUserByName) {
@@ -71,5 +79,37 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
     public void updateUserAfterEdit(User user) {
 
         entityManager.merge(user);
+    }
+
+    @Override
+    public User createUserFromForm(HttpServletRequest req) {
+
+        return User.builder()
+                .login(req.getParameter("login"))
+                .firstName(req.getParameter("firstName"))
+                .lastName(req.getParameter("lastName"))
+                .password(req.getParameter("password"))
+                .email(req.getParameter("e-mail"))
+                .admin(isChecked(req, "admin") ? UserStatus.ADMIN : UserStatus.USER)
+                .build();
+    }
+
+    private boolean isChecked(HttpServletRequest req, String fieldname) {
+
+        String[] value = req.getParameterValues(fieldname);
+        return value != null ? value[0].equals("on") : false;
+    }
+
+    @Override
+    public List<String> validate(User user, HttpServletRequest req) {
+
+        validator.userValidation(user);
+
+        String password = user.getPassword();
+        if (password != null && !password.equals(req.getParameter("password2"))) {
+            validator.validationResult.add("Hasła są różne !");
+        }
+
+        return validator.validationResult;
     }
 }
