@@ -1,9 +1,6 @@
 package com.infoshare.logic.repository;
 
-import com.infoshare.logic.domain.Basket;
-import com.infoshare.logic.domain.Book;
-import com.infoshare.logic.domain.OperationType;
-import com.infoshare.logic.domain.User;
+import com.infoshare.logic.domain.*;
 
 import javax.ejb.Stateless;
 import javax.servlet.http.HttpServletRequest;
@@ -40,12 +37,6 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
     }
 
     @Override
-    public List createBasketList() {
-        List<Basket> basket = new ArrayList<>();
-        return basket;
-    }
-
-    @Override
     public void removeItemFromBasket(int itemNumber, HttpServletRequest request) {
         setBasketToAttribute(request, basket).remove(itemNumber);
     }
@@ -55,4 +46,5 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
         if (basketToClear != null)
             basketToClear.clear();
     }
+
 }

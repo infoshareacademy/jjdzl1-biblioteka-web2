@@ -17,11 +17,6 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Operation> operationListBookId(int bookId) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
     public List<Operation> AllOperationList(String operationType, String userId) throws SQLException, ClassNotFoundException {
 
         String query = "select o from Operation o " +
