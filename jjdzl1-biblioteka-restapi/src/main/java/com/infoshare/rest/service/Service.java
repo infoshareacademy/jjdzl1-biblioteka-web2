@@ -42,6 +42,20 @@ public class Service {
     }
 
     @GET
+    @Path("/user/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUser(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
+
+        User user = usersRepository.getUserById(id);
+        if (user==null) {
+            return Response.noContent().build();
+        }
+        return Response.ok(user).build();
+    }
+
+
+
+    @GET
     @Path("/books/{page}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBooks(@PathParam("page") String page) throws SQLException, ClassNotFoundException, FileNotFoundException {
