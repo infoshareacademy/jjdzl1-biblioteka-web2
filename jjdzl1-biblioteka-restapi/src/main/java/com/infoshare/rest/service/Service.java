@@ -6,9 +6,9 @@ import com.infoshare.logic.domain.User;
 import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 import com.infoshare.logic.utils.Hasher;
+import com.infoshare.logic.utils.PBKDF2Hasher;
 
 import javax.ejb.EJB;
-import javax.persistence.NoResultException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -49,7 +49,7 @@ public class Service {
     @GET
     @Path("/user/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUser(@QueryParam("id") int id) throws NoResultException, SQLException, ClassNotFoundException {
+    public Response getUser(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
 
         User user = usersRepository.getUserById(id);
         if (user == null) {
@@ -75,12 +75,30 @@ public class Service {
                 .email(user.getEmail())
                 .build();
 
-
         usersRepository.addNewUser(user);
         User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
+        LOGGER.info("Dodano użytkownika o loginie: "+user.getLogin());
         return getUser(returnUserData.getId());
     }
 
+
+    @PUT
+    @Path("/user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateUser(User user) throws SQLException, ClassNotFoundException {
+
+        if (usersRepository.getUserById(user.getId())!=null) {
+
+            Hasher hasher = new PBKDF2Hasher();
+            user.setPassword(hasher.hash(user.getPassword()));
+
+            usersRepository.updateUserAfterEdit(user);
+            return Response.ok(user).build();
+        }
+
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
 
     @GET
     @Path("/books/{page}")
