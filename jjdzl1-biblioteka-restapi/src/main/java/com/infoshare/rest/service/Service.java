@@ -126,6 +126,19 @@ public class Service {
         return Response.ok(books).build();
     }
 
+    @GET
+    @Path("/book")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBook(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
+
+        Book book = booksRepository.getBookById(id);
+        if (book == null) {
+            LOGGER.info("Nie odnaleziono książki");
+            return Response.noContent().build();
+        }
+        return Response.ok(book).build();
+    }
+
     @POST
     @Path("/addBook")
     @Consumes(MediaType.APPLICATION_JSON)
