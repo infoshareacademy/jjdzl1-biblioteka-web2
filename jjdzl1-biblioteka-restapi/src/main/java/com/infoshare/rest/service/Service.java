@@ -101,6 +101,20 @@ public class Service {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+    @DELETE
+    @Path("/user")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUser(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException {
+
+        if (usersRepository.getUserById(id)!=null) {
+            usersRepository.deleteUser(id);
+            return getUsers();
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+
+
     @GET
     @Path("/books/{page}")
     @Produces(MediaType.APPLICATION_JSON)
