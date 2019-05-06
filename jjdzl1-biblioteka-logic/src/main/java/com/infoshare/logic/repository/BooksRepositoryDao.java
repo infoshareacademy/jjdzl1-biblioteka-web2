@@ -18,4 +18,5 @@ public interface BooksRepositoryDao {
     void editBook (Book book);
     Book createBookFromForm(HttpServletRequest req);
     List<String> validate(Book book);
+    void deleteBook(int id) throws SQLException, ClassNotFoundException;
 }

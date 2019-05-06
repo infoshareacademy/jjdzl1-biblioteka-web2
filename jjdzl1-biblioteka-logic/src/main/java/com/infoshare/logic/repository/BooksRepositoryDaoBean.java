@@ -88,6 +88,16 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
         entityManager.merge(book);
     }
 
+
+    @Override
+    public void deleteBook(int id) throws SQLException, ClassNotFoundException {
+
+        Book book = getBookById(id);
+        if (book != null) {
+            entityManager.remove(book);
+        }
+    }
+
     @Override
     public Book createBookFromForm(HttpServletRequest req) {
         return Book.builder()

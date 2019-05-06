@@ -11,7 +11,6 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -38,6 +37,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return userList;
     }
 
+    @Override
     public User getUserById(int id) {
 
         String stringQuery = "select u from User u where u.id=" + id;
@@ -52,6 +52,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         }
     }
 
+    @Override
     public void addNewUser(User user) {
 
         if (user.getStatus() == null) user.setStatus("Aktywny");
@@ -69,6 +70,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         }
     }
 
+    @Override
     public List<User> findUserByLogin(String login) {
 
         String stringQuery = "select u from User u where u.login='" + login + "'";
@@ -78,6 +80,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return userList;
     }
 
+    @Override
     public List<User> findUserByEmail(String email) {
 
         String stringQuery = "select u from User u where u.email='" + email + "'";
@@ -87,6 +90,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return userList;
     }
 
+    @Override
     public void updateUserAfterEdit(User user) {
 
         entityManager.merge(user);
@@ -104,6 +108,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
                 .admin(isChecked(req, "admin") ? UserStatus.ADMIN : UserStatus.USER)
                 .build();
     }
+
 
     private boolean isChecked(HttpServletRequest req, String fieldname) {
 
