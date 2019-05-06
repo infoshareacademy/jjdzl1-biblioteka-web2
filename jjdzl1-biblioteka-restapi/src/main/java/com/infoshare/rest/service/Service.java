@@ -81,7 +81,6 @@ public class Service {
         return getUser(returnUserData.getId());
     }
 
-
     @PUT
     @Path("/user")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -94,6 +93,8 @@ public class Service {
             user.setPassword(hasher.hash(user.getPassword()));
 
             usersRepository.updateUserAfterEdit(user);
+            LOGGER.info("Edytowano dane użytkownika o loginie: "+user.getLogin());
+
             return Response.ok(user).build();
         }
 

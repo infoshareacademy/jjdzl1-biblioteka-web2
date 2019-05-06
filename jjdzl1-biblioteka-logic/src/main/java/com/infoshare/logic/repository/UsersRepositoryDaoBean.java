@@ -61,6 +61,14 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         entityManager.persist(user);
     }
 
+    public void deleteUser(int id) {
+
+        User user = getUserById(id);
+        if (user != null) {
+            entityManager.remove(user);
+        }
+    }
+
     public List<User> findUserByLogin(String login) {
 
         String stringQuery = "select u from User u where u.login='" + login + "'";
