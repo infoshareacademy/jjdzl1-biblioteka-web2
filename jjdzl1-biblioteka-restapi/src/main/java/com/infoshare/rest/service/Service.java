@@ -175,4 +175,17 @@ public class Service {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+    @DELETE
+    @Path("/book")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteBook(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException, FileNotFoundException {
+
+        if (booksRepository.getBookById(id) != null) {
+            booksRepository.deleteBook(id);
+            LOGGER.info("Usunięto książkę o id= " + id);
+            return getBooks("1");
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
 }
