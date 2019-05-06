@@ -47,7 +47,7 @@ public class Service {
     }
 
     @GET
-    @Path("/user/")
+    @Path("/user")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUser(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
 
@@ -77,7 +77,7 @@ public class Service {
 
         usersRepository.addNewUser(user);
         User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
-        LOGGER.info("Dodano użytkownika o loginie: "+user.getLogin());
+        LOGGER.info("Dodano użytkownika o loginie: " + user.getLogin());
         return getUser(returnUserData.getId());
     }
 
@@ -87,17 +87,16 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateUser(User user) throws SQLException, ClassNotFoundException {
 
-        if (usersRepository.getUserById(user.getId())!=null) {
+        if (usersRepository.getUserById(user.getId()) != null) {
 
             Hasher hasher = new PBKDF2Hasher();
             user.setPassword(hasher.hash(user.getPassword()));
 
             usersRepository.updateUserAfterEdit(user);
-            LOGGER.info("Edytowano dane użytkownika o loginie: "+user.getLogin());
+            LOGGER.info("Edytowano dane użytkownika o loginie: " + user.getLogin());
 
             return Response.ok(user).build();
         }
-
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
@@ -106,13 +105,13 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteUser(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException {
 
-        if (usersRepository.getUserById(id)!=null) {
+        if (usersRepository.getUserById(id) != null) {
             usersRepository.deleteUser(id);
+            LOGGER.info("Usunięto użytkownika o id= " + id);
             return getUsers();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
-
 
 
     @GET
