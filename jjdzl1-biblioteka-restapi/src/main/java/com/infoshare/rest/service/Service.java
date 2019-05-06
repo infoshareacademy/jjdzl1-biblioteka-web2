@@ -5,6 +5,7 @@ import com.infoshare.logic.domain.BookStatus;
 import com.infoshare.logic.domain.User;
 import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
+import com.infoshare.logic.utils.Hasher;
 
 import javax.ejb.EJB;
 import javax.persistence.NoResultException;
@@ -16,9 +17,12 @@ import javax.ws.rs.core.UriInfo;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.logging.Logger;
 
 @Path("/")
 public class Service {
+
+    public static final Logger LOGGER = Logger.getLogger(Service.class.getName());
 
     @EJB
     private UsersRepositoryDao usersRepository;
@@ -49,9 +53,32 @@ public class Service {
 
         User user = usersRepository.getUserById(id);
         if (user == null) {
+            LOGGER.info("Nie odnaleziono użytkownika");
             return Response.noContent().build();
         }
         return Response.ok(user).build();
+    }
+
+    @POST
+    @Path("/user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addUser(User user) throws SQLException, ClassNotFoundException {
+
+        User.builder()
+                .login(user.getLogin())
+                .password(user.getPassword())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .status(user.getStatus())
+                .admin(user.getAdmin())
+                .email(user.getEmail())
+                .build();
+
+
+        usersRepository.addNewUser(user);
+        User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
+        return getUser(returnUserData.getId());
     }
 
 
