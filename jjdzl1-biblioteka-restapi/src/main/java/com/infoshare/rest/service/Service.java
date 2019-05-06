@@ -7,6 +7,7 @@ import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 
 import javax.ejb.EJB;
+import javax.persistence.NoResultException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -44,15 +45,14 @@ public class Service {
     @GET
     @Path("/user/")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUser(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
+    public Response getUser(@QueryParam("id") int id) throws NoResultException, SQLException, ClassNotFoundException {
 
         User user = usersRepository.getUserById(id);
-        if (user==null) {
+        if (user == null) {
             return Response.noContent().build();
         }
         return Response.ok(user).build();
     }
-
 
 
     @GET

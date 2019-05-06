@@ -9,9 +9,7 @@ import com.infoshare.logic.validation.UserValidator;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
@@ -45,8 +43,13 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         String stringQuery = "select u from User u where u.id=" + id;
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
-        User user = query.getSingleResult();
-        return user;
+        List<User> user = query.getResultList();
+
+        if (user.isEmpty()) {
+            return null;
+        } else {
+            return user.get(0);
+        }
     }
 
     public void addNewUser(User user) {
