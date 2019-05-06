@@ -140,7 +140,7 @@ public class Service {
     }
 
     @POST
-    @Path("/addBook")
+    @Path("/book")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addBook(Book book) {
@@ -156,7 +156,24 @@ public class Service {
                 .build();
 
         booksRepository.addNewBook(book);
+        LOGGER.info("Dodano nową książkę o tytule " + book.getTitle());
         return Response.ok(book).build();
     }
+
+    @PUT
+    @Path("/book")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateBook(Book book) throws SQLException, ClassNotFoundException {
+
+        if (booksRepository.getBookById(book.getId()) != null) {
+            booksRepository.editBook(book);
+            LOGGER.info("Edytowano dane książki o id " + book.getId());
+
+            return Response.ok(book).build();
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
 
 }
