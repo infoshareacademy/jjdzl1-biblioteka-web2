@@ -92,6 +92,10 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         }
     }
 
+    public void addRestOperation(Operation operation){
+        entityManager.persist(operation);
+    }
+
     @Override
     public List<Operation> operationListBorrowByUser(int userId) throws SQLException, ClassNotFoundException {
 

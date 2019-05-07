@@ -20,4 +20,6 @@ public interface OperationsRepositoryDao {
     void ReturnBook(int id, int bookId, LocalDate endDate);
 
     Operation getOperation(int id) throws SQLException, ClassNotFoundException;
+
+    void addRestOperation(Operation operation);
 }

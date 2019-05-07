@@ -1,9 +1,6 @@
 package com.infoshare.rest.service;
 
-import com.infoshare.logic.domain.Book;
-import com.infoshare.logic.domain.BookStatus;
-import com.infoshare.logic.domain.Operation;
-import com.infoshare.logic.domain.User;
+import com.infoshare.logic.domain.*;
 import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.OperationsRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
@@ -18,7 +15,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Path("/")
@@ -221,8 +220,48 @@ public class Service {
             LOGGER.info("Nie odnaleziono operacji o id= " + id);
             return Response.noContent().build();
         }
+        LOGGER.info("Pobrano dane operacji o id=" + id);
         return Response.ok(operation).build();
     }
 
+    @POST
+    @Path("/operation")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addOperation(Operation operation) throws SQLException, ClassNotFoundException {
+
+        Book book = booksRepository.getBookById(operation.getBookId());
+        User user = usersRepository.getUserById(operation.getUserId());
+
+        if (book != null && user != null) {
+            if (book.getStatus().equals(BookStatus.Dostępna)) {
+
+                operation = Operation.builder()
+                        .userId(operation.getUserId())
+                        .userName(user.getLastName() + ", " + user.getFirstName())
+                        .bookId(operation.getBookId())
+                        .bookTitle(book.getTitle())
+                        .author(book.getAuthorLastName() + "," + book.getAuthorFirstName())
+                        .operationDate(operation.getOperationDate())
+                        .operationType(operation.getOperationType())
+                        .startDate(operation.getStartDate())
+                        .endDate(operation.getEndDate())
+                        .build();
+
+                operationsRepository.addRestOperation(operation);
+
+                if (operation.getOperationType().equals(OperationType.BORROW)) {
+                    book.setStatus(BookStatus.Wypożyczona);
+                } else {
+                    book.setStatus(BookStatus.Zarezerwowana);
+                }
+                operationsRepository.addRestOperation(operation);
+                booksRepository.editBook(book);
+                LOGGER.info("Dodano nową operację dla użytkownika " + user.getLogin());
+            }
+            return Response.ok(operation).build();
+        }
+        return Response.noContent().build();
+    }
 
 }
