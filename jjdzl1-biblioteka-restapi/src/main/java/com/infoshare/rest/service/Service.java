@@ -2,8 +2,10 @@ package com.infoshare.rest.service;
 
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.BookStatus;
+import com.infoshare.logic.domain.Operation;
 import com.infoshare.logic.domain.User;
 import com.infoshare.logic.repository.BooksRepositoryDao;
+import com.infoshare.logic.repository.OperationsRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 import com.infoshare.logic.utils.Hasher;
 import com.infoshare.logic.utils.PBKDF2Hasher;
@@ -29,6 +31,9 @@ public class Service {
 
     @EJB
     private BooksRepositoryDao booksRepository;
+
+    @EJB
+    private OperationsRepositoryDao operationsRepository;
 
     @Context
     private UriInfo uriInfo;
@@ -187,5 +192,19 @@ public class Service {
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
+
+    @GET
+    @Path("/operations")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id) throws SQLException, ClassNotFoundException {
+
+        if (type == null) type = "all";
+        Collection<Operation> operations = operationsRepository.AllOperationList(type, null);
+        if (operations.isEmpty()) {
+            return Response.noContent().build();
+        }
+        return Response.ok(operations).build();
+    }
+
 
 }
