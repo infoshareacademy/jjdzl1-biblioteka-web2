@@ -9,11 +9,8 @@ import com.infoshare.logic.validation.UserValidator;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -40,15 +37,22 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return userList;
     }
 
+    @Override
     public User getUserById(int id) {
 
         String stringQuery = "select u from User u where u.id=" + id;
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
-        User user = query.getSingleResult();
-        return user;
+        List<User> user = query.getResultList();
+
+        if (user.isEmpty()) {
+            return null;
+        } else {
+            return user.get(0);
+        }
     }
 
+    @Override
     public void addNewUser(User user) {
 
         if (user.getStatus() == null) user.setStatus("Aktywny");
@@ -58,6 +62,15 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         entityManager.persist(user);
     }
 
+    public void deleteUser(int id) {
+
+        User user = getUserById(id);
+        if (user != null) {
+            entityManager.remove(user);
+        }
+    }
+
+    @Override
     public List<User> findUserByLogin(String login) {
 
         String stringQuery = "select u from User u where u.login='" + login + "'";
@@ -67,6 +80,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return userList;
     }
 
+    @Override
     public List<User> findUserByEmail(String email) {
 
         String stringQuery = "select u from User u where u.email='" + email + "'";
@@ -76,6 +90,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         return userList;
     }
 
+    @Override
     public void updateUserAfterEdit(User user) {
 
         entityManager.merge(user);
@@ -93,6 +108,7 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
                 .admin(isChecked(req, "admin") ? UserStatus.ADMIN : UserStatus.USER)
                 .build();
     }
+
 
     private boolean isChecked(HttpServletRequest req, String fieldname) {
 

@@ -12,6 +12,7 @@ public interface UsersRepositoryDao {
     List<User> listOfUsers(String findUserByName) throws SQLException, ClassNotFoundException;
     User getUserById(int id) throws SQLException, ClassNotFoundException;
     void addNewUser(User user);
+    void deleteUser(int id);
     List<User> findUserByLogin(String login);
     List<User> findUserByEmail(String email);
     void updateUserAfterEdit(User user);

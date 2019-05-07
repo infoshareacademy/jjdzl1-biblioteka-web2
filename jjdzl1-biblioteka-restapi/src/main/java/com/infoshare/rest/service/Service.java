@@ -5,6 +5,8 @@ import com.infoshare.logic.domain.BookStatus;
 import com.infoshare.logic.domain.User;
 import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
+import com.infoshare.logic.utils.Hasher;
+import com.infoshare.logic.utils.PBKDF2Hasher;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -15,9 +17,12 @@ import javax.ws.rs.core.UriInfo;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.logging.Logger;
 
 @Path("/")
 public class Service {
+
+    public static final Logger LOGGER = Logger.getLogger(Service.class.getName());
 
     @EJB
     private UsersRepositoryDao usersRepository;
@@ -42,6 +47,74 @@ public class Service {
     }
 
     @GET
+    @Path("/user")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUser(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
+
+        User user = usersRepository.getUserById(id);
+        if (user == null) {
+            LOGGER.info("Nie odnaleziono użytkownika");
+            return Response.noContent().build();
+        }
+        return Response.ok(user).build();
+    }
+
+    @POST
+    @Path("/user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addUser(User user) throws SQLException, ClassNotFoundException {
+
+        User.builder()
+                .login(user.getLogin())
+                .password(user.getPassword())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .status(user.getStatus())
+                .admin(user.getAdmin())
+                .email(user.getEmail())
+                .build();
+
+        usersRepository.addNewUser(user);
+        User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
+        LOGGER.info("Dodano użytkownika o loginie: " + user.getLogin());
+        return getUser(returnUserData.getId());
+    }
+
+    @PUT
+    @Path("/user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateUser(User user) throws SQLException, ClassNotFoundException {
+
+        if (usersRepository.getUserById(user.getId()) != null) {
+
+            Hasher hasher = new PBKDF2Hasher();
+            user.setPassword(hasher.hash(user.getPassword()));
+
+            usersRepository.updateUserAfterEdit(user);
+            LOGGER.info("Edytowano dane użytkownika o loginie: " + user.getLogin());
+
+            return Response.ok(user).build();
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @DELETE
+    @Path("/user")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUser(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException {
+
+        if (usersRepository.getUserById(id) != null) {
+            usersRepository.deleteUser(id);
+            LOGGER.info("Usunięto użytkownika o id= " + id);
+            return getUsers();
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+
+    @GET
     @Path("/books/{page}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBooks(@PathParam("page") String page) throws SQLException, ClassNotFoundException, FileNotFoundException {
@@ -53,8 +126,21 @@ public class Service {
         return Response.ok(books).build();
     }
 
+    @GET
+    @Path("/book")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBook(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
+
+        Book book = booksRepository.getBookById(id);
+        if (book == null) {
+            LOGGER.info("Nie odnaleziono książki");
+            return Response.noContent().build();
+        }
+        return Response.ok(book).build();
+    }
+
     @POST
-    @Path("/addBook")
+    @Path("/book")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addBook(Book book) {
@@ -70,7 +156,36 @@ public class Service {
                 .build();
 
         booksRepository.addNewBook(book);
+        LOGGER.info("Dodano nową książkę o tytule " + book.getTitle());
         return Response.ok(book).build();
+    }
+
+    @PUT
+    @Path("/book")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateBook(Book book) throws SQLException, ClassNotFoundException {
+
+        if (booksRepository.getBookById(book.getId()) != null) {
+            booksRepository.editBook(book);
+            LOGGER.info("Edytowano dane książki o id " + book.getId());
+
+            return Response.ok(book).build();
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @DELETE
+    @Path("/book")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteBook(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException, FileNotFoundException {
+
+        if (booksRepository.getBookById(id) != null) {
+            booksRepository.deleteBook(id);
+            LOGGER.info("Usunięto książkę o id= " + id);
+            return getBooks("1");
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 
 }
