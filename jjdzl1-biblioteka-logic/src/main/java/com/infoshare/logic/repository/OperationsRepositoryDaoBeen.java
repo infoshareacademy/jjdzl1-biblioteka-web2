@@ -38,6 +38,24 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     }
 
     @Override
+    public Operation getOperation(int id) throws SQLException, ClassNotFoundException {
+
+        String query = "select o from Operation o " +
+                "inner join User u on o.userId=u.id " +
+                "inner join Book b on o.bookId=b.id " +
+                "and o.id=" + id;
+
+        TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
+        List<Operation> operationsList = operationResult.getResultList();
+
+        if (operationsList.isEmpty()) {
+            return null;
+        } else {
+            return operationsList.get(0);
+        }
+    }
+
+    @Override
     public void addNewOperation(List<Basket> basket, User user) {
 
         LocalDate currentDate = LocalDate.now();

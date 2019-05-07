@@ -165,6 +165,7 @@ public class Service {
         return Response.ok(book).build();
     }
 
+
     @PUT
     @Path("/book")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -203,7 +204,24 @@ public class Service {
         if (operations.isEmpty()) {
             return Response.noContent().build();
         }
+
+        String log = id;
+        if (id == null) log = "wszyscy";
+        LOGGER.info("Wylistowano operacje typu: " + type + " dla użytkownika :" + log);
         return Response.ok(operations).build();
+    }
+
+    @GET
+    @Path("/operation")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getOperation(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
+
+        Operation operation = operationsRepository.getOperation(id);
+        if (operation == null) {
+            LOGGER.info("Nie odnaleziono operacji o id= " + id);
+            return Response.noContent().build();
+        }
+        return Response.ok(operation).build();
     }
 
 
