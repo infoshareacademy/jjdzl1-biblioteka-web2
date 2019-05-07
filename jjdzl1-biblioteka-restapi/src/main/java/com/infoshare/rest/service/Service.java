@@ -264,4 +264,16 @@ public class Service {
         return Response.noContent().build();
     }
 
+    @DELETE
+    @Path("/operation")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteOperation(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException, FileNotFoundException {
+
+        if (operationsRepository.getOperation(id) != null) {
+            operationsRepository.deleteOperation(id);
+            LOGGER.info("Usunięto operację o id=" + id);
+            return getOperations("all", null);
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
 }
