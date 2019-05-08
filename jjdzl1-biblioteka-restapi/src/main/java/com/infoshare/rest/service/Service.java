@@ -181,9 +181,16 @@ public class Service {
                 .description(book.getDescription())
                 .build();
 
-        booksRepository.addNewBook(book);
-        LOGGER.info("Dodano nową książkę o tytule " + book.getTitle());
-        return Response.ok(book).build();
+        List<String> validationResult = bookValidator.validationResult;
+        validationResult.clear();
+        bookValidator.bookValidation(book);
+
+        if (validationResult.isEmpty()) {
+            booksRepository.addNewBook(book);
+            LOGGER.info("Dodano nową książkę o tytule " + book.getTitle());
+            return Response.ok(book).build();
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
 
