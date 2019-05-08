@@ -87,7 +87,7 @@ public class Service {
                 .email(user.getEmail())
                 .build();
 
-        List<String> validationResult=userValidator.validationResult;
+        List<String> validationResult = userValidator.validationResult;
         validationResult.clear();
         userValidator.userValidation(user);
 
@@ -107,14 +107,19 @@ public class Service {
     public Response updateUser(User user) throws SQLException, ClassNotFoundException {
 
         if (usersRepository.getUserById(user.getId()) != null) {
-
             Hasher hasher = new PBKDF2Hasher();
             user.setPassword(hasher.hash(user.getPassword()));
 
-            usersRepository.updateUserAfterEdit(user);
-            LOGGER.info("Edytowano dane użytkownika o loginie: " + user.getLogin());
+            List<String> validationResult = userValidator.validationResult;
+            validationResult.clear();
+            userValidator.userToEditValidation(user);
 
-            return Response.ok(user).build();
+            if (validationResult.isEmpty()) {
+                usersRepository.updateUserAfterEdit(user);
+                LOGGER.info("Edytowano dane użytkownika o loginie: " + user.getLogin());
+                return Response.ok(user).build();
+            }
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
