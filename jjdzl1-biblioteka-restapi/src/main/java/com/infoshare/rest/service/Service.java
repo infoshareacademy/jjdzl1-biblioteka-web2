@@ -201,10 +201,18 @@ public class Service {
     public Response updateBook(Book book) throws SQLException, ClassNotFoundException {
 
         if (booksRepository.getBookById(book.getId()) != null) {
-            booksRepository.editBook(book);
-            LOGGER.info("Edytowano dane książki o id " + book.getId());
 
-            return Response.ok(book).build();
+            List<String> validationResult = bookValidator.validationResult;
+            validationResult.clear();
+            bookValidator.bookValidation(book);
+
+            if (validationResult.isEmpty()) {
+                booksRepository.editBook(book);
+                LOGGER.info("Edytowano dane książki o id " + book.getId());
+
+                return Response.ok(book).build();
+            }
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
