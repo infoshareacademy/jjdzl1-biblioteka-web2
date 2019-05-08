@@ -6,6 +6,8 @@ import com.infoshare.logic.repository.OperationsRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 import com.infoshare.logic.utils.Hasher;
 import com.infoshare.logic.utils.PBKDF2Hasher;
+import com.infoshare.logic.validation.BookValidator;
+import com.infoshare.logic.validation.UserValidator;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -33,6 +35,12 @@ public class Service {
 
     @EJB
     private OperationsRepositoryDao operationsRepository;
+
+    @EJB
+    private UserValidator userValidator;
+
+    @EJB
+    private BookValidator bookValidator;
 
     @Context
     private UriInfo uriInfo;
@@ -69,7 +77,7 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(User user) throws SQLException, ClassNotFoundException {
 
-        User.builder()
+        user = User.builder()
                 .login(user.getLogin())
                 .password(user.getPassword())
                 .firstName(user.getFirstName())
@@ -79,10 +87,17 @@ public class Service {
                 .email(user.getEmail())
                 .build();
 
-        usersRepository.addNewUser(user);
-        User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
-        LOGGER.info("Dodano użytkownika o loginie: " + user.getLogin());
-        return getUser(returnUserData.getId());
+        List<String> validationResult=userValidator.validationResult;
+        validationResult.clear();
+        userValidator.userValidation(user);
+
+        if (validationResult.isEmpty()) {
+            usersRepository.addNewUser(user);
+            User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
+            LOGGER.info("Dodano użytkownika o loginie: " + user.getLogin());
+            return getUser(returnUserData.getId());
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
     @PUT
