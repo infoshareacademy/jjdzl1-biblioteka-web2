@@ -106,6 +106,8 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateUser(User user) throws SQLException, ClassNotFoundException {
 
+        if (user.getId() == null) return Response.status(Response.Status.BAD_REQUEST).build();
+
         if (usersRepository.getUserById(user.getId()) != null) {
             Hasher hasher = new PBKDF2Hasher();
             user.setPassword(hasher.hash(user.getPassword()));
