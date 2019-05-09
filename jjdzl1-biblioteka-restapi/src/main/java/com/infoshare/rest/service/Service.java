@@ -1,12 +1,13 @@
 package com.infoshare.rest.service;
 
-import com.infoshare.logic.domain.Book;
-import com.infoshare.logic.domain.BookStatus;
-import com.infoshare.logic.domain.User;
+import com.infoshare.logic.domain.*;
 import com.infoshare.logic.repository.BooksRepositoryDao;
+import com.infoshare.logic.repository.OperationsRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 import com.infoshare.logic.utils.Hasher;
 import com.infoshare.logic.utils.PBKDF2Hasher;
+import com.infoshare.logic.validation.BookValidator;
+import com.infoshare.logic.validation.UserValidator;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -17,6 +18,7 @@ import javax.ws.rs.core.UriInfo;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Path("/")
@@ -29,6 +31,15 @@ public class Service {
 
     @EJB
     private BooksRepositoryDao booksRepository;
+
+    @EJB
+    private OperationsRepositoryDao operationsRepository;
+
+    @EJB
+    private UserValidator userValidator;
+
+    @EJB
+    private BookValidator bookValidator;
 
     @Context
     private UriInfo uriInfo;
@@ -65,7 +76,7 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(User user) throws SQLException, ClassNotFoundException {
 
-        User.builder()
+        user = User.builder()
                 .login(user.getLogin())
                 .password(user.getPassword())
                 .firstName(user.getFirstName())
@@ -75,10 +86,17 @@ public class Service {
                 .email(user.getEmail())
                 .build();
 
-        usersRepository.addNewUser(user);
-        User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
-        LOGGER.info("Dodano użytkownika o loginie: " + user.getLogin());
-        return getUser(returnUserData.getId());
+        List<String> validationResult = userValidator.validationResult;
+        validationResult.clear();
+        userValidator.userValidation(user);
+
+        if (validationResult.isEmpty()) {
+            usersRepository.addNewUser(user);
+            User returnUserData = usersRepository.findUserByLogin(user.getLogin()).get(0);
+            LOGGER.info("Dodano użytkownika o loginie: " + user.getLogin());
+            return getUser(returnUserData.getId());
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
     @PUT
@@ -87,15 +105,22 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateUser(User user) throws SQLException, ClassNotFoundException {
 
-        if (usersRepository.getUserById(user.getId()) != null) {
+        if (user.getId() == null) return Response.status(Response.Status.BAD_REQUEST).build();
 
+        if (usersRepository.getUserById(user.getId()) != null) {
             Hasher hasher = new PBKDF2Hasher();
             user.setPassword(hasher.hash(user.getPassword()));
 
-            usersRepository.updateUserAfterEdit(user);
-            LOGGER.info("Edytowano dane użytkownika o loginie: " + user.getLogin());
+            List<String> validationResult = userValidator.validationResult;
+            validationResult.clear();
+            userValidator.userToEditValidation(user);
 
-            return Response.ok(user).build();
+            if (validationResult.isEmpty()) {
+                usersRepository.updateUserAfterEdit(user);
+                LOGGER.info("Edytowano dane użytkownika o loginie: " + user.getLogin());
+                return Response.ok(user).build();
+            }
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -155,10 +180,18 @@ public class Service {
                 .description(book.getDescription())
                 .build();
 
-        booksRepository.addNewBook(book);
-        LOGGER.info("Dodano nową książkę o tytule " + book.getTitle());
-        return Response.ok(book).build();
+        List<String> validationResult = bookValidator.validationResult;
+        validationResult.clear();
+        bookValidator.bookValidation(book);
+
+        if (validationResult.isEmpty()) {
+            booksRepository.addNewBook(book);
+            LOGGER.info("Dodano nową książkę o tytule " + book.getTitle());
+            return Response.ok(book).build();
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
+
 
     @PUT
     @Path("/book")
@@ -166,11 +199,21 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateBook(Book book) throws SQLException, ClassNotFoundException {
 
-        if (booksRepository.getBookById(book.getId()) != null) {
-            booksRepository.editBook(book);
-            LOGGER.info("Edytowano dane książki o id " + book.getId());
+        if ((Integer) book.getId() == null) return Response.status(Response.Status.BAD_REQUEST).build();
 
-            return Response.ok(book).build();
+        if (booksRepository.getBookById(book.getId()) != null) {
+
+            List<String> validationResult = bookValidator.validationResult;
+            validationResult.clear();
+            bookValidator.bookValidation(book);
+
+            if (validationResult.isEmpty()) {
+                booksRepository.editBook(book);
+                LOGGER.info("Edytowano dane książki o id " + book.getId());
+
+                return Response.ok(book).build();
+            }
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -188,4 +231,87 @@ public class Service {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+    @GET
+    @Path("/operations")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id) throws SQLException, ClassNotFoundException {
+
+        if (type == null) type = "all";
+        Collection<Operation> operations = operationsRepository.AllOperationList(type, null);
+        if (operations.isEmpty()) {
+            return Response.noContent().build();
+        }
+
+        String log = id;
+        if (id == null) log = "wszyscy";
+        LOGGER.info("Wylistowano operacje typu: " + type + " dla użytkownika :" + log);
+        return Response.ok(operations).build();
+    }
+
+    @GET
+    @Path("/operation")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getOperation(@QueryParam("id") int id) throws SQLException, ClassNotFoundException {
+
+        Operation operation = operationsRepository.getOperation(id);
+        if (operation == null) {
+            LOGGER.info("Nie odnaleziono operacji o id= " + id);
+            return Response.noContent().build();
+        }
+        LOGGER.info("Pobrano dane operacji o id=" + id);
+        return Response.ok(operation).build();
+    }
+
+    @POST
+    @Path("/operation")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addOperation(Operation operation) throws SQLException, ClassNotFoundException {
+
+        Book book = booksRepository.getBookById(operation.getBookId());
+        User user = usersRepository.getUserById(operation.getUserId());
+
+        if (book != null && user != null) {
+            if (book.getStatus().equals(BookStatus.Dostępna)) {
+
+                operation = Operation.builder()
+                        .userId(operation.getUserId())
+                        .userName(user.getLastName() + ", " + user.getFirstName())
+                        .bookId(operation.getBookId())
+                        .bookTitle(book.getTitle())
+                        .author(book.getAuthorLastName() + "," + book.getAuthorFirstName())
+                        .operationDate(operation.getOperationDate())
+                        .operationType(operation.getOperationType())
+                        .startDate(operation.getStartDate())
+                        .endDate(operation.getEndDate())
+                        .build();
+
+                operationsRepository.addRestOperation(operation);
+
+                if (operation.getOperationType().equals(OperationType.BORROW)) {
+                    book.setStatus(BookStatus.Wypożyczona);
+                } else {
+                    book.setStatus(BookStatus.Zarezerwowana);
+                }
+                operationsRepository.addRestOperation(operation);
+                booksRepository.editBook(book);
+                LOGGER.info("Dodano nową operację dla użytkownika " + user.getLogin());
+            }
+            return Response.ok(operation).build();
+        }
+        return Response.noContent().build();
+    }
+
+    @DELETE
+    @Path("/operation")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteOperation(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException, FileNotFoundException {
+
+        if (operationsRepository.getOperation(id) != null) {
+            operationsRepository.deleteOperation(id);
+            LOGGER.info("Usunięto operację o id=" + id);
+            return getOperations("all", null);
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
 }

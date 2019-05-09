@@ -2,6 +2,7 @@ package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.*;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +13,9 @@ import java.util.List;
 
 @Stateless
 public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
+
+    @EJB
+    private BooksRepositoryDao booksRepository;
 
     @PersistenceContext(name = "librarydb")
     private EntityManager entityManager;
@@ -35,6 +39,24 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         List<Operation> operationsList = operationResult.getResultList();
 
         return operationsList;
+    }
+
+    @Override
+    public Operation getOperation(int id) throws SQLException, ClassNotFoundException {
+
+        String query = "select o from Operation o " +
+                "inner join User u on o.userId=u.id " +
+                "inner join Book b on o.bookId=b.id " +
+                "and o.id=" + id;
+
+        TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
+        List<Operation> operationsList = operationResult.getResultList();
+
+        if (operationsList.isEmpty()) {
+            return null;
+        } else {
+            return operationsList.get(0);
+        }
     }
 
     @Override
@@ -71,6 +93,21 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
             entityManager.persist(operation);
             entityManager.merge(selectedBook);
+        }
+    }
+
+    public void addRestOperation(Operation operation) {
+        entityManager.persist(operation);
+    }
+
+    @Override
+    public void deleteOperation(int id) throws SQLException, ClassNotFoundException {
+        Operation operation = getOperation(id);
+        if (operation != null) {
+            entityManager.remove(operation);
+            Book book=booksRepository.getBookById(operation.getBookId());
+            book.setStatus(BookStatus.Dostępna);
+            booksRepository.editBook(book);
         }
     }
 

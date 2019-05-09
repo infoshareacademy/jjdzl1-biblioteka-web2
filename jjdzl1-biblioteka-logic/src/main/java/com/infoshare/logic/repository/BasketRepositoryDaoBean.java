@@ -27,8 +27,19 @@ public class BasketRepositoryDaoBean implements BasketRepositoryDao {
 
     @Override
     public void addToBasketList(User user, Book book, OperationType operationType, LocalDate startDate, LocalDate endDate, HttpServletRequest request) {
-        basket.add(new Basket(book, user, operationType, startDate, endDate));
-        setBasketToAttribute(request, basket);
+
+        int checkIfBookIsInBasket = 0;
+
+        for (Basket basket1 : basket) {
+            if (basket1.getBook().getId() == book.getId()) {
+                checkIfBookIsInBasket++;
+            }
+        }
+
+        if (checkIfBookIsInBasket == 0) {
+            basket.add(new Basket(book, user, operationType, startDate, endDate));
+            setBasketToAttribute(request, basket);
+        }
     }
 
     @Override
