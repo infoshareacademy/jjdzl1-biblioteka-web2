@@ -199,6 +199,8 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateBook(Book book) throws SQLException, ClassNotFoundException {
 
+        if ((Integer) book.getId() == null) return Response.status(Response.Status.BAD_REQUEST).build();
+
         if (booksRepository.getBookById(book.getId()) != null) {
 
             List<String> validationResult = bookValidator.validationResult;
