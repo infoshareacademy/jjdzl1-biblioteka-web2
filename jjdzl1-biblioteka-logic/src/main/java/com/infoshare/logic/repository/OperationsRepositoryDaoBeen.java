@@ -17,6 +17,9 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     @EJB
     private BooksRepositoryDao booksRepository;
 
+    @EJB
+    private UsersRepositoryDao usersRepository;
+
     @PersistenceContext(name = "librarydb")
     private EntityManager entityManager;
 
@@ -109,6 +112,29 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             book.setStatus(BookStatus.Dostępna);
             booksRepository.editBook(book);
         }
+    }
+
+    @Override
+    public void addNewUserReservation(int bookId, int userId) throws SQLException, ClassNotFoundException {
+        Book book = booksRepository.getBookById(bookId);
+        User user  = usersRepository.getUserById(userId);
+        LocalDate currentDate = LocalDate.now();
+
+        Operation operation = Operation.builder()
+                .author(book.getAuthorLastName() + ", " + book.getAuthorFirstName())
+                .bookTitle(book.getTitle())
+                .bookId(book.getId())
+                .userId(user.getId())
+                .userName(user.getLastName() + ", " + user.getFirstName())
+                .operationType(OperationType.RESERVATION)
+                .operationDate(currentDate)
+                .startDate(currentDate)
+                .endDate(currentDate.plusDays(3))
+                .build();
+
+        book.setStatus(BookStatus.Zarezerwowana);
+        entityManager.persist(operation);
+        entityManager.merge(book);
     }
 
     @Override

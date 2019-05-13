@@ -24,4 +24,6 @@ public interface OperationsRepositoryDao {
     void addRestOperation(Operation operation);
 
     void deleteOperation(int id) throws SQLException, ClassNotFoundException;
+
+    void addNewUserReservation(int bookId, int userId) throws SQLException, ClassNotFoundException;
 }

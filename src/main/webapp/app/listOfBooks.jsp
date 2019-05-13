@@ -129,9 +129,8 @@
                     <%} else if (session.getAttribute("selectedUser") == null) { %>
                     <td>
                         <div>
-                            <form method="GET" action="UserBasketServlet" class="addUser">
+                            <form method="GET" action="UserReservationServlet" class="addUser">
                                 <input type="hidden" name="bookId" value="<%=book.getId()%>"/>
-                                <input type="hidden" name="operationType" value="reservation"/>
                                 <button type="submit" class="btn btn-info" data-toggle="tooltip" title="Rezerwuj">
                                     Rezerwuj
                                 </button>
