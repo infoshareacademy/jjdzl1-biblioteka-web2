@@ -97,7 +97,8 @@
                         operacje </a>
 
                     <% } else { %>
-
+                    <a class="dropdown-item" href="GetAttributeBookRepository?reservation=user"> Rezerwuj książkę </a>
+                    <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="#"> Moje rezerwacje </a>
                     <a class="dropdown-item" href="#"> Moje wypożyczenia </a>
                     <a class="dropdown-item" href="@"> Wszystkie operacje </a>

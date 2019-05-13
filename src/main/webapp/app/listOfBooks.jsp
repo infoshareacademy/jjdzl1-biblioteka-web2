@@ -20,6 +20,7 @@
     String order = request.getParameter("order");
     String pageString = request.getParameter("page");
     String edit = request.getParameter("edit");
+    String reservation = request.getParameter("reservation");
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
@@ -84,7 +85,7 @@
                     <th scope="col">Autor</th>
                     <th scope="col">Nr ISBN</th>
                     <th scope="col">Rok wydania</th>
-                    <% if (session.getAttribute("selectedUser") != null) {
+                    <% if (session.getAttribute("selectedUser") != null || reservation.equals("user")) {
                         User user = (User) session.getAttribute("selectedUser");
                     %>
                     <th scope="col">Działania</th>
@@ -120,15 +121,27 @@
                         <%=book.getDaterelease()%>
                     </td>
 
-                    <% if (session.getAttribute("selectedUser") != null) {
-                        User user = (User) session.getAttribute("selectedUser");
-
-                        if (book.getStatus() != BookStatus.Dostępna) {%>
+                    <% if (book.getStatus() != BookStatus.Dostępna) {%>
                     <td>
                         <button type="submit" class="btn btn-secondary btn-sm" disabled><%=book.getStatus()%>
                         </button>
                     </td>
-                    <%} else {%>
+                    <%} else if (session.getAttribute("selectedUser") == null) { %>
+                    <td>
+                        <div>
+                            <form method="GET" action="UserBasketServlet" class="addUser">
+                                <input type="hidden" name="bookId" value="<%=book.getId()%>"/>
+                                <input type="hidden" name="operationType" value="reservation"/>
+                                <button type="submit" class="btn btn-info" data-toggle="tooltip" title="Rezerwuj">
+                                    Rezerwuj
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                    <%
+                    } else if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
                     <td>
                         <div>
                             <form method="GET" action="UserBasketServlet" class="addUser">
@@ -146,10 +159,7 @@
                             </form>
                         </div>
                     </td>
-                    <%
-                            }
-                        }
-                    %>
+                    <%}%>
                 </tr>
                 <%
                         rowNumber++;

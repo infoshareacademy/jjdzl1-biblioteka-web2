@@ -46,10 +46,12 @@ public class GetAttributeBookRepository extends HttpServlet {
         String order = req.getParameter("order");
         String page = req.getParameter("page");
         String edit = req.getParameter("edit");
+        String reservation = req.getParameter("reservation");
 
         if (page == null) page = "1";
         if (order == null) order = "title";
         if (edit == null || edit.isEmpty()) edit = "false";
+        if (reservation == null) reservation = "";
         try {
             bookList = booksRepositoryDao.bookList(order, Integer.parseInt(page));
         } catch (SQLException e) {
@@ -61,10 +63,12 @@ public class GetAttributeBookRepository extends HttpServlet {
         session.setAttribute("bookList", bookList);
         session.setAttribute("booksRepositoryDao", booksRepositoryDao);
 
-        if (session.getAttribute("nameOfUser") != null) {
+        if (session.getAttribute("nameOfUser") != null && !reservation.equals("user")) {
             resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=" + order + "&page=" + page + "&edit=" + edit);
-        } else {
+        } else if (reservation.equals("user")) {
+            resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page + "&reservation=" + reservation);
+        } else
             resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page);
-        }
+
     }
 }
