@@ -129,6 +129,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>UserReservationServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.UserReservationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserReservationServlet</servlet-name>
+        <url-pattern>app/UserReservationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>GetAttributesUserRepository</servlet-name>
         <servlet-class>com.infoshare.servlets.GetAttributesUserRepository</servlet-class>
     </servlet>

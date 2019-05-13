@@ -2,6 +2,7 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.infoshare.logic.repository.BasketRepositoryDao" %>
 <%@ page import="com.infoshare.logic.repository.BasketRepositoryDaoBean" %>
+<%@ page import="java.time.LocalDate" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -61,6 +62,19 @@
     <%
         }
         request.getSession().removeAttribute("addBook");
+    %>
+
+    <% if (request.getSession().getAttribute("userReservationAdded") != null) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Zarezerwowano książkę: <%=request.getSession().getAttribute("userReservationAdded")%>
+            </br>Rezerwacja ważna do <%=LocalDate.now().plusDays(3)%></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+        }
+        request.getSession().removeAttribute("userReservationAdded");
     %>
 
     <% if (request.getSession().getAttribute("opertationSuccess") == "success") { %>

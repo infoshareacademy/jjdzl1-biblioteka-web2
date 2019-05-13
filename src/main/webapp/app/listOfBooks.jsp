@@ -21,6 +21,8 @@
     String pageString = request.getParameter("page");
     String edit = request.getParameter("edit");
     String reservation = request.getParameter("reservation");
+    if (reservation ==null)
+        reservation = "";
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
@@ -126,10 +128,10 @@
                         <button type="submit" class="btn btn-secondary btn-sm" disabled><%=book.getStatus()%>
                         </button>
                     </td>
-                    <%} else if (session.getAttribute("selectedUser") == null) { %>
+                    <%} else if (session.getAttribute("selectedUser") == null && reservation.equals("user")) { %>
                     <td>
                         <div>
-                            <form method="GET" action="UserReservationServlet" class="addUser">
+                            <form method="POST" action="UserReservationServlet" class="addUser">
                                 <input type="hidden" name="bookId" value="<%=book.getId()%>"/>
                                 <button type="submit" class="btn btn-info" data-toggle="tooltip" title="Rezerwuj">
                                     Rezerwuj
