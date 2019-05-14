@@ -77,8 +77,6 @@
                 <%
                     List<User> listOfUsers = (List<User>) request.getSession().getAttribute("userRepositoryDao");
 
-                    request.getSession().removeAttribute("userRepositoryDao");
-
                     int rowNumber = 1;
                     for (User user : listOfUsers) {
                 %>
