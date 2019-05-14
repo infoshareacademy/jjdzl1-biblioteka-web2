@@ -18,11 +18,15 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
+<%List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");%>
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
+            <% if (operations.size() == 0) {
+            %> Brak operacji na koncie<%
+        } else {%>
+
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
@@ -38,8 +42,6 @@
                 <tbody>
                 <%
                     int rowNumber = 1;
-
-                    List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
                     for (Operation operation : operations) {
                 %>
                 <tr class="listofitemps">
@@ -70,6 +72,7 @@
                     }%>
                 </tbody>
             </table>
+            <%}%>
         </div>
     </div>
 </article>

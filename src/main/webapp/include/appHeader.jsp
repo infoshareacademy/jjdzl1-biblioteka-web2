@@ -143,7 +143,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>
-                    <a class="dropdown-item" href="userBasket.jsp"> Zwrot książki </a>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=all&userId=<%=userID%>"> Aktualne rezerwacje i wypożyczenia </a>

@@ -59,7 +59,11 @@
 
             </div>
             <br/>
-            <%}%>
+            <%
+                }
+                if (operations.size() == 0) {
+            %> Brak operacji na koncie<%} else {%>
+
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
@@ -72,6 +76,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                <%}%>
                 <%
                     int rowNumber = 1;
                     for (Operation operation : operations) {
@@ -108,6 +113,7 @@
                             rowNumber++;
                         }
                     %>
+
                 </tr>
                 </tbody>
             </table>
