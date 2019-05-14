@@ -36,7 +36,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             query += "where o.operationType='BORROW'";
         }
 
-        if (userId != null) query += " and o.userId=" + userId;
+        if (userId != null) query += " and o.user.id=" + userId;
 
         TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
         List<Operation> operationsList = operationResult.getResultList();
