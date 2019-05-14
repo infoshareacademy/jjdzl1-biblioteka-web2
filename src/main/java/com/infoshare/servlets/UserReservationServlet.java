@@ -25,15 +25,20 @@ public class UserReservationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookId = Integer.parseInt(req.getParameter("bookId"));
         int userId = (int) req.getSession().getAttribute("userId");
+        int countReservationForUser = operationsRepository.listOfReservationByUser(userId).size();
 
-        try {
-            operationsRepository.addNewUserReservation(bookId, userId);
-            Book book = booksRepository.getBookById(bookId);
-            req.getSession().setAttribute("userReservationAdded", book.getTitle());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        if (countReservationForUser < 3) {
+            try {
+                operationsRepository.addNewUserReservation(bookId, userId);
+                Book book = booksRepository.getBookById(bookId);
+                req.getSession().setAttribute("userReservationAdded", book.getTitle());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            req.getSession().setAttribute("toManyReservation", countReservationForUser);
         }
 
         resp.sendRedirect("loginSuccess.jsp");

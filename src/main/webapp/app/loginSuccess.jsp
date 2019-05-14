@@ -77,6 +77,18 @@
         request.getSession().removeAttribute("userReservationAdded");
     %>
 
+    <% if (request.getSession().getAttribute("toManyReservation") != null) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Przekroczono maksymalną liczbę rezerwacji!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+        }
+        request.getSession().removeAttribute("toManyReservation");
+    %>
+
     <% if (request.getSession().getAttribute("opertationSuccess") == "success") { %>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Operacja została zapisana</strong>

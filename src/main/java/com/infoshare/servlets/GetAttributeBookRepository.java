@@ -66,7 +66,7 @@ public class GetAttributeBookRepository extends HttpServlet {
         if (session.getAttribute("nameOfUser") != null && !reservation.equals("user")) {
             resp.sendRedirect(req.getContextPath() + "/app/listOfBooks.jsp?order=" + order + "&page=" + page + "&edit=" + edit);
         } else if (reservation.equals("user")) {
-            resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page + "&reservation=" + reservation);
+            resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page + "&reservation=" + reservation + "&page=" + page);
         } else
             resp.sendRedirect("listOfBooks.jsp?order=" + order + "&page=" + page);
 
