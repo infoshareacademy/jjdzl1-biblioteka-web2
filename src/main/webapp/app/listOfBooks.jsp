@@ -21,7 +21,7 @@
     String pageString = request.getParameter("page");
     String edit = request.getParameter("edit");
     String reservation = request.getParameter("reservation");
-    if (reservation ==null)
+    if (reservation == null)
         reservation = "";
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
@@ -98,10 +98,12 @@
                 <%
                     int rowNumber = 1 + (pageNumber * recordsPerPage) - recordsPerPage;
                     List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookList");
-//                    request.getSession().removeAttribute("bookList");
+
+                    request.getSession().removeAttribute("bookList");
                     for (Book book : listOfBooks) {
                 %>
-                <tr class="listofitemps " style="cursor:pointer"
+
+                <tr class="listofitemps" style="cursor:pointer"
                         <%if (edit != null && edit.equals("true")) {%>
                     onclick="window.location='EditBookServlet?id=<%=book.getId()%>'" data-toggle="tooltip"
                         <%} else if (edit == null || edit.isEmpty() || edit != "truegi") {%>
@@ -123,7 +125,8 @@
                         <%=book.getDaterelease()%>
                     </td>
 
-                    <% if (book.getStatus() != BookStatus.Dostępna) {%>
+                    <% if (book.getStatus() != BookStatus.Dostępna &&
+                            (reservation.equals("user") || session.getAttribute("selectedUser") != null)) {%>
                     <td>
                         <button type="submit" class="btn btn-secondary btn-sm" disabled><%=book.getStatus()%>
                         </button>
