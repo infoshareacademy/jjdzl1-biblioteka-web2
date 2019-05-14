@@ -1,6 +1,7 @@
 package com.infoshare.logic.domain;
 
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,7 +11,6 @@ import java.io.Serializable;
 @Setter
 @Builder
 @AllArgsConstructor
-
 @Entity
 @Table(name = "user")
 public class User implements Serializable {

@@ -99,7 +99,6 @@
                     int rowNumber = 1 + (pageNumber * recordsPerPage) - recordsPerPage;
                     List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookList");
 
-                    request.getSession().removeAttribute("bookList");
                     for (Book book : listOfBooks) {
                 %>
 

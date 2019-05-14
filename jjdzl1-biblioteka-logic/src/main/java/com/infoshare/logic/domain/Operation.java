@@ -2,6 +2,7 @@ package com.infoshare.logic.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +20,7 @@ public class Operation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private User user;
 
     @Column

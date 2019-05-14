@@ -99,9 +99,9 @@
                     <% } else { %>
                     <a class="dropdown-item" href="GetAttributeBookRepository?reservation=user"> Rezerwuj książkę </a>
                     <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="#"> Moje rezerwacje </a>
-                    <a class="dropdown-item" href="#"> Moje wypożyczenia </a>
-                    <a class="dropdown-item" href="@"> Wszystkie operacje </a>
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=reservation&userId=<%=userId%>"> Moje rezerwacje </a>
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=borrow&userId=<%=userId%>"> Moje wypożyczenia </a>
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=all&userId=<%=userId%>"> Wszystkie operacje </a>
                     <%}%>
                 </div>
             </li>
@@ -146,7 +146,7 @@
                     <a class="dropdown-item" href="userBasket.jsp"> Zwrot książki </a>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="#"> Aktualne rezerwacje i wypożyczenia </a>
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=all&userId=<%=userID%>"> Aktualne rezerwacje i wypożyczenia </a>
                     <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=reservation&userId=<%=userID%>">
                         Historia rezerwacji </a>
                     <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=borrow&userId=<%=userID%>">
