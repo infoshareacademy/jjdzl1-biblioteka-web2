@@ -108,7 +108,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         Operation operation = getOperation(id);
         if (operation != null) {
             entityManager.remove(operation);
-            Book book=booksRepository.getBookById(operation.getBookId());
+            Book book = booksRepository.getBookById(operation.getBookId());
             book.setStatus(BookStatus.Dostępna);
             booksRepository.editBook(book);
         }
@@ -117,7 +117,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     @Override
     public void addNewUserReservation(int bookId, int userId) throws SQLException, ClassNotFoundException {
         Book book = booksRepository.getBookById(bookId);
-        User user  = usersRepository.getUserById(userId);
+        User user = usersRepository.getUserById(userId);
         LocalDate currentDate = LocalDate.now();
 
         Operation operation = Operation.builder()
@@ -170,5 +170,19 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
         entityManager.merge(operation);
         entityManager.merge(book);
+    }
+
+    public List<Operation> listOfReservationByUser(int userId) {
+
+        LocalDate currentDate = LocalDate.now();
+
+        String query = "select o from Operation o " +
+                "where o.endDate>=" + currentDate + " " +
+                "and o.operationType='RESERVATION' " +
+                "and o.user.id=" + userId;
+
+        TypedQuery<Operation> userReservation = entityManager.createQuery(query, Operation.class);
+        List<Operation> listOfUserReservation = userReservation.getResultList();
+        return listOfUserReservation;
     }
 }
