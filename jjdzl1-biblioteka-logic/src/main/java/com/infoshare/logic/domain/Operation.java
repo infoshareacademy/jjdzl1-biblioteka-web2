@@ -19,8 +19,8 @@ public class Operation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
-    private int userId;
+    @ManyToOne
+    private User user;
 
     @Column
     private String userName;
@@ -51,12 +51,12 @@ public class Operation implements Serializable {
         //for JPA
     }
 
-    public Operation(int id, int userId, String userName, int bookId, String bookTitle,
+    public Operation(int id, User user, String userName, int bookId, String bookTitle,
                      String author, LocalDate operationDate, LocalDate startDate,
                      LocalDate endDate, OperationType operationType) {
 
         this.id = id;
-        this.userId = userId;
+        this.user = user;
         this.userName = userName;
         this.bookId = bookId;
         this.bookTitle = bookTitle;
@@ -67,11 +67,11 @@ public class Operation implements Serializable {
         this.operationType = operationType;
     }
 
-    public Operation(int userId, String userName, int bookId, String bookTitle,
+    public Operation(User user, String userName, int bookId, String bookTitle,
                      String author, LocalDate operationDate, LocalDate startDate,
                      LocalDate endDate, OperationType operationType) {
 
-        this.userId = userId;
+        this.user = user;
         this.userName = userName;
         this.bookId = bookId;
         this.bookTitle = bookTitle;

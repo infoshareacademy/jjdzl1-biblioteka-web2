@@ -27,7 +27,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     public List<Operation> AllOperationList(String operationType, String userId) throws SQLException, ClassNotFoundException {
 
         String query = "select o from Operation o " +
-                "inner join User u on o.userId=u.id " +
+                "inner join User u on o.user.id=u.id " +
                 "inner join Book b on o.bookId=b.id ";
 
         if (operationType.equals("reservation")) {
@@ -48,7 +48,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     public Operation getOperation(int id) throws SQLException, ClassNotFoundException {
 
         String query = "select o from Operation o " +
-                "inner join User u on o.userId=u.id " +
+                "inner join User u on o.user.id=u.id " +
                 "inner join Book b on o.bookId=b.id " +
                 "and o.id=" + id;
 
@@ -86,7 +86,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
                     .author(basketItem.getBook().getAuthorLastName() + ", " + basketItem.getBook().getAuthorFirstName())
                     .bookTitle(basketItem.getBook().getTitle())
                     .bookId(basketItem.getBook().getId())
-                    .userId(basketItem.getUser().getId())
+                    .user(basketItem.getUser())
                     .userName(basketItem.getUser().getLastName() + ", " + basketItem.getUser().getFirstName())
                     .operationType(basketItem.getOperationType())
                     .operationDate(currentDate)
@@ -124,7 +124,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
                 .author(book.getAuthorLastName() + ", " + book.getAuthorFirstName())
                 .bookTitle(book.getTitle())
                 .bookId(book.getId())
-                .userId(user.getId())
+                .user(user)
                 .userName(user.getLastName() + ", " + user.getFirstName())
                 .operationType(OperationType.RESERVATION)
                 .operationDate(currentDate)
@@ -142,7 +142,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
         String endDate = "1970.01.01";
         String query = "select o from Operation o " +
-                "inner join User u on o.userId=u.id " +
+                "inner join User u on o.user.id=u.id " +
                 "inner join Book b on o.bookId=b.id " +
                 "where " +
                 "u.id=" + userId + " and " +

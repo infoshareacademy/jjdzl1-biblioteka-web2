@@ -269,13 +269,13 @@ public class Service {
     public Response addOperation(Operation operation) throws SQLException, ClassNotFoundException {
 
         Book book = booksRepository.getBookById(operation.getBookId());
-        User user = usersRepository.getUserById(operation.getUserId());
+        User user = usersRepository.getUserById(operation.getUser().getId());
 
         if (book != null && user != null) {
             if (book.getStatus().equals(BookStatus.Dostępna)) {
 
                 operation = Operation.builder()
-                        .userId(operation.getUserId())
+                        .user(operation.getUser())
                         .userName(user.getLastName() + ", " + user.getFirstName())
                         .bookId(operation.getBookId())
                         .bookTitle(book.getTitle())
