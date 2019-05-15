@@ -24,7 +24,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Operation> AllOperationList(String operationType, String userId) throws SQLException, ClassNotFoundException {
+    public List<Operation> AllOperationList(String operationType, String userId, LocalDate firstDate, LocalDate lastDate) throws SQLException, ClassNotFoundException {
 
         String query = "select o from Operation o " +
                 "inner join User u on o.user.id=u.id " +
@@ -37,6 +37,11 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         }
 
         if (userId != null) query += " and o.user.id=" + userId;
+
+        if (firstDate != null && lastDate != null) {
+            query += " and o.startDate between " + firstDate + " and " + lastDate;
+        }
+
 
         TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
         List<Operation> operationsList = operationResult.getResultList();

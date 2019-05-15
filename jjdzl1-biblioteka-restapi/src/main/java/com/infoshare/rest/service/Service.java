@@ -231,13 +231,14 @@ public class Service {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+
     @GET
     @Path("/operations")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id) throws SQLException, ClassNotFoundException {
 
         if (type == null) type = "all";
-        Collection<Operation> operations = operationsRepository.AllOperationList(type, null);
+        Collection<Operation> operations = operationsRepository.AllOperationList(type, null,null,null);
         if (operations.isEmpty()) {
             return Response.noContent().build();
         }
@@ -247,6 +248,7 @@ public class Service {
         LOGGER.info("Wylistowano operacje typu: " + type + " dla użytkownika :" + log);
         return Response.ok(operations).build();
     }
+
 
     @GET
     @Path("/operation")

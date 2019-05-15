@@ -17,6 +17,9 @@
 
 <%
     List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
+    String StringUser=request.getParameter("userId");
+    Integer user=null;
+    if (StringUser!=null) user=Integer.parseInt(StringUser);
 
     String operationType = request.getParameter("operationType");
     if (operationType == null || operationType.equals("all")) {
@@ -41,7 +44,9 @@
                 <div class="mr-auto p-2 align-items-start"><h4>Lista operacji: <%=operationType%></h4>
                 </div>
                 <div class="p2 align-items-end">
-                    <form method="GET" action="SaveBasketServlet" class="addUser">
+                    <form method="GET" action="GetAttributeOperationRepository" class="addUser">
+                        <input type="hidden" name="operationType" value="<%=operationType%>">
+                        <input type="hidden" name="userId" value="<%=user%>">
                         <table>
                             <tr>
                                 <td>

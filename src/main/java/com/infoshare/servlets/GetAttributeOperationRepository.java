@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +28,20 @@ public class GetAttributeOperationRepository extends HttpServlet {
         List<Operation> operationsList = new ArrayList<>();
         String operationType = req.getParameter("operationType");
         String userId = req.getParameter("userId");
+        String stringFirstDate = req.getParameter("firstDate");
+        String stringLastDate = req.getParameter("lastDate");
+        LocalDate firstDate = null;
+        LocalDate lastDate = null;
+
+        if (stringFirstDate != null && stringLastDate != null) {
+            firstDate = LocalDate.parse(req.getParameter("firstDate"));
+            lastDate = LocalDate.parse(req.getParameter("firstDate"));
+        }
+
         if (operationType == null || operationType.isEmpty()) operationType = "all";
 
         try {
-            operationsList = operationsRepository.AllOperationList(operationType, userId);
+            operationsList = operationsRepository.AllOperationList(operationType, userId, firstDate, lastDate);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -39,7 +50,7 @@ public class GetAttributeOperationRepository extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("operationRepositoryDao", operationsList);
 
-        resp.sendRedirect("listOfOperations.jsp?operationType="+operationType);
+        resp.sendRedirect("listOfOperations.jsp?operationType=" + operationType);
     }
 }
 
