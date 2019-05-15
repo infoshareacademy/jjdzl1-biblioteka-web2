@@ -39,7 +39,7 @@ public class GetAttributeOperationRepository extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("operationRepositoryDao", operationsList);
 
-        resp.sendRedirect("listOfOperations.jsp");
+        resp.sendRedirect("listOfOperations.jsp?operationType="+operationType);
     }
 }
 

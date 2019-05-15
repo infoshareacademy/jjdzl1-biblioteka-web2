@@ -1,9 +1,6 @@
-<%@ page import="com.infoshare.logic.repository.OperationsRepositoryDao" %>
-<%@ page import="com.infoshare.logic.repository.OperationsRepositoryDaoBeen" %>
 <%@ page import="com.infoshare.logic.domain.Operation" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="com.infoshare.servlets.SaveBasketServlet" %>
 <%@ page import="com.infoshare.logic.domain.OperationType" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -18,15 +15,43 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-<%List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");%>
+<%
+    List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
+%>
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
             <% if (operations.size() == 0) {
-            %> Brak operacji na koncie<%
-        } else {%>
-
+            %>
+            Brak operacji
+            <%
+            } else {
+            %>
+            <div class="d-flex">
+                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji</h4>
+                </div>
+                <div class="p2 align-items-end">
+                    <form method="GET" action="SaveBasketServlet" class="addUser">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="date" class="form-control" name="firstDate"
+                                           value="<%=LocalDate.now().withDayOfMonth(1)%>"/>
+                                </td>
+                                <td>
+                                    <input type="date" class="form-control" name="firstDate"
+                                           value="<%=LocalDate.now()%>"/>
+                                </td>
+                                <td> &nbsp;&nbsp;&nbsp;</td>
+                                <td>
+                                    <button type="submit" class="btn btn-success">Dostosuj okres</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
