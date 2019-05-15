@@ -268,7 +268,7 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addOperation(Operation operation) throws SQLException, ClassNotFoundException {
 
-        Book book = booksRepository.getBookById(operation.getBookId());
+        Book book = booksRepository.getBookById(operation.getBook().getId());
         User user = usersRepository.getUserById(operation.getUser().getId());
 
         if (book != null && user != null) {
@@ -277,7 +277,7 @@ public class Service {
                 operation = Operation.builder()
                         .user(operation.getUser())
                         .userName(user.getLastName() + ", " + user.getFirstName())
-                        .bookId(operation.getBookId())
+                        .book(operation.getBook())
                         .bookTitle(book.getTitle())
                         .author(book.getAuthorLastName() + "," + book.getAuthorFirstName())
                         .operationDate(operation.getOperationDate())

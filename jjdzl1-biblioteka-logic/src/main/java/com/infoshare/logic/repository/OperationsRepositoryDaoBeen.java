@@ -28,7 +28,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
         String query = "select o from Operation o " +
                 "inner join User u on o.user.id=u.id " +
-                "inner join Book b on o.bookId=b.id ";
+                "inner join Book b on o.book.id=b.id ";
 
         if (operationType.equals("reservation")) {
             query += "where o.operationType='RESERVATION'";
@@ -49,7 +49,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
         String query = "select o from Operation o " +
                 "inner join User u on o.user.id=u.id " +
-                "inner join Book b on o.bookId=b.id " +
+                "inner join Book b on o.book.id=b.id " +
                 "and o.id=" + id;
 
         TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
@@ -85,7 +85,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             Operation operation = Operation.builder()
                     .author(basketItem.getBook().getAuthorLastName() + ", " + basketItem.getBook().getAuthorFirstName())
                     .bookTitle(basketItem.getBook().getTitle())
-                    .bookId(basketItem.getBook().getId())
+                    .book(basketItem.getBook())
                     .user(basketItem.getUser())
                     .userName(basketItem.getUser().getLastName() + ", " + basketItem.getUser().getFirstName())
                     .operationType(basketItem.getOperationType())
@@ -108,7 +108,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         Operation operation = getOperation(id);
         if (operation != null) {
             entityManager.remove(operation);
-            Book book = booksRepository.getBookById(operation.getBookId());
+            Book book = booksRepository.getBookById(operation.getBook().getId());
             book.setStatus(BookStatus.Dostępna);
             booksRepository.editBook(book);
         }
@@ -123,7 +123,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         Operation operation = Operation.builder()
                 .author(book.getAuthorLastName() + ", " + book.getAuthorFirstName())
                 .bookTitle(book.getTitle())
-                .bookId(book.getId())
+                .book(book)
                 .user(user)
                 .userName(user.getLastName() + ", " + user.getFirstName())
                 .operationType(OperationType.RESERVATION)
@@ -143,7 +143,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         String endDate = "1970.01.01";
         String query = "select o from Operation o " +
                 "inner join User u on o.user.id=u.id " +
-                "inner join Book b on o.bookId=b.id " +
+                "inner join Book b on o.book.id=b.id " +
                 "where " +
                 "u.id=" + userId + " and " +
                 "o.endDate='" + endDate + "'";

@@ -81,6 +81,7 @@
                     int rowNumber = 1;
                     for (Operation operation : operations) {
                 %>
+
                 <tr class="listofitemps">
                     <th scope="row"><%=rowNumber%>
                     </th>
@@ -103,7 +104,7 @@
 
                     </td>
                     <td>
-                        <input type="hidden" name="bookId" value="<%=operation.getBookId()%>"/>
+                        <input type="hidden" name="bookId" value="<%=operation.getBook().getId()%>"/>
                         <input type="hidden" name="operationId" value="<%=operation.getId()%>"/>
                         <button type="submit" class="btn btn-success">Zwróć</button>
                         </form>
