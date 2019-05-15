@@ -17,6 +17,15 @@
 
 <%
     List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
+
+    String operationType = request.getParameter("operationType");
+    if (operationType == null || operationType.equals("all")) {
+        operationType = "Wszystkie operacje";
+    } else if (operationType.equals("reservation")) {
+        operationType = "Rezerwacje";
+    } else {
+        operationType = "Wypożyczenia";
+    }
 %>
 <article>
     <div class="content">
@@ -29,7 +38,7 @@
             } else {
             %>
             <div class="d-flex">
-                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji</h4>
+                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji: <%=operationType%></h4>
                 </div>
                 <div class="p2 align-items-end">
                     <form method="GET" action="SaveBasketServlet" class="addUser">
