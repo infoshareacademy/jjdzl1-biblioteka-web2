@@ -34,7 +34,7 @@
     <br/><br/>
     <h4>Dodaj książkę</h4>
     <br/>
-    <form method="POST" action="AddBookServlet" class="addUser" >
+    <form method="POST" action="AddBookServlet" class="addUser">
 
         <div>
             <div>
@@ -54,7 +54,7 @@
         <br/>
         <div class="form-row">
             <div>
-                <input type="number"  class="form-control no-spin" name="isbn" placeholder="Numer ISBN (tylko cyfry)">
+                <input type="number" class="form-control no-spin" name="isbn" placeholder="Numer ISBN (tylko cyfry)">
             </div>
             <div>&nbsp;</div>
             <div>
@@ -65,7 +65,7 @@
         <br/>
         <div>
             <div>
-                <textarea name="description" class="form-control" placeholder="Opis książki"rows="5"></textarea>
+                <textarea name="description" class="form-control" placeholder="Opis książki" rows="5"></textarea>
             </div>
         </div>
         <br/>
@@ -75,7 +75,7 @@
 </div>
 
 <footer>
-<%@include file="../include/footer.jsp" %>
+    <%@include file="../include/footer.jsp" %>
 </footer>
 
 </body>

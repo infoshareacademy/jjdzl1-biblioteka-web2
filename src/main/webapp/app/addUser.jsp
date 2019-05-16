@@ -12,9 +12,7 @@
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-
 <div class="addUserForm">
-
     <%
         List<String> validationResult = UserValidator.validationResult;
         if (validationResult.size() > 0) { %>

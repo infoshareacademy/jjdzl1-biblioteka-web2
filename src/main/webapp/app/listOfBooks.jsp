@@ -15,7 +15,6 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
 <%
     String order = request.getParameter("order");
     String pageString = request.getParameter("page");
@@ -26,7 +25,6 @@
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
-    String titleOfBook = request.getParameter("titleOfBook");
 
     String orderTitle;
     int recordsPerPage = RecordPerPage.readProperties();

@@ -1,6 +1,7 @@
 package com.infoshare.logic.validation;
 
 import com.infoshare.logic.domain.Book;
+
 import javax.ejb.Stateless;
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -12,11 +12,18 @@ import java.util.List;
 public interface BooksRepositoryDao {
 
     List<Book> bookList(String order, Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException;
-    Book getBookById (int id) throws SQLException,ClassNotFoundException;
-    List<Book> getBookByTitle(String title) throws SQLException,ClassNotFoundException;
+
+    Book getBookById(int id) throws SQLException, ClassNotFoundException;
+
+    List<Book> getBookByTitle(String title) throws SQLException, ClassNotFoundException;
+
     void addNewBook(Book book);
-    void editBook (Book book);
+
+    void editBook(Book book);
+
     Book createBookFromForm(HttpServletRequest req);
+
     List<String> validate(Book book);
+
     void deleteBook(int id) throws SQLException, ClassNotFoundException;
 }

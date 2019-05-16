@@ -51,9 +51,9 @@
                 <h6>ISBN: <%=book.getIsbn()%> Rok wydania: <%=book.getDaterelease()%>
                 </h6></br>
                 <br/>
-                <span><%if (book.getDescription()!=null){%>
+                <span><%if (book.getDescription() != null) {%>
                     <%=book.getDescription()%>
-                <%}else{%> Brak opisu <%}%></span>
+                <%} else {%> Brak opisu <%}%></span>
 
             </li>
             <li class="col-1"></li>

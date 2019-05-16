@@ -18,7 +18,6 @@
         BasketRepositoryDao basketRepository = new BasketRepositoryDaoBean();
         basketRepository.clearBasketList(basketToClear);
         session.removeAttribute("basket");
-
     }
 %>
 <body>

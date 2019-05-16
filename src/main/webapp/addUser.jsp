@@ -12,9 +12,6 @@
     <%@include file="/include/header.jsp" %>
 </header>
 
-
-
-
 <div class="addUserForm">
     <%
         List<String> validationResult = UserValidator.validationResult;

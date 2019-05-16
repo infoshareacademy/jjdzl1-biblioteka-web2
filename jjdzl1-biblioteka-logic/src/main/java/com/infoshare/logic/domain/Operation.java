@@ -2,7 +2,6 @@ package com.infoshare.logic.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;

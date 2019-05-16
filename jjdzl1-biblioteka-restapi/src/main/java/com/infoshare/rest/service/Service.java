@@ -238,7 +238,7 @@ public class Service {
     public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id) throws SQLException, ClassNotFoundException {
 
         if (type == null) type = "all";
-        Collection<Operation> operations = operationsRepository.AllOperationList(type, null,null,null);
+        Collection<Operation> operations = operationsRepository.AllOperationList(type, null, null, null);
         if (operations.isEmpty()) {
             return Response.noContent().build();
         }

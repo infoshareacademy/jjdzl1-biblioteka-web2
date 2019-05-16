@@ -14,7 +14,6 @@
     <%@include file="/./include/appHeader.jsp" %>
 </header>
 
-
 <article>
     <div class="addUserForm">
         <%
@@ -30,7 +29,8 @@
             </li>
             <%}%>
         </ul>
-        <% validationResult.clear();}%>
+        <% validationResult.clear();
+        }%>
 
         <br/><br/><br/>
         <% User user = (User) request.getSession(true).getAttribute("UserObject");

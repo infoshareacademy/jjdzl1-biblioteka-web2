@@ -14,8 +14,10 @@ import java.util.List;
 
 @WebServlet("/GetAttributeBookRepository")
 public class GetAttributeBookRepository extends HttpServlet {
+
     @EJB
     private BooksRepositoryDao booksRepositoryDao;
+
     private List<Book> bookList = new ArrayList<>();
 
     @Override
