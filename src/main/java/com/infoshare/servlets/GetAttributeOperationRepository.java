@@ -35,7 +35,7 @@ public class GetAttributeOperationRepository extends HttpServlet {
 
         if (stringFirstDate != null && stringLastDate != null) {
             firstDate = LocalDate.parse(req.getParameter("firstDate"));
-            lastDate = LocalDate.parse(req.getParameter("firstDate"));
+            lastDate = LocalDate.parse(req.getParameter("lastDate"));
         }
 
         if (operationType == null || operationType.isEmpty()) operationType = "all";

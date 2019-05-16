@@ -20,33 +20,29 @@
     String StringUser=request.getParameter("userId");
     Integer user=null;
     if (StringUser!=null) user=Integer.parseInt(StringUser);
-
+    String operationTypePl="";
     String operationType = request.getParameter("operationType");
     if (operationType == null || operationType.equals("all")) {
-        operationType = "Wszystkie operacje";
+        operationTypePl = "Wszystkie operacje";
     } else if (operationType.equals("reservation")) {
-        operationType = "Rezerwacje";
+        operationTypePl = "Rezerwacje";
     } else {
-        operationType = "Wypożyczenia";
+        operationTypePl = "Wypożyczenia";
     }
 %>
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
-            <% if (operations.size() == 0) {
-            %>
-            Brak operacji
-            <%
-            } else {
-            %>
             <div class="d-flex">
-                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji: <%=operationType%></h4>
+                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji: <%=operationTypePl%></h4>
                 </div>
                 <div class="p2 align-items-end">
                     <form method="GET" action="GetAttributeOperationRepository" class="addUser">
                         <input type="hidden" name="operationType" value="<%=operationType%>">
+                        <% if (user!=null){%>
                         <input type="hidden" name="userId" value="<%=user%>">
+                        <%}%>
                         <table>
                             <tr>
                                 <td>
@@ -54,7 +50,7 @@
                                            value="<%=LocalDate.now().withDayOfMonth(1)%>"/>
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control" name="firstDate"
+                                    <input type="date" class="form-control" name="lastDate"
                                            value="<%=LocalDate.now()%>"/>
                                 </td>
                                 <td> &nbsp;&nbsp;&nbsp;</td>
@@ -66,6 +62,12 @@
                     </form>
                 </div>
             </div>
+            <% if (operations.size() == 0) {
+            %>
+            Brak operacji
+            <%
+            } else {
+            %>
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">

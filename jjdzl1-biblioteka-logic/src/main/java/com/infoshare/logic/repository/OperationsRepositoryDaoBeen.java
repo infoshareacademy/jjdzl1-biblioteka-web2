@@ -39,7 +39,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         if (userId != null) query += " and o.user.id=" + userId;
 
         if (firstDate != null && lastDate != null) {
-            query += " and o.startDate between " + firstDate + " and " + lastDate;
+            query += " and o.startDate between '" + firstDate + "' and '" + lastDate + "'";
         }
 
 
