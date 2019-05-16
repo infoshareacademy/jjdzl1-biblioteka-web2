@@ -17,10 +17,12 @@
 
 <%
     List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
-    String StringUser=request.getParameter("userId");
-    Integer user=null;
-    if (StringUser!=null) user=Integer.parseInt(StringUser);
-    String operationTypePl="";
+    String StringUser = request.getParameter("userId");
+    String firstDate = request.getParameter("firstDate");
+    String lastDate = request.getParameter("lastDate");
+    Integer user = null;
+    if (StringUser != null) user = Integer.parseInt(StringUser);
+    String operationTypePl = "";
     String operationType = request.getParameter("operationType");
     if (operationType == null || operationType.equals("all")) {
         operationTypePl = "Wszystkie operacje";
@@ -35,12 +37,17 @@
         <div class="contentInside">
             <br/>
             <div class="d-flex">
-                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji: <%=operationTypePl%></h4>
+                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji: <%=operationTypePl%>
+                </h4>
+                    <%
+                        if (firstDate != null && lastDate != null) {
+                    %> w okresie od <%=firstDate%> do <%=lastDate%>
+                    <%}%>
                 </div>
                 <div class="p2 align-items-end">
                     <form method="GET" action="GetAttributeOperationRepository" class="addUser">
                         <input type="hidden" name="operationType" value="<%=operationType%>">
-                        <% if (user!=null){%>
+                        <% if (user != null) {%>
                         <input type="hidden" name="userId" value="<%=user%>">
                         <%}%>
                         <table>

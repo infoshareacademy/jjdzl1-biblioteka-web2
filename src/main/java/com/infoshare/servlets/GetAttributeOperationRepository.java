@@ -50,7 +50,15 @@ public class GetAttributeOperationRepository extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("operationRepositoryDao", operationsList);
 
-        resp.sendRedirect("listOfOperations.jsp?operationType=" + operationType);
+        String redirect = "listOfOperations.jsp?operationType=" + operationType;
+        if (userId != null) {
+            redirect += "&userId=" + userId;
+        }
+        if (lastDate != null && firstDate != null) {
+            redirect += "&firstDate=" + firstDate + "&lastDate=" + lastDate;
+        }
+
+        resp.sendRedirect(redirect);
     }
 }
 
