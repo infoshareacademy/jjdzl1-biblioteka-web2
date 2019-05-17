@@ -19,14 +19,14 @@ public class Operation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
-    private int userId;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private User user;
 
     @Column
     private String userName;
 
-    @Column
-    private int bookId;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private Book book;
 
     @Column
     private String bookTitle;
@@ -51,14 +51,14 @@ public class Operation implements Serializable {
         //for JPA
     }
 
-    public Operation(int id, int userId, String userName, int bookId, String bookTitle,
+    public Operation(int id, User user, String userName, Book book, String bookTitle,
                      String author, LocalDate operationDate, LocalDate startDate,
                      LocalDate endDate, OperationType operationType) {
 
         this.id = id;
-        this.userId = userId;
+        this.user = user;
         this.userName = userName;
-        this.bookId = bookId;
+        this.book = book;
         this.bookTitle = bookTitle;
         this.author = author;
         this.operationDate = operationDate;
@@ -67,13 +67,13 @@ public class Operation implements Serializable {
         this.operationType = operationType;
     }
 
-    public Operation(int userId, String userName, int bookId, String bookTitle,
+    public Operation(User user, String userName, Book book, String bookTitle,
                      String author, LocalDate operationDate, LocalDate startDate,
                      LocalDate endDate, OperationType operationType) {
 
-        this.userId = userId;
+        this.user = user;
         this.userName = userName;
-        this.bookId = bookId;
+        this.book = book;
         this.bookTitle = bookTitle;
         this.author = author;
         this.operationDate = operationDate;
@@ -82,4 +82,79 @@ public class Operation implements Serializable {
         this.operationType = operationType;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public LocalDate getOperationDate() {
+        return operationDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public OperationType getOperationType() {
+        return operationType;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setOperationDate(LocalDate operationDate) {
+        this.operationDate = operationDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setOperationType(OperationType operationType) {
+        this.operationType = operationType;
+    }
 }

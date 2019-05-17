@@ -56,7 +56,6 @@
 
             </div>
 
-
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
@@ -76,8 +75,6 @@
                 <tbody>
                 <%
                     List<User> listOfUsers = (List<User>) request.getSession().getAttribute("userRepositoryDao");
-
-                    request.getSession().removeAttribute("userRepositoryDao");
 
                     int rowNumber = 1;
                     for (User user : listOfUsers) {

@@ -14,7 +14,6 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
 <div class="addUserForm">
     <%
         Book book = (Book) session.getAttribute("editedBook");

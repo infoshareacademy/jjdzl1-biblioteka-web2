@@ -231,13 +231,14 @@ public class Service {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+
     @GET
     @Path("/operations")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id) throws SQLException, ClassNotFoundException {
 
         if (type == null) type = "all";
-        Collection<Operation> operations = operationsRepository.AllOperationList(type, null);
+        Collection<Operation> operations = operationsRepository.AllOperationList(type, null, null, null);
         if (operations.isEmpty()) {
             return Response.noContent().build();
         }
@@ -247,6 +248,7 @@ public class Service {
         LOGGER.info("Wylistowano operacje typu: " + type + " dla użytkownika :" + log);
         return Response.ok(operations).build();
     }
+
 
     @GET
     @Path("/operation")
@@ -268,16 +270,16 @@ public class Service {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addOperation(Operation operation) throws SQLException, ClassNotFoundException {
 
-        Book book = booksRepository.getBookById(operation.getBookId());
-        User user = usersRepository.getUserById(operation.getUserId());
+        Book book = booksRepository.getBookById(operation.getBook().getId());
+        User user = usersRepository.getUserById(operation.getUser().getId());
 
         if (book != null && user != null) {
             if (book.getStatus().equals(BookStatus.Dostępna)) {
 
                 operation = Operation.builder()
-                        .userId(operation.getUserId())
+                        .user(operation.getUser())
                         .userName(user.getLastName() + ", " + user.getFirstName())
-                        .bookId(operation.getBookId())
+                        .book(operation.getBook())
                         .bookTitle(book.getTitle())
                         .author(book.getAuthorLastName() + "," + book.getAuthorFirstName())
                         .operationDate(operation.getOperationDate())

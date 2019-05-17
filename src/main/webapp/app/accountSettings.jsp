@@ -15,7 +15,6 @@
 
 <%
     User user = (User) request.getSession(true).getAttribute("UserObject");
-
 %>
 
 <article>
@@ -33,7 +32,10 @@
             </li>
             <%}%>
         </ul>
-        <%validationResult.clear();}%>
+        <%
+                validationResult.clear();
+            }
+        %>
 
         <br/><br/><br/>
         <h4>Edycja konta: <%=user.getLastName() + ", " + user.getFirstName()%>

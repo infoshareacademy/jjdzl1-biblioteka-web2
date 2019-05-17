@@ -15,15 +15,16 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
 <%
     String order = request.getParameter("order");
     String pageString = request.getParameter("page");
     String edit = request.getParameter("edit");
+    String reservation = request.getParameter("reservation");
+    if (reservation == null)
+        reservation = "";
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
-    String titleOfBook = request.getParameter("titleOfBook");
 
     String orderTitle;
     int recordsPerPage = RecordPerPage.readProperties();
@@ -84,7 +85,7 @@
                     <th scope="col">Autor</th>
                     <th scope="col">Nr ISBN</th>
                     <th scope="col">Rok wydania</th>
-                    <% if (session.getAttribute("selectedUser") != null) {
+                    <% if (session.getAttribute("selectedUser") != null || reservation.equals("user")) {
                         User user = (User) session.getAttribute("selectedUser");
                     %>
                     <th scope="col">Działania</th>
@@ -95,10 +96,11 @@
                 <%
                     int rowNumber = 1 + (pageNumber * recordsPerPage) - recordsPerPage;
                     List<Book> listOfBooks = (List<Book>) request.getSession().getAttribute("bookList");
-//                    request.getSession().removeAttribute("bookList");
+
                     for (Book book : listOfBooks) {
                 %>
-                <tr class="listofitemps " style="cursor:pointer"
+
+                <tr class="listofitemps" style="cursor:pointer"
                         <%if (edit != null && edit.equals("true")) {%>
                     onclick="window.location='EditBookServlet?id=<%=book.getId()%>'" data-toggle="tooltip"
                         <%} else if (edit == null || edit.isEmpty() || edit != "truegi") {%>
@@ -120,15 +122,27 @@
                         <%=book.getDaterelease()%>
                     </td>
 
-                    <% if (session.getAttribute("selectedUser") != null) {
-                        User user = (User) session.getAttribute("selectedUser");
-
-                        if (book.getStatus() != BookStatus.Dostępna) {%>
+                    <% if (book.getStatus() != BookStatus.Dostępna &&
+                            (reservation.equals("user") || session.getAttribute("selectedUser") != null)) {%>
                     <td>
                         <button type="submit" class="btn btn-secondary btn-sm" disabled><%=book.getStatus()%>
                         </button>
                     </td>
-                    <%} else {%>
+                    <%} else if (session.getAttribute("selectedUser") == null && reservation.equals("user")) { %>
+                    <td>
+                        <div>
+                            <form method="POST" action="UserReservationServlet" class="addUser">
+                                <input type="hidden" name="bookId" value="<%=book.getId()%>"/>
+                                <button type="submit" class="btn btn-info" data-toggle="tooltip" title="Rezerwuj">
+                                    Rezerwuj
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                    <%
+                    } else if (session.getAttribute("selectedUser") != null) {
+                        User user = (User) session.getAttribute("selectedUser");
+                    %>
                     <td>
                         <div>
                             <form method="GET" action="UserBasketServlet" class="addUser">
@@ -146,10 +160,7 @@
                             </form>
                         </div>
                     </td>
-                    <%
-                            }
-                        }
-                    %>
+                    <%}%>
                 </tr>
                 <%
                         rowNumber++;

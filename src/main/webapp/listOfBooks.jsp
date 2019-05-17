@@ -30,14 +30,6 @@
         orderTitle = " (wg tytułu)";
         order = "title";
     } else orderTitle = " (wg autora)";
-
-
-
-
-
-
-
-
 %>
 <article>
     <div class="content">

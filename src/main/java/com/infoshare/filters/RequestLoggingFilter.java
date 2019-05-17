@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Enumeration;
 
-/**
- * Servlet Filter implementation class RequestLoggingFilter
- */
 @WebFilter("/RequestLoggingFilter")
 public class RequestLoggingFilter implements Filter {
 

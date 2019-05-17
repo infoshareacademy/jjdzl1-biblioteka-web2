@@ -38,8 +38,9 @@
             Ultimate.
             W projekcie użyto technologii Hibernate jako implemantacja Java Persistance API, Enterprise Java Beans, Java
             Server Pages, Maven, MySQL, Bootstrap, Html, CSS, JavaScript.
-        <br/>
-            Aplikacja została uruchomiona na serwerze aplikacyjnym WildFly 15(JBoss) a baza danych na Dockerze - kontener z serwerem MySQL.
+            <br/>
+            Aplikacja została uruchomiona na serwerze aplikacyjnym WildFly 15(JBoss) a baza danych na Dockerze -
+            kontener z serwerem MySQL.
             <br/>
             Podczas tworzenia aplikacji używaliśmy również narządzi pomocniczych Jira (Scrum), Slack (komunikator).
         </div>
@@ -75,8 +76,10 @@
                     <h3><a href="#">Łukasz Bezłada</a></h3>
                     <p>Student infoShare Academy Lublin</p>
                     <ul>
-                        <a href="https://www.linkedin.com/in/lukaszbezlada/"><img src="img/linked.png" width="50px" height="50px"/></a>
-                        <a href="https://github.com/lukaszbezlada"><img src="img/github.png" width="50px" height="50px"/></a>
+                        <a href="https://www.linkedin.com/in/lukaszbezlada/"><img src="img/linked.png" width="50px"
+                                                                                  height="50px"/></a>
+                        <a href="https://github.com/lukaszbezlada"><img src="img/github.png" width="50px"
+                                                                        height="50px"/></a>
                     </ul>
 
                 </div>
@@ -99,7 +102,7 @@
         <div class="d-flex justify-content-center">
             <a href="https://infoshareacademy.com/"><img src="img/logo.svg" width="150px"></a>
         </div>
-<br/><br/>
+        <br/><br/>
     </div>
 </section>
 

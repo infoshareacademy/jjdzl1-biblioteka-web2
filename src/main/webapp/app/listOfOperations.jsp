@@ -1,9 +1,6 @@
-<%@ page import="com.infoshare.logic.repository.OperationsRepositoryDao" %>
-<%@ page import="com.infoshare.logic.repository.OperationsRepositoryDaoBeen" %>
 <%@ page import="com.infoshare.logic.domain.Operation" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="com.infoshare.servlets.SaveBasketServlet" %>
 <%@ page import="com.infoshare.logic.domain.OperationType" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -18,11 +15,66 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
-
+<%
+    List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
+    String StringUser = request.getParameter("userId");
+    String firstDate = request.getParameter("firstDate");
+    String lastDate = request.getParameter("lastDate");
+    Integer user = null;
+    if (StringUser != null) user = Integer.parseInt(StringUser);
+    String operationTypePl = "";
+    String operationType = request.getParameter("operationType");
+    if (operationType == null || operationType.equals("all")) {
+        operationTypePl = "Wszystkie operacje";
+    } else if (operationType.equals("reservation")) {
+        operationTypePl = "Rezerwacje";
+    } else {
+        operationTypePl = "Wypożyczenia";
+    }
+%>
 <article>
     <div class="content">
         <div class="contentInside">
             <br/>
+            <div class="d-flex">
+                <div class="mr-auto p-2 align-items-start"><h4>Lista operacji: <%=operationTypePl%>
+                </h4>
+                    <%
+                        if (firstDate != null && lastDate != null) {
+                    %> w okresie od <%=firstDate%> do <%=lastDate%>
+                    <%}%>
+                </div>
+                <div class="p2 align-items-end">
+                    <form method="GET" action="GetAttributeOperationRepository" class="addUser">
+                        <input type="hidden" name="operationType" value="<%=operationType%>">
+                        <% if (user != null) {%>
+                        <input type="hidden" name="userId" value="<%=user%>">
+                        <%}%>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="date" class="form-control" name="firstDate"
+                                           value="<%=LocalDate.now().withDayOfMonth(1)%>"/>
+                                </td>
+                                <td>
+                                    <input type="date" class="form-control" name="lastDate"
+                                           value="<%=LocalDate.now()%>"/>
+                                </td>
+                                <td> &nbsp;&nbsp;&nbsp;</td>
+                                <td>
+                                    <button type="submit" class="btn btn-success">Dostosuj okres</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <% if (operations.size() == 0) {
+            %>
+            Brak operacji
+            <%
+            } else {
+            %>
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
@@ -38,8 +90,6 @@
                 <tbody>
                 <%
                     int rowNumber = 1;
-
-                    List<Operation> operations = (List) session.getAttribute("operationRepositoryDao");
                     for (Operation operation : operations) {
                 %>
                 <tr class="listofitemps">
@@ -70,6 +120,7 @@
                     }%>
                 </tbody>
             </table>
+            <%}%>
         </div>
     </div>
 </article>

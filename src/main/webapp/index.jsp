@@ -8,34 +8,33 @@
 </head>
 <body>
 <div class="mainpage">
-<header>
-    <%@include file="include/header.jsp" %>
-</header>
+    <header>
+        <%@include file="include/header.jsp" %>
+    </header>
 
 
-<% if (session.getAttribute("loginFalse") == "loginFalse") { %>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Błędna nazwa użytkownika lub hasło!</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<%
-        request.getSession().removeAttribute("loginFalse");
-    }
-%>
-<% if (request.getSession().getAttribute("addUser") == "userAdded") { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Twoje konto jest aktywne, możesz się zalogować</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<%
-    }
-    request.getSession().removeAttribute("addUser");
-%>
-
+    <% if (session.getAttribute("loginFalse") == "loginFalse") { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Błędna nazwa użytkownika lub hasło!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+            request.getSession().removeAttribute("loginFalse");
+        }
+    %>
+    <% if (request.getSession().getAttribute("addUser") == "userAdded") { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Twoje konto jest aktywne, możesz się zalogować</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <%
+        }
+        request.getSession().removeAttribute("addUser");
+    %>
 
 
     <div class="row">
