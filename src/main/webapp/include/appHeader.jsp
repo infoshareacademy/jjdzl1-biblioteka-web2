@@ -82,6 +82,8 @@
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item" href="GetAttributesUserRepository?operation=newoperation"> Rezerwuj / Wypożycz </a>
+                    <a class="dropdown-item" href="#"> Wypożycz zarezerwowaną książkę </a>
+
                     <a class="dropdown-item" href="GetAttributesUserRepository?operation=returnbook"> Zwrot książki </a>
 
                     <% if (session.getAttribute("selectedUser") != null) {%>
