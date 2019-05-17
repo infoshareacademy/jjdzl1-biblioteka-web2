@@ -66,7 +66,8 @@
     <% if (request.getSession().getAttribute("userReservationAdded") != null) { %>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Zarezerwowano książkę: <%=request.getSession().getAttribute("userReservationAdded")%>
-            </br>Rezerwacja ważna do <%=LocalDate.now().plusDays(3)%></strong>
+            </br>Rezerwacja ważna do <%=LocalDate.now().plusDays(3)%>
+        </strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -111,6 +112,10 @@
         String users = null;
         String disabledUsers = null;
 
+        String activeReservation = null;
+        String expiredReservation = null;
+
+
         Map<String, String> stats = (HashMap) session.getAttribute("stats");
         time = stats.get("time");
 
@@ -123,6 +128,8 @@
         users = stats.get("users");
         admins = stats.get("admins");
         disabledUsers = stats.get("disabled");
+        activeReservation = stats.get("activeReservation");
+        expiredReservation = stats.get("expiredReservation");
 
         if (session.getAttribute("normalUser") == null) {
     %>
@@ -165,6 +172,7 @@
                 <h4><b>Statystyki wypożyczeń</b></h4>
                 <table class="table table-borderless">
                     <thead class="listofitemps">
+
                     <tr>
                         <td>Aktualnie wypożyczonych:</td>
                         <td><%=borrowBooks%>
@@ -173,6 +181,16 @@
                         <td><%=reservationBooks%>
                         </td>
                     </tr>
+
+                    <tr>
+                        <td>Aktywnych rezerwacji:</td>
+                        <td><%=activeReservation%>
+                        </td>
+                        <td>Przeterminowanych rezerwacji:</td>
+                        <td><%=expiredReservation%>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>Przeterminowanych wypożyczeń:</td>
                         <td>0</td>
@@ -180,6 +198,7 @@
                         <td><%=availableBooks%>
                         </td>
                     </tr>
+
                     </tr>
                     </thead>
                 </table>

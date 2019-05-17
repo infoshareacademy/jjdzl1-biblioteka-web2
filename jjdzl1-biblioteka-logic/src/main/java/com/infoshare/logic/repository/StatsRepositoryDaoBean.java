@@ -4,6 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -34,6 +35,10 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
         statsMap.put("users", countUsers("user"));
         statsMap.put("admins", countUsers("admin"));
         statsMap.put("disabled", countUsers("disabled"));
+
+        statsMap.put("activeReservation", countOperations("activeReservation"));
+        statsMap.put("expiredReservation", countOperations("expiredReservation"));
+
 
 
         return statsMap;
@@ -73,4 +78,19 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
         return countUser;
     }
 
+    public String countOperations(String status) {
+
+        String stringQuery = null;
+        if (status.equals("all")) {
+            stringQuery = "select count(o) from Operation o";
+        } else if (status.equals("activeReservation")) {
+            stringQuery = "select count(o) from Operation o where o.operationType='RESERVATION' and o.endDate >=current_date";
+        } else if (status.equals("expiredReservation")) {
+            stringQuery = "select count(o) from Operation o where o.operationType='RESERVATION' and o.endDate < current_date";
+        }
+
+        Query query = entityManager.createQuery(stringQuery);
+        String countOperation = String.valueOf(query.getSingleResult());
+        return countOperation;
+    }
 }
