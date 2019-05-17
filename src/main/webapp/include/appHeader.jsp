@@ -82,8 +82,6 @@
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <% if (session.getAttribute("normalUser") == null) {%>
                     <a class="dropdown-item" href="GetAttributesUserRepository?operation=newoperation"> Rezerwuj / Wypożycz </a>
-                    <a class="dropdown-item" href="#"> Wypożycz zarezerwowaną książkę </a>
-
                     <a class="dropdown-item" href="GetAttributesUserRepository?operation=returnbook"> Zwrot książki </a>
 
                     <% if (session.getAttribute("selectedUser") != null) {%>
@@ -145,6 +143,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
                     <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>
+                    <a class="dropdown-item" href="ReservationBookServlet?userId=<%=userID%>"> Wypożycz zarezerwowaną książkę </a>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>
                     <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=all&userId=<%=userID%>"> Aktualne rezerwacje i wypożyczenia </a>

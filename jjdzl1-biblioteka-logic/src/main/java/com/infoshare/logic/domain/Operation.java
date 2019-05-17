@@ -82,4 +82,79 @@ public class Operation implements Serializable {
         this.operationType = operationType;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public LocalDate getOperationDate() {
+        return operationDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public OperationType getOperationType() {
+        return operationType;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setOperationDate(LocalDate operationDate) {
+        this.operationDate = operationDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setOperationType(OperationType operationType) {
+        this.operationType = operationType;
+    }
 }

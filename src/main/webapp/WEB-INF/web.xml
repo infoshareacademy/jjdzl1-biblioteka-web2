@@ -194,6 +194,14 @@
         <url-pattern>app/EditBookServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ReservationBookServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.ReservationBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReservationBookServlet</servlet-name>
+        <url-pattern>app/ReservationBookServlet</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
