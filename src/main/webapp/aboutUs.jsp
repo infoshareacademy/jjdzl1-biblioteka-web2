@@ -23,23 +23,29 @@
 
 <section class="our-webcoderskull padding-lg">
     <div class="container">
-        <h2>Nasz zespół</h2>
+        <h2>Kilka słów o nas i o projekcie</h2>
         <div class="justify-content-left">
-            Niniejsza aplikacja webowa - Biblioteka online jest aplikacją wykonaną przez nas jako projekt zaliczeniowy
+            <br/>
+            Niniejsza aplikacja webowa - Biblioteka online jest aplikacją wykonaną jako projekt zaliczeniowy
             na zakończenie sześciomiesiącznego szkolenia z programowania w języku Java.
-            <br/>
-
+            <br/><br/>
             Aplikacja tworzona była w metodologi Scrum i rozwijana w trzech sprintach od aplikacji konsolowej,
-            przez aplikację webową, kończąc na aplikacji webowej z REST API, EJB i Hibernate
+            przez aplikację webową, kończąc na modułowej aplikacji z podziałem na:
+            <br/><br/>
+            <ul>
+                <li> - moduł logika - EJB, Hibernate (JPA)</li>
+                <li> - moduł REST API</li>
+                <li> - moduł webową</li>
+            </ul>
             <br/>
-            W projekcie użyto technologii Java Standard Edition i JAVA Enterprise Edition
-            <br/>
-            Jako narzędzie programistyczne używaliśny oprogramowania firmy JetBrains IntelliJ IDEA 2018 w wersji
-            Ultimate.
+            W projekcie użyto technologii <strong>Java Standard Edition</strong> i <strong>JAVA Enterprise Edition</strong>
+            <br/></br/>
+            Jako narzędzie programistyczne używaliśny oprogramowania firmy <a href="https://www.jetbrains.com/idea/">JetBrains IntelliJ IDEA 2018 w wersji
+            Ultimate.</a><br/>
             W projekcie użyto technologii Hibernate jako implemantacja Java Persistance API, Enterprise Java Beans, Java
             Server Pages, Maven, MySQL, Bootstrap, Html, CSS, JavaScript.
             <br/>
-            Aplikacja została uruchomiona na serwerze aplikacyjnym WildFly 15(JBoss) a baza danych na Dockerze -
+            Aplikacja została uruchomiona na serwerze aplikacyjnym WildFly 15 (JBoss) a baza danych na Dockerze -
             kontener z serwerem MySQL.
             <br/>
             Podczas tworzenia aplikacji używaliśmy również narządzi pomocniczych Jira (Scrum), Slack (komunikator).
