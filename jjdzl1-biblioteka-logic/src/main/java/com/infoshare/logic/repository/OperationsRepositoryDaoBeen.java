@@ -206,4 +206,12 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         List<Operation> listOfUserReservation = userReservation.getResultList();
         return listOfUserReservation;
     }
+
+    public void borrowAfterReservation(Operation operation, Book book){
+
+        entityManager.merge(operation);
+        entityManager.merge(book);
+
+    }
+
 }

@@ -16,6 +16,17 @@
     <%@include file="../include/appHeader.jsp" %>
 </header>
 
+<% if (request.getSession().getAttribute("borrowAfterReservation") != null) { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Wypożyczono książkę: <%=request.getSession().getAttribute("borrowAfterReservation")%></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%
+    }
+    request.getSession().removeAttribute("borrowAfterReservation");
+%>
 <article>
     <div class="content">
         <div class="contentInside">
@@ -28,8 +39,8 @@
             %>
 
             <div class="d-flex">
-                <div class="mr-auto p-2 align-items-start"><h4>Lista aktywnych
-                    rezerwacji: <%=user.getLastName() + ", " + user.getFirstName()%>
+                <div class="mr-auto p-2 align-items-start"><h4>Lista rezerwacji:
+                    <%=user.getLastName() + ", " + user.getFirstName()%>
                 </h4>
                 </div>
                 <div class="p2 align-items-end">
@@ -45,14 +56,12 @@
                         <%}%>
                     </form>
                 </div>
-
-
             </div>
             <br/>
             <%
                 }
                 if (operations.size() == 0) {
-            %> Brak aktywnych rezerwacji na koncie<%} else {%>
+            %> Brak rezerwacji na koncie<%} else {%>
 
             <table class="table table-bordered table-hover">
                 <thead>
@@ -104,7 +113,7 @@
                         <%}%>
                     </td>
                     <td>
-                        <form method="POST" action="ReturnBookServlet" class="addUser">
+                        <form method="POST" action="BorrowAfterReservationBookServlet" class="addUser">
                             <input type="hidden" name="bookId" value="<%=operation.getBook().getId()%>"/>
                             <input type="hidden" name="operationId" value="<%=operation.getId()%>"/>
                             <%
