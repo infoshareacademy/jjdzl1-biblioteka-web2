@@ -159,6 +159,22 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         return operationBorrowedByUserList;
     }
 
+    @Override
+    public List<Operation> operationListReservationByUser(int userId) throws SQLException, ClassNotFoundException {
+
+        String query = "select o from Operation o " +
+                "inner join User u on o.user.id=u.id " +
+                "inner join Book b on o.book.id=b.id " +
+                "where " +
+                "u.id=" + userId + " and " +
+                "o.operationType='RESERVATION'";
+
+        TypedQuery<Operation> borrowedBook = entityManager.createQuery(query, Operation.class);
+        List<Operation> operationReservationByUserList = borrowedBook.getResultList();
+
+        return operationReservationByUserList;
+    }
+
     public void ReturnBook(int id, int bookId, LocalDate endDate) {
 
         String operationQuery = "select o from Operation o where o.id=" + id;

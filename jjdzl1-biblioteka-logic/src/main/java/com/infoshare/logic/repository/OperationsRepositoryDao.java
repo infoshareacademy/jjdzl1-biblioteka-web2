@@ -17,6 +17,8 @@ public interface OperationsRepositoryDao {
 
     List<Operation> operationListBorrowByUser(int userId) throws SQLException, ClassNotFoundException;
 
+    List<Operation> operationListReservationByUser(int userId) throws SQLException, ClassNotFoundException;
+
     void ReturnBook(int id, int bookId, LocalDate endDate);
 
     Operation getOperation(int id) throws SQLException, ClassNotFoundException;
