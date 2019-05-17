@@ -112,7 +112,16 @@
                     </td>
                     <td>
                         <%if (operation.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja<%}%>
-                        <%if (operation.getOperationType().equals(OperationType.BORROW)) {%> Wypożyczenie<%}%>
+                        <%if (operation.getOperationType().equals(OperationType.BORROW)) {%> Wypożyczenie<%
+                        if (!operation.getEndDate().isEqual(LocalDate.of(1970, 01, 01))) {
+                    %>
+                        <p class="text-success">Zwrócona</p>
+                        <%} else {%>
+                        <p class="text-primary">Trwa</p>
+                        <%
+                                }
+                            }
+                        %>
                     </td>
                 </tr>
                 <%
