@@ -86,7 +86,7 @@
                     <th scope="col">
                         <%
                             if (operationType.equals("reservation")) {
-                        %>Date rezerwacji<%
+                        %>Data rezerwacji<%
                     } else if (operationType.equals("borrow")) {
                     %>Data wypożyczenia<%
                     } else {%>
@@ -96,7 +96,7 @@
                     <th scope="col">
                         <%
                             if (operationType.equals("reservation")) {
-                        %>Date ważności<%
+                        %>Data ważności<%
                     } else if (operationType.equals("borrow")) {
                     %>Data zwrotu<%
                     } else {%>
