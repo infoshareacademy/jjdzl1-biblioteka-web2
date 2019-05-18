@@ -82,8 +82,27 @@
                     <th scope="col">Użytkownik</th>
                     <th scope="col">Tytuł książki</th>
                     <th scope="col">Data operacji</th>
-                    <th scope="col">Data wypożyczenia</th>
-                    <th scope="col">Data zwrotu</th>
+
+                    <th scope="col">
+                        <%
+                            if (operationType.equals("reservation")) {
+                        %>Data rezerwacji<%
+                    } else if (operationType.equals("borrow")) {
+                    %>Data wypożyczenia<%
+                    } else {%>
+                        Data początkowa
+                        <%}%>
+                    </th>
+                    <th scope="col">
+                        <%
+                            if (operationType.equals("reservation")) {
+                        %>Data ważności<%
+                    } else if (operationType.equals("borrow")) {
+                    %>Data zwrotu<%
+                    } else {%>
+                        Data zakończenia
+                        <%}%>
+                    </th>
                     <th scope="col">Typ operacji</th>
                 </tr>
                 </thead>
@@ -111,8 +130,21 @@
                         <%}%>
                     </td>
                     <td>
-                        <%if (operation.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja<%}%>
-                        <%if (operation.getOperationType().equals(OperationType.BORROW)) {%> Wypożyczenie<%}%>
+                        <%if (operation.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja
+                        <% if(operation.getEndDate().isBefore(LocalDate.now())){%>
+                        <br/><p class="text-danger">Przeterminowana</p><%}else{%>
+                        <p class="text-success">Aktywna</p>
+                        <%}}%>
+                        <%if (operation.getOperationType().equals(OperationType.BORROW)) {%> Wypożyczenie<%
+                        if (!operation.getEndDate().isEqual(LocalDate.of(1970, 01, 01))) {
+                    %>
+                        <p class="text-success">Zwrócona</p>
+                        <%} else {%>
+                        <p class="text-primary">Trwa</p>
+                        <%
+                                }
+                            }
+                        %>
                     </td>
                 </tr>
                 <%

@@ -142,7 +142,9 @@
                     <% if (basketList.size()!=0){%><span class="badge badge-danger"><%=basketList.size()%></span><%}%>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu">
-                    <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji </a>
+                    <% if (basketList.size()!=0){%>
+                    <a class="dropdown-item" href="userBasket.jsp"> Koszyk operacji: <strong><%=basketList.size()%></strong></a>
+                    <%}%>
                     <a class="dropdown-item" href="ReservationBookServlet?userId=<%=userID%>"> Wypożycz zarezerwowaną książkę </a>
                     <a class="dropdown-item" href="loginSuccess.jsp?selectedUser=remove"> Anuluj bieżące operacje </a>
                     <a class="dropdown-item"> --- </a>

@@ -93,7 +93,12 @@
                         <%if (user.getAdmin().equals(UserStatus.ADMIN)) {%> Administrator <%}%>
                         <%if (user.getAdmin().equals(UserStatus.USER)) {%> Użytkownik <%}%>
                     </td>
-                    <td><%= user.getStatus()%>
+                    <td>
+                        <%if (user.getStatus().equals("Nieaktywny")) {%>
+                        <p class="text-danger"><%=user.getStatus()%></p>
+                        <%} else {%>
+                        <%= user.getStatus()%>
+                        <%}%>
                     </td>
 
                     <%if (operation != null && !operation.isEmpty() && operation.equals("newoperation")) {%>

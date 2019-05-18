@@ -1,6 +1,7 @@
 package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.Basket;
+import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.Operation;
 import com.infoshare.logic.domain.User;
 
@@ -30,4 +31,6 @@ public interface OperationsRepositoryDao {
     void addNewUserReservation(int bookId, int userId) throws SQLException, ClassNotFoundException;
 
     List<Operation> listOfReservationByUser(int userId);
+
+    void borrowAfterReservation(Operation operation, Book book);
 }
