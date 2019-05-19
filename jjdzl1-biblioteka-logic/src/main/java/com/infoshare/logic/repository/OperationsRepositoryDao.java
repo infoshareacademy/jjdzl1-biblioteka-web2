@@ -33,4 +33,8 @@ public interface OperationsRepositoryDao {
     List<Operation> listOfReservationByUser(int userId);
 
     void borrowAfterReservation(Operation operation, Book book);
+
+    void restoreAvailableBookStatus();
+
+    void removeReservationFromDatabase();
 }

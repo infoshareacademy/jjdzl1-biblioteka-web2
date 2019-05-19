@@ -123,7 +123,7 @@
                             %>
                             <button type="submit" class="btn btn-success">Wypożycz</button>
                             <%} else {%>
-                            <button type="submit" class="btn btn-warning">Wypożycz</button>
+                            <button type="submit" class="btn btn-secondary" disabled>Wypożycz</button>
                             <%}%>
                         </form>
 

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -207,11 +208,44 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         return listOfUserReservation;
     }
 
-    public void borrowAfterReservation(Operation operation, Book book){
+    public void borrowAfterReservation(Operation operation, Book book) {
 
         entityManager.merge(operation);
         entityManager.merge(book);
 
     }
+
+    public void restoreAvailableBookStatus() {
+        List<Operation> expiredReservation = new ArrayList<>();
+
+        String query = "select o from Operation o where o.endDate < current_date and operationType='RESERVATION'";
+
+        TypedQuery<Operation> expiredReservationQuery = entityManager.createQuery(query, Operation.class);
+        expiredReservation = expiredReservationQuery.getResultList();
+
+        for (Operation operation : expiredReservation) {
+            operation.getBook().setStatus(BookStatus.Dostępna);
+
+        }
+
+    }
+
+    public void removeReservationFromDatabase() {
+
+        List<Operation> oldReservation = new ArrayList<>();
+        LocalDate now = LocalDate.now().minusDays(3);
+
+        String query = "select o from Operation o where o.endDate < " + now + " and o.operationType='RESERVATION'";
+
+        TypedQuery<Operation> oldReservationQuery = entityManager.createQuery(query, Operation.class);
+        oldReservation = oldReservationQuery.getResultList();
+        if (!oldReservation.isEmpty()) {
+
+            for (Operation operation : oldReservation) {
+                entityManager.remove(operation);
+            }
+        }
+    }
+
 
 }

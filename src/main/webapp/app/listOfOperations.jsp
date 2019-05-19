@@ -2,6 +2,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="com.infoshare.logic.domain.OperationType" %>
+<%@ page import="java.time.Period" %>
+<%@ page import="java.math.BigDecimal" %>
+<%@ page import="java.math.RoundingMode" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -131,16 +134,31 @@
                     </td>
                     <td>
                         <%if (operation.getOperationType().equals(OperationType.RESERVATION)) {%> Rezerwacja
-                        <% if(operation.getEndDate().isBefore(LocalDate.now())){%>
-                        <br/><p class="text-danger">Przeterminowana</p><%}else{%>
+                        <% if (operation.getEndDate().isBefore(LocalDate.now())) {%>
+                        <br/>
+                        <p class="text-danger">Przeterminowana</p><%} else {%>
                         <p class="text-success">Aktywna</p>
-                        <%}}%>
+                        <%
+                                }
+                            }
+                        %>
                         <%if (operation.getOperationType().equals(OperationType.BORROW)) {%> Wypożyczenie<%
                         if (!operation.getEndDate().isEqual(LocalDate.of(1970, 01, 01))) {
                     %>
                         <p class="text-success">Zwrócona</p>
                         <%} else {%>
                         <p class="text-primary">Trwa</p>
+                        <%
+                            LocalDate startDate = operation.getStartDate();
+                            LocalDate endDate = startDate.plusDays(30);
+                            Integer days = Period.between(operation.getEndDate(), LocalDate.now()).getDays();
+                            BigDecimal payForBorrow = new BigDecimal(0.5).multiply(new BigDecimal(days)).setScale(2, RoundingMode.HALF_UP);
+                            if (LocalDate.now().isAfter(endDate)) {
+                        %><p class="text-danger">Przeterminowana: <%=days%> dni<br/>
+                         Opłata: <%=payForBorrow%> zł</p>
+                        <%
+                            }
+                        %>
                         <%
                                 }
                             }
