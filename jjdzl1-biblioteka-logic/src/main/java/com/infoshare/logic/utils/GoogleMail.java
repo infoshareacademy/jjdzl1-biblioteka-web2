@@ -3,6 +3,7 @@ package com.infoshare.logic.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -13,8 +14,10 @@ import javax.mail.internet.MimeMessage;
 
 public class GoogleMail {
 
+    public static final Logger LOGGER = Logger.getLogger(GoogleMail.class.getName());
 
-    public static void sendMail(String to, String messege, String bookTitle) {
+
+    public static void sendMail(String to, String message, String bookTitle) {
 
         Properties props = new Properties();
 
@@ -38,17 +41,15 @@ public class GoogleMail {
             String timeStamp = new SimpleDateFormat("yyyymmdd_hh-mm-ss").format(new Date());
             msg.setSubject("Przypomnienie o zaległym zwrocie książki : " + timeStamp);
             msg.setSentDate(new Date());
-            msg.setText(messege);
+            msg.setText(message);
             msg.setHeader("XPriority", "1");
 
             Transport.send(msg);
-
-            System.out.println("Mail has been sent successfully");
+            LOGGER.info("Mail has been sent successfully");
 
         } catch (MessagingException mex) {
 
-            System.out.println("Unable to send an email" + mex);
-
+            LOGGER.info("Unable to send an email" + mex);
         }
     }
 }
