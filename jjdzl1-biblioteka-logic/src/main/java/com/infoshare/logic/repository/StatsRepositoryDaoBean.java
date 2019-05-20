@@ -38,7 +38,7 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
 
         statsMap.put("activeReservation", countOperations("activeReservation"));
         statsMap.put("expiredReservation", countOperations("expiredReservation"));
-
+        statsMap.put("expiredBorrow", countOperations("expiredBorrow"));
 
 
         return statsMap;
@@ -87,6 +87,9 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
             stringQuery = "select count(o) from Operation o where o.operationType='RESERVATION' and o.endDate >=current_date";
         } else if (status.equals("expiredReservation")) {
             stringQuery = "select count(o) from Operation o where o.operationType='RESERVATION' and o.endDate < current_date";
+        } else if (status.equals("expiredBorrow")) {
+            LocalDate nowMinus30Days = LocalDate.now().minusDays(30);
+            stringQuery = "select count(o) from Operation o where o.operationType='BORROW' and o.startDate < '" + nowMinus30Days + "'";
         }
 
         Query query = entityManager.createQuery(stringQuery);

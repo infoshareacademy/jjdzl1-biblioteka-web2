@@ -213,6 +213,16 @@
         <url-pattern>app/BorrowAfterReservationBookServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SendEmailServlet</servlet-name>
+        <servlet-class>com.infoshare.servlets.SendEmailServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SendEmailServlet</servlet-name>
+        <url-pattern>app/SendEmailServlet</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.infoshare.filters.RequestLoggingFilter</filter-class>

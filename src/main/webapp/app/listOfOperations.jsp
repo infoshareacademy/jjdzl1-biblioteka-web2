@@ -36,6 +36,21 @@
         operationTypePl = "Wypożyczenia";
     }
 %>
+
+
+<% if (request.getSession().getAttribute("sendEmail") != null) { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><%=request.getSession().getAttribute("sendEmail")%>
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%
+    }
+    request.getSession().removeAttribute("sendEmail");
+%>
+
 <article>
     <div class="content">
         <div class="contentInside">
@@ -129,7 +144,18 @@
                     <td>
                         <%if (operation.getEndDate().equals(LocalDate.of(1970, 01, 01))) {%>
                         ---
-                        <%} else {%>
+                        <% LocalDate startDate = operation.getStartDate();
+                            LocalDate endDate = startDate.plusDays(30);
+                            BigDecimal payForBorrow = CalculateFeeToPay.calculateFeeToPay(startDate, endDate);
+                            Integer expiredDays = CalculateFeeToPay.getDays(endDate).getDays();
+                            if (LocalDate.now().isAfter(endDate)) {
+                        %><p class="text-danger">Przeterminowana: <%=expiredDays%> dni
+                        <br/>Opłata: <%=payForBorrow%> zł
+                    </p>
+                        <%
+                            }
+                        } else {
+                        %>
                         <%=operation.getEndDate()%>
                         <%}%>
                     </td>
@@ -149,16 +175,22 @@
                         <p class="text-success">Zwrócona</p>
                         <%} else {%>
                         <p class="text-primary">Trwa
-                        <% LocalDate startDate = operation.getStartDate();
-                            LocalDate endDate = startDate.plusDays(30);
-                            BigDecimal payForBorrow = CalculateFeeToPay.calculateFeeToPay(startDate, endDate);
-                            if (LocalDate.now().isAfter(endDate)) {
-                        %><p class="text-danger">Przeterminowana: <%=CalculateFeeToPay.getDays(endDate).getDays()%>
-                        dni<br/>
-                        Opłata: <%=payForBorrow%> zł</p>
-                        <%
-                            }
-                        %>
+
+
+                                <% LocalDate startDate = operation.getStartDate();
+                                LocalDate endDate = startDate.plusDays(30);
+                                Integer expiredDays=CalculateFeeToPay.getDays(endDate).getDays();
+                                BigDecimal payForBorrow = CalculateFeeToPay.calculateFeeToPay(startDate, endDate);
+                                if (LocalDate.now().isAfter(endDate)) {
+                            %>
+                        <form method="POST" action="SendEmailServlet" class="addUser">
+                            <input type="hidden" name="operation" value="<%=operation.getId()%>">
+                            <input type="hidden" name="days" value="<%=expiredDays%>"/>
+                            <input type="hidden" name="payForBorrow" value="<%=payForBorrow%>"/>
+                            <input type="hidden" name="operationType" value="<%=operationType%>"/>
+                            <button type="submit" class="btn btn-warning">Wyślij powiadomienia</button>
+                        </form>
+                        <%}%>
                         </p>
                         <%
                                 }
