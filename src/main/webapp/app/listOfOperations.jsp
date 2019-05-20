@@ -176,7 +176,6 @@
                         <%} else {%>
                         <p class="text-primary">Trwa
 
-
                                 <% LocalDate startDate = operation.getStartDate();
                                 LocalDate endDate = startDate.plusDays(30);
                                 Integer expiredDays=CalculateFeeToPay.getDays(endDate).getDays();
@@ -189,7 +188,7 @@
                             <input type="hidden" name="payForBorrow" value="<%=payForBorrow%>"/>
                             <input type="hidden" name="operationType" value="<%=operationType%>"/>
                             <input type="hidden" name="selectedUserId" value="<%=user%>"/>
-                            <button type="submit" class="btn btn-warning">Wyślij powiadomienia</button>
+                            <button type="submit" class="btn btn-warning">Wyślij powiadomienie</button>
                         </form>
                         <%}%>
                         </p>

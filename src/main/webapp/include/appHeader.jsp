@@ -153,8 +153,6 @@
                         Historia rezerwacji </a>
                     <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=borrow&userId=<%=userID%>">
                         Historia wypożyczeń </a>
-                    <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="#"> Wyślij przypomnienie (email) </a>
                 </div>
                 </a>
             </li>
