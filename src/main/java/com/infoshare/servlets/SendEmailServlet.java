@@ -5,6 +5,7 @@ import com.infoshare.logic.domain.User;
 import com.infoshare.logic.repository.OperationsRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 import com.infoshare.logic.utils.CalculateFeeToPay;
+import com.infoshare.logic.utils.GoogleMail;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -25,7 +26,6 @@ public class SendEmailServlet extends HttpServlet {
 
     @EJB
     private UsersRepositoryDao usersRepository;
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -63,10 +63,17 @@ public class SendEmailServlet extends HttpServlet {
                 .append(" książka jest przetrzymana o ").append(days).append(" dni i ")
                 .append("została naliczona kara umowna w kwocie: ")
                 .append(payForBorrow).append(" zł").append(".</br>")
-                .append("Za każdy dzień zwłoki zwrotu książki doliczona zostanie dodatkowa opłata").toString();
+                .append("Za każdy dzień zwłoki zwrotu książki doliczona zostanie dodatkowa opłata")
+                .toString();
 
         String sendEmailAttribute = "Wysłano powiadomienie do " + operation.getUserName();
         req.getSession().setAttribute("sendEmail", sendEmailAttribute);
+
+        String sendTo = user.getEmail();
+        String bookTitle = operation.getBookTitle();
+
+        // zakomentowane żeby nie rozsyłać maili na nieistniejące konta
+        //GoogleMail.sendMail(sendTo, message, bookTitle);
 
         resp.sendRedirect("GetAttributeOperationRepository?operationType=" + operationType);
     }
