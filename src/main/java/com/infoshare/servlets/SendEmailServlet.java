@@ -32,6 +32,7 @@ public class SendEmailServlet extends HttpServlet {
 
         Integer operationId = Integer.parseInt(req.getParameter("operation"));
         String operationType = req.getParameter("operationType");
+        String selectedUserId = req.getParameter("selectedUserId");
 
         Operation operation = null;
         User user = null;
@@ -75,6 +76,12 @@ public class SendEmailServlet extends HttpServlet {
         // zakomentowane żeby nie rozsyłać maili na nieistniejące konta
         //GoogleMail.sendMail(sendTo, message, bookTitle);
 
-        resp.sendRedirect("GetAttributeOperationRepository?operationType=" + operationType);
+        String redirect = "GetAttributeOperationRepository?operationType=" + operationType;
+        if (selectedUserId != null && !selectedUserId.isEmpty() && !selectedUserId.equals("null")) {
+            Integer selectedUser = Integer.parseInt(selectedUserId);
+            redirect += "&userId=" + selectedUser;
+        }
+
+        resp.sendRedirect(redirect);
     }
 }

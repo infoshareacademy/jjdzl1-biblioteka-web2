@@ -188,6 +188,7 @@
                             <input type="hidden" name="days" value="<%=expiredDays%>"/>
                             <input type="hidden" name="payForBorrow" value="<%=payForBorrow%>"/>
                             <input type="hidden" name="operationType" value="<%=operationType%>"/>
+                            <input type="hidden" name="selectedUserId" value="<%=user%>"/>
                             <button type="submit" class="btn btn-warning">Wyślij powiadomienia</button>
                         </form>
                         <%}%>
