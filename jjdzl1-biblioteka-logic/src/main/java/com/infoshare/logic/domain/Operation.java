@@ -19,13 +19,13 @@ public class Operation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private User user;
 
     @Column
     private String userName;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Book book;
 
     @Column
