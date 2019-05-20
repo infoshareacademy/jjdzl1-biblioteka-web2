@@ -5,6 +5,7 @@
 <%@ page import="java.time.Period" %>
 <%@ page import="java.math.BigDecimal" %>
 <%@ page import="java.math.RoundingMode" %>
+<%@ page import="com.infoshare.logic.utils.CalculateFeeToPay" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -147,18 +148,18 @@
                     %>
                         <p class="text-success">Zwrócona</p>
                         <%} else {%>
-                        <p class="text-primary">Trwa</p>
-                        <%
-                            LocalDate startDate = operation.getStartDate();
+                        <p class="text-primary">Trwa
+                        <% LocalDate startDate = operation.getStartDate();
                             LocalDate endDate = startDate.plusDays(30);
-                            Integer days = Period.between(operation.getEndDate(), LocalDate.now()).getDays();
-                            BigDecimal payForBorrow = new BigDecimal(0.5).multiply(new BigDecimal(days)).setScale(2, RoundingMode.HALF_UP);
+                            BigDecimal payForBorrow = CalculateFeeToPay.calculateFeeToPay(startDate, endDate);
                             if (LocalDate.now().isAfter(endDate)) {
-                        %><p class="text-danger">Przeterminowana: <%=days%> dni<br/>
-                         Opłata: <%=payForBorrow%> zł</p>
+                        %><p class="text-danger">Przeterminowana: <%=CalculateFeeToPay.getDays(endDate).getDays()%>
+                        dni<br/>
+                        Opłata: <%=payForBorrow%> zł</p>
                         <%
                             }
                         %>
+                        </p>
                         <%
                                 }
                             }
