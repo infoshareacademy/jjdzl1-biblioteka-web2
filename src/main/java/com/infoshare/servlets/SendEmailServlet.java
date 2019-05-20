@@ -1,7 +1,9 @@
 package com.infoshare.servlets;
 
+import com.infoshare.logic.domain.Message;
 import com.infoshare.logic.domain.Operation;
 import com.infoshare.logic.domain.User;
+import com.infoshare.logic.repository.MessageRepositoryDao;
 import com.infoshare.logic.repository.OperationsRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
 import com.infoshare.logic.utils.CalculateFeeToPay;
@@ -26,6 +28,9 @@ public class SendEmailServlet extends HttpServlet {
 
     @EJB
     private UsersRepositoryDao usersRepository;
+
+    @EJB
+    private MessageRepositoryDao messageRepository;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -56,7 +61,7 @@ public class SendEmailServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String message = new StringBuilder()
+        String messageString = new StringBuilder()
                 .append("Dzień dobry ").append(user.getFirstName()).append(" ").append(user.getLastName()).append("<br/>")
                 .append("Informujemy żę wypożyczona przez Ciebie książka: ").append(operation.getBookTitle())
                 .append(" ma przekroczony czas wypożyczenia o ").append(days).append(" dni. ")
@@ -74,7 +79,24 @@ public class SendEmailServlet extends HttpServlet {
         String bookTitle = operation.getBookTitle();
 
         // zakomentowane żeby nie rozsyłać maili na nieistniejące konta
-        //GoogleMail.sendMail(sendTo, message, bookTitle);
+        //GoogleMail.sendMail(sendTo, messageString, bookTitle);
+
+        Message message = new Message();
+        message.setOperation(operation);
+        message.setMessage(messageString);
+        message.setDayOfBorrowDelay(days);
+        message.setPayForBorrow(payForBorrow);
+
+/*
+        Message message=Message.builder()
+                .operation(operation)
+                .message(messageString)
+                .dayOfBorrowDelay(days)
+                .payForBorrow(payForBorrow)
+                .build();
+*/
+
+        messageRepository.addMessage(message);
 
         String redirect = "GetAttributeOperationRepository?operationType=" + operationType;
         if (selectedUserId != null && !selectedUserId.isEmpty() && !selectedUserId.equals("null")) {

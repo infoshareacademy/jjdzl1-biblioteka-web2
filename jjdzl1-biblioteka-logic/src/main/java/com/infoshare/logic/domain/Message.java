@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -19,15 +20,16 @@ public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column
     private int dayOfBorrowDelay;
 
-    @Column
+    @Column (length = 5500)
     private String message;
 
     @Column
+    @Digits(integer=5, fraction=2)
     private BigDecimal payForBorrow;
 
     @ManyToOne
@@ -39,6 +41,7 @@ public class Message implements Serializable {
     }
 
     public Message(int id, int dayOfBorrowDelay, String message, BigDecimal payForBorrow, Operation operation) {
+        this.id = id;
         this.dayOfBorrowDelay = dayOfBorrowDelay;
         this.message = message;
         this.payForBorrow = payForBorrow;
@@ -88,4 +91,14 @@ public class Message implements Serializable {
         this.operation = operation;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", dayOfBorrowDelay=" + dayOfBorrowDelay +
+                ", message='" + message + '\'' +
+                ", payForBorrow=" + payForBorrow +
+                ", operation=" + operation +
+                '}';
+    }
 }
