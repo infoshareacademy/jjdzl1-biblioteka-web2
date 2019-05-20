@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -25,8 +26,18 @@ public class MessageRepositoryDaoBean implements MessageRepositoryDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Message> getMessage(int id) {
-        return null;
+    public List<Message> getMessage(Integer id) {
+
+        String query = "select m from Message m";
+
+        if (id != null) {
+            query += " where m.operation.user.id=" + id;
+        }
+
+        TypedQuery<Message> messageTypedQuery=entityManager.createQuery(query,Message.class);
+        List<Message> messageList=messageTypedQuery.getResultList();
+
+        return messageList;
     }
 
     @Override

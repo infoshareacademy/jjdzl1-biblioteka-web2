@@ -8,7 +8,7 @@ import java.util.List;
 @Local
 public interface MessageRepositoryDao {
 
-    List<Message> getMessage(int id);
+    List<Message> getMessage(Integer id);
 
     void addMessage(Message message);
 }
