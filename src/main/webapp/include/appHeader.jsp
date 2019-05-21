@@ -153,8 +153,6 @@
                         Historia rezerwacji </a>
                     <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=borrow&userId=<%=userID%>">
                         Historia wypożyczeń </a>
-                    <a class="dropdown-item"> --- </a>
-                    <a class="dropdown-item" href="#"> Wyślij przypomnienie (email) </a>
                 </div>
                 </a>
             </li>
@@ -168,7 +166,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu3">
                     <a class="dropdown-item" href="GetUserToEditServlet?edit=account&userId=<%=userId%>"> Ustawienia konta </a>
-                    <a class="dropdown-item" href="#"> Powiadomienia </a>
+                    <a class="dropdown-item" href="GetAttributeMessageRepository"> Powiadomienia </a>
                 </div>
             </li>
         </ul>

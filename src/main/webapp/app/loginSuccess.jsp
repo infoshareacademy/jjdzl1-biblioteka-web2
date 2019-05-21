@@ -114,6 +114,7 @@
 
         String activeReservation = null;
         String expiredReservation = null;
+        String expiredBorrow=null;
 
 
         Map<String, String> stats = (HashMap) session.getAttribute("stats");
@@ -130,6 +131,7 @@
         disabledUsers = stats.get("disabled");
         activeReservation = stats.get("activeReservation");
         expiredReservation = stats.get("expiredReservation");
+        expiredBorrow=stats.get("expiredBorrow");
 
         if (session.getAttribute("normalUser") == null) {
     %>
@@ -193,7 +195,7 @@
 
                     <tr>
                         <td>Przeterminowanych wypożyczeń:</td>
-                        <td>0</td>
+                        <td><%=expiredBorrow%></td>
                         <td>Dostępnych książek:</td>
                         <td><%=availableBooks%>
                         </td>

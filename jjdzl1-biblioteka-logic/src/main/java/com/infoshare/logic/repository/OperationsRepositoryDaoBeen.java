@@ -235,7 +235,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
         List<Operation> oldReservation = new ArrayList<>();
         LocalDate now = LocalDate.now().minusDays(3);
 
-        String query = "select o from Operation o where o.endDate < " + now + " and o.operationType='RESERVATION'";
+        String query = "select o from Operation o where o.endDate < '" + now + "' and o.operationType='RESERVATION'";
 
         TypedQuery<Operation> oldReservationQuery = entityManager.createQuery(query, Operation.class);
         oldReservation = oldReservationQuery.getResultList();
