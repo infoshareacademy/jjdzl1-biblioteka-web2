@@ -35,17 +35,21 @@ public class Message implements Serializable {
     @ManyToOne
     private Operation operation;
 
+    @Column
+    private LocalDate date;
+
     public Message() {
 
         // for JPA
     }
 
-    public Message(int id, int dayOfBorrowDelay, String message, BigDecimal payForBorrow, Operation operation) {
+    public Message(int id, int dayOfBorrowDelay, String message, BigDecimal payForBorrow, Operation operation, LocalDate date) {
         this.id = id;
         this.dayOfBorrowDelay = dayOfBorrowDelay;
         this.message = message;
         this.payForBorrow = payForBorrow;
         this.operation = operation;
+        this.date=date;
     }
 
     public Message(int dayOfBorrowDelay, String message, BigDecimal payForBorrow, Operation operation) {
@@ -89,6 +93,14 @@ public class Message implements Serializable {
 
     public void setOperation(Operation operation) {
         this.operation = operation;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override

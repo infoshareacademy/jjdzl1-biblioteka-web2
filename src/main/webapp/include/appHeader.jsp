@@ -166,7 +166,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="submenu3">
                     <a class="dropdown-item" href="GetUserToEditServlet?edit=account&userId=<%=userId%>"> Ustawienia konta </a>
-                    <a class="dropdown-item" href="#"> Powiadomienia </a>
+                    <a class="dropdown-item" href="GetAttributeMessageRepository"> Powiadomienia </a>
                 </div>
             </li>
         </ul>

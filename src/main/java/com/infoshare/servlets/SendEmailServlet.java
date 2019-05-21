@@ -65,10 +65,10 @@ public class SendEmailServlet extends HttpServlet {
                 .append("Dzień dobry ").append(user.getFirstName()).append(" ").append(user.getLastName()).append("<br/>")
                 .append("Informujemy żę wypożyczona przez Ciebie książka: ").append(operation.getBookTitle())
                 .append(" ma przekroczony czas wypożyczenia o ").append(days).append(" dni. ")
-                .append("Na dzień dzisiajszy tj:").append(LocalDate.now())
+                .append("Na dzień dzisiajszy tj: ").append(LocalDate.now())
                 .append(" książka jest przetrzymana o ").append(days).append(" dni i ")
                 .append("została naliczona kara umowna w kwocie: ")
-                .append(payForBorrow).append(" zł").append(".</br>")
+                .append(payForBorrow).append(" zł").append(".<br/>")
                 .append("Za każdy dzień zwłoki zwrotu książki doliczona zostanie dodatkowa opłata")
                 .toString();
 
@@ -86,15 +86,7 @@ public class SendEmailServlet extends HttpServlet {
         message.setMessage(messageString);
         message.setDayOfBorrowDelay(days);
         message.setPayForBorrow(payForBorrow);
-
-/*
-        Message message=Message.builder()
-                .operation(operation)
-                .message(messageString)
-                .dayOfBorrowDelay(days)
-                .payForBorrow(payForBorrow)
-                .build();
-*/
+        message.setDate(LocalDate.now());
 
         messageRepository.addMessage(message);
 

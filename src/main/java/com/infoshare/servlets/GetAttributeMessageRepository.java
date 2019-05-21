@@ -25,21 +25,22 @@ public class GetAttributeMessageRepository extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String userId = req.getParameter("userId");
+        Integer userId = null;
+        if (req.getSession().getAttribute("normalUser") != null &&
+                req.getSession().getAttribute("normalUser").equals("normalUser")) {
+            userId = (Integer) req.getSession().getAttribute("userId");
+        }
 
         List<Message> messageList = new ArrayList<>();
         if (userId == null) {
             messageList = messageRepository.getMessage(null);
         } else {
-            messageList = messageRepository.getMessage(Integer.parseInt(userId));
+            messageList = messageRepository.getMessage(userId);
         }
 
         HttpSession session = req.getSession();
         session.setAttribute("messageList", messageList);
 
-        resp.sendRedirect("listOfUsers.jsp");
+        resp.sendRedirect("listOfMessages.jsp");
     }
 }
-
-
-
