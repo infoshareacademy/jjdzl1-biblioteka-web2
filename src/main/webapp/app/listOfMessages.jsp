@@ -26,40 +26,8 @@
                 </div>
                 <div class="p-2 align-items-end ">
                     <br/>
-                    <%--
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination justify-content-end">
-
-                                                <%if (pageNumber == 1) {%>
-                                                <li class="page-item disabled">
-                                                        <%}else{%>
-                                                <li class="page-item">
-                                                    <%}%>
-                                                    <a class="page-link"
-                                                       href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>"
-                                                       tabindex="-1">Wcześniejsza</a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link"
-                                                                         href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber%>"><%=pageNumber%>
-                                                </a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                                         href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>"><%=pageNumber + 1%>
-                                                </a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                                         href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+2%>"><%=pageNumber + 2%>
-                                                </a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link"
-                                                       href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                    --%>
-
                 </div>
             </div>
-
-
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">

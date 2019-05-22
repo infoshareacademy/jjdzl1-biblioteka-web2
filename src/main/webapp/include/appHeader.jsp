@@ -66,7 +66,7 @@
                     <% if (session.getAttribute("selectedUser") != null) {
                         User user = (User) session.getAttribute("selectedUser");
                     %>
-                    <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
+                    <a class="dropdown-item" href="GetAttributesUserRepository"> Lista użytkowników </a>
 
                     <%} else {%>
 
@@ -93,7 +93,7 @@
                         rezerwacje </a>
                     <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=borrow"> Wszystkie
                         wypożyczenia </a>
-                    <a class="dropdown-item" href="GetAttributeOperationRepository"> Razem wszystkie
+                    <a class="dropdown-item" href="GetAttributeOperationRepository?operationType=all"> Razem wszystkie
                         operacje </a>
 
                     <% } else { %>

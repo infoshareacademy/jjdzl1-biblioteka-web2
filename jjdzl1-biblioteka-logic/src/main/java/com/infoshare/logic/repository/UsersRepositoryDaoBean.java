@@ -4,6 +4,7 @@ import com.infoshare.logic.domain.User;
 import com.infoshare.logic.domain.UserStatus;
 import com.infoshare.logic.utils.Hasher;
 import com.infoshare.logic.utils.PBKDF2Hasher;
+import com.infoshare.logic.utils.RecordPerPage;
 import com.infoshare.logic.validation.UserValidator;
 
 
@@ -11,6 +12,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 
@@ -24,7 +26,20 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
     UserValidator validator;
 
     @Override
-    public List<User> listOfUsers(String findUserByName) {
+    public List<User> listOfUsers(String findUserByName, Integer page) {
+
+        Integer recordPerPage = null;
+        Integer offset = null;
+
+        try {
+            recordPerPage = RecordPerPage.readProperties();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (page == null) page = 1;
+        offset = recordPerPage * page - recordPerPage;
+
 
         String stringQuery = "select u from User u order by u.lastName";
 
@@ -35,7 +50,11 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
         }
 
         TypedQuery<User> query = entityManager.createQuery(stringQuery, User.class);
-        List<User> userList = query.getResultList();
+        List<User> userList = query
+                .setMaxResults(recordPerPage)
+                .setFirstResult(offset)
+                .getResultList();
+
         return userList;
     }
 

@@ -6,6 +6,7 @@
 <%@ page import="java.math.BigDecimal" %>
 <%@ page import="java.math.RoundingMode" %>
 <%@ page import="com.infoshare.logic.utils.CalculateFeeToPay" %>
+<%@ page import="com.infoshare.logic.utils.RecordPerPage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -24,6 +25,7 @@
     String StringUser = request.getParameter("userId");
     String firstDate = request.getParameter("firstDate");
     String lastDate = request.getParameter("lastDate");
+    Integer pages = Integer.parseInt(request.getParameter("pages"));
     Integer user = null;
     if (StringUser != null) user = Integer.parseInt(StringUser);
     String operationTypePl = "";
@@ -35,6 +37,14 @@
     } else {
         operationTypePl = "Wypożyczenia";
     }
+    String pageString = request.getParameter("page");
+    String edit = request.getParameter("edit");
+    String reservation = request.getParameter("reservation");
+    if (reservation == null)
+        reservation = "";
+    Integer recordsPerPage = RecordPerPage.readProperties();
+    if (pageString == null || pageString.isEmpty()) pageString = "1";
+    int pageNumber = Integer.parseInt(pageString);
 %>
 
 
@@ -86,6 +96,32 @@
                             </tr>
                         </table>
                     </form>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+
+                            <%if (pageNumber == 1) {%>
+                            <li class="page-item disabled">
+                                    <%}else{%>
+                            <li class="page-item">
+                                <%}%>
+                                <a class="page-link"
+                                   href="GetAttributeOperationRepository?page=<%=pageNumber-1%>&operationType=<%=operationType%>&page=<%=pageNumber%>"
+                                   tabindex="-1">Wcześniejsza</a>
+                            </li>
+                            <%if (pageNumber == pages || pages == 0) {%>
+                            <li class="page-item disabled">
+                                <a class="page-link"
+                                   href="GetAttributeOperationRepository?page=<%=pageNumber+1%>&operationType=<%=operationType%>&page=<%=pageNumber%>">Następna</a>
+                            </li>
+                            <%} else {%>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="GetAttributeOperationRepository?page=<%=pageNumber+1%>&operationType=<%=operationType%>&page=<%=pageNumber%>">Następna</a>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </nav>
+                    <br/>
                 </div>
             </div>
             <% if (operations.size() == 0) {
@@ -127,7 +163,7 @@
                 </thead>
                 <tbody>
                 <%
-                    int rowNumber = 1;
+                    int rowNumber = 1 + (pageNumber * recordsPerPage) - recordsPerPage;
                     for (Operation operation : operations) {
                 %>
                 <tr class="listofitemps">

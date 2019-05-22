@@ -48,9 +48,9 @@ public class Service {
     @GET
     @Path("/users")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUsers() throws SQLException, ClassNotFoundException {
+    public Response getUsers(@QueryParam("page") Integer page) throws SQLException, ClassNotFoundException {
 
-        Collection<User> users = usersRepository.listOfUsers("");
+        Collection<User> users = usersRepository.listOfUsers("", page);
         if (users.isEmpty()) {
             return Response.noContent().build();
         }
@@ -133,7 +133,7 @@ public class Service {
         if (usersRepository.getUserById(id) != null) {
             usersRepository.deleteUser(id);
             LOGGER.info("Usunięto użytkownika o id= " + id);
-            return getUsers();
+            return getUsers(1);
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -235,10 +235,11 @@ public class Service {
     @GET
     @Path("/operations")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id) throws SQLException, ClassNotFoundException {
+    public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id, @QueryParam("page") Integer page) throws SQLException, ClassNotFoundException {
 
+        if (page == null) page = 1;
         if (type == null) type = "all";
-        Collection<Operation> operations = operationsRepository.AllOperationList(type, null, null, null);
+        Collection<Operation> operations = operationsRepository.AllOperationList(type, null, null, null, page);
         if (operations.isEmpty()) {
             return Response.noContent().build();
         }
@@ -312,7 +313,7 @@ public class Service {
         if (operationsRepository.getOperation(id) != null) {
             operationsRepository.deleteOperation(id);
             LOGGER.info("Usunięto operację o id=" + id);
-            return getOperations("all", null);
+            return getOperations("all", null,1);
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }

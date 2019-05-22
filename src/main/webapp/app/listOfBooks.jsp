@@ -18,6 +18,7 @@
 <%
     String order = request.getParameter("order");
     String pageString = request.getParameter("page");
+    Integer pages=Integer.parseInt(request.getParameter("pages"));
     String edit = request.getParameter("edit");
     String reservation = request.getParameter("reservation");
     if (reservation == null)
@@ -58,24 +59,21 @@
                                    href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>"
                                    tabindex="-1">Wcześniejsza</a>
                             </li>
-                            <li class="page-item"><a class="page-link"
-                                                     href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber%>"><%=pageNumber%>
-                            </a></li>
-                            <li class="page-item"><a class="page-link"
-                                                     href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>"><%=pageNumber + 1%>
-                            </a></li>
-                            <li class="page-item"><a class="page-link"
-                                                     href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+2%>"><%=pageNumber + 2%>
-                            </a></li>
+                            <%if (pageNumber ==  pages) {%>
+                            <li class="page-item disabled">
+                                <a class="page-link"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
+                            </li>
+                            <%}else{%>
                             <li class="page-item">
                                 <a class="page-link"
                                    href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
                             </li>
+                            <%}%>
                         </ul>
                     </nav>
                 </div>
             </div>
-
 
             <table class="table table-bordered table-hover">
                 <thead>

@@ -1,12 +1,15 @@
 package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.*;
+import com.infoshare.logic.utils.RecordPerPage;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,7 +28,20 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Operation> AllOperationList(String operationType, String userId, LocalDate firstDate, LocalDate lastDate) throws SQLException, ClassNotFoundException {
+    public List<Operation> AllOperationList(String operationType, String userId, LocalDate firstDate, LocalDate lastDate, Integer page) throws SQLException, ClassNotFoundException {
+
+        Integer recordPerPage = null;
+        Integer offset = null;
+
+        try {
+            recordPerPage = RecordPerPage.readProperties();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (page == null) page = 1;
+        offset = recordPerPage * page - recordPerPage;
+
 
         String query = "select o from Operation o " +
                 "inner join User u on o.user.id=u.id " +
@@ -43,12 +59,40 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
             query += " and o.startDate between '" + firstDate + "' and '" + lastDate + "'";
         }
 
-
         TypedQuery<Operation> operationResult = entityManager.createQuery(query, Operation.class);
-        List<Operation> operationsList = operationResult.getResultList();
+        List<Operation> operationList = operationResult
+                .setMaxResults(recordPerPage)
+                .setFirstResult(offset)
+                .getResultList();
 
-        return operationsList;
+        return operationList;
     }
+
+    @Override
+    public Integer countAllOperationList(String operationType, String userId, LocalDate firstDate, LocalDate lastDate) throws SQLException, ClassNotFoundException {
+
+        String query = "select count(o) from Operation o " +
+                "inner join User u on o.user.id=u.id " +
+                "inner join Book b on o.book.id=b.id ";
+
+        if (operationType.equals("reservation")) {
+            query += "where o.operationType='RESERVATION'";
+        } else if (operationType.equals("borrow")) {
+            query += "where o.operationType='BORROW'";
+        }
+
+        if (userId != null) query += " and o.user.id=" + userId;
+
+        if (firstDate != null && lastDate != null) {
+            query += " and o.startDate between '" + firstDate + "' and '" + lastDate + "'";
+        }
+
+        Query operationResult = entityManager.createQuery(query);
+        Integer countOperation = Integer.parseInt(operationResult.getSingleResult().toString());
+
+        return countOperation;
+    }
+
 
     @Override
     public Operation getOperation(int id) throws SQLException, ClassNotFoundException {
@@ -225,9 +269,7 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
 
         for (Operation operation : expiredReservation) {
             operation.getBook().setStatus(BookStatus.Dostępna);
-
         }
-
     }
 
     public void removeReservationFromDatabase() {
