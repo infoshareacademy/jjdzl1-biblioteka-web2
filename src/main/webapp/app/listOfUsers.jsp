@@ -1,6 +1,7 @@
 <%@ page import="com.infoshare.logic.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.logic.domain.UserStatus" %>
+<%@ page import="com.infoshare.logic.utils.RecordPerPage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -17,6 +18,7 @@
     String operation = request.getParameter("operation");
     String pageString = request.getParameter("page");
     Integer pages = Integer.parseInt(request.getParameter("pages"));
+    Integer recordsPerPage= RecordPerPage.readProperties();
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
@@ -105,8 +107,7 @@
                 <tbody>
                 <%
                     List<User> listOfUsers = (List<User>) request.getSession().getAttribute("userRepositoryDao");
-
-                    int rowNumber = 1;
+                    int rowNumber = 1 + (pageNumber * recordsPerPage) - recordsPerPage;
                     for (User user : listOfUsers) {
                 %>
                 <tr class="listofitemps" style="cursor:pointer"

@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,14 +39,20 @@ public class GetAttributesUserRepository extends HttpServlet {
         String findUserByName = req.getParameter("findUserByName");
         String page = req.getParameter("page");
         if (page == null) page = "1";
-        Integer pages = null;
 
-        Integer recordsPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
+        //        Integer pages = null;
+//        Integer recordsPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
+
+        BigDecimal pages = null;
+
+        BigDecimal recordsPerPage = new BigDecimal(Integer.parseInt(ReadProperties.readPropertie("records-per-page")));
+        BigDecimal countAllBooks = new BigDecimal(Integer.parseInt(statsRepository.countUsers("all")));
+
+        pages = countAllBooks.divide(recordsPerPage, 0, RoundingMode.UP);
 
         List<User> userList = new ArrayList<>();
         try {
             userList = usersRepositoryDao.listOfUsers(findUserByName, Integer.parseInt(page));
-            pages = (Integer.parseInt(statsRepository.countUsers("all"))) / recordsPerPage;
 
         } catch (SQLException e) {
             e.printStackTrace();
