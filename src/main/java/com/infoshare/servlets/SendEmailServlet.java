@@ -79,7 +79,7 @@ public class SendEmailServlet extends HttpServlet {
         String bookTitle = operation.getBookTitle();
 
         // zakomentowane żeby nie rozsyłać maili na nieistniejące konta
-        GoogleMail.sendMail(sendTo, messageString, bookTitle);
+        //GoogleMail.sendMail(sendTo, messageString, bookTitle);
 
         Message message = new Message();
         message.setOperation(operation);

@@ -8,7 +8,9 @@ import java.util.List;
 @Local
 public interface MessageRepositoryDao {
 
-    List<Message> getMessage(Integer id);
+    List<Message> getMessage(Integer id, Integer page);
 
     void addMessage(Message message);
+
+    Long countMessage(Integer id);
 }

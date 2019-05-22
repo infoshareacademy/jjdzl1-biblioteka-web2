@@ -2,9 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="com.infoshare.logic.domain.OperationType" %>
-<%@ page import="java.time.Period" %>
 <%@ page import="java.math.BigDecimal" %>
-<%@ page import="java.math.RoundingMode" %>
 <%@ page import="com.infoshare.logic.utils.CalculateFeeToPay" %>
 <%@ page import="com.infoshare.logic.utils.RecordPerPage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -200,7 +198,7 @@
                         <% if (operation.getEndDate().isBefore(LocalDate.now())) {%>
                         <br/>
                         <p class="text-danger">Przeterminowana</p><%} else {%>
-                        <p class="text-success">Aktywna</p>
+                        <p class="text-primary">Aktywna</p>
                         <%
                                 }
                             }

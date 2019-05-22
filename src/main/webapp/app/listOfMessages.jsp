@@ -13,7 +13,16 @@
 <header>
     <%@include file="../include/appHeader.jsp" %>
 </header>
-<%Integer rowNumber = 1;%>
+<%
+    String pageString = request.getParameter("page");
+    Integer pages = Integer.parseInt(request.getParameter("pages"));
+    Integer recordsPerPage = RecordPerPage.readProperties();
+
+    if (pageString == null || pageString.isEmpty()) pageString = "1";
+    int pageNumber = Integer.parseInt(pageString);
+
+%>
+
 <article>
     <div class="content">
         <div class="contentInside">
@@ -25,6 +34,31 @@
                     </h4>
                 </div>
                 <div class="p-2 align-items-end ">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+
+                            <%if (pageNumber == 1) {%>
+                            <li class="page-item disabled">
+                                    <%}else{%>
+                            <li class="page-item">
+                                <%}%>
+                                <a class="page-link"
+                                   href="GetAttributeMessageRepository?page=<%=pageNumber-1%>"
+                                   tabindex="-1">Wcześniejsza</a>
+                            </li>
+                            <%if (pageNumber == pages) {%>
+                            <li class="page-item disabled">
+                                <a class="page-link"
+                                   href="GetAttributeMessageRepository?page=<%=pageNumber+1%>">Następna</a>
+                            </li>
+                            <%} else {%>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="GetAttributeMessageRepository?page=<%=pageNumber+1%>">Następna</a>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </nav>
                     <br/>
                 </div>
             </div>
@@ -41,12 +75,12 @@
                     <% if (session.getAttribute("selectedUser") != null) {
                         User user = (User) session.getAttribute("selectedUser");
                     %>
-                    <th scope="col">Działania</th>
                     <%}%>
                 </tr>
                 </thead>
                 <tbody>
                 <%
+                    int rowNumber = 1 + (pageNumber * recordsPerPage) - recordsPerPage;
                     List<Message> messageList = (List<Message>) request.getSession().getAttribute("messageList");
                     for (Message message : messageList) {
                 %>
@@ -75,21 +109,16 @@
                     <td>
                         <%=message.getPayForBorrow()%> zł
                     </td>
-                    <%
-                        }
+                    <% rowNumber++;
+                    }
                         if (session.getAttribute("selectedUser") == null) {
                     %>
                     <%
                     } else if (session.getAttribute("selectedUser") != null) {
                         User user = (User) session.getAttribute("selectedUser");
                     %>
-                    <td>
-                        aaaa
-                    </td>
                 </tr>
-                <%
-                        rowNumber++;
-                    }%>
+                <%}%>
                 </tbody>
             </table>
             <br/><br/><br/>
