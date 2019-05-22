@@ -66,7 +66,7 @@
                     <% if (session.getAttribute("selectedUser") != null) {
                         User user = (User) session.getAttribute("selectedUser");
                     %>
-                    <a class="dropdown-item" href="listOfUsers.jsp"> Lista użytkowników </a>
+                    <a class="dropdown-item" href="GetAttributesUserRepository"> Lista użytkowników </a>
 
                     <%} else {%>
 
