@@ -1,7 +1,9 @@
 package com.infoshare.servlets;
 
 import com.infoshare.logic.domain.User;
+import com.infoshare.logic.repository.StatsRepositoryDao;
 import com.infoshare.logic.repository.UsersRepositoryDao;
+import com.infoshare.logic.utils.ReadProperties;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,10 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 
 @WebServlet("/GetAttributesUserRepository")
@@ -22,15 +27,25 @@ public class GetAttributesUserRepository extends HttpServlet {
     @EJB
     private UsersRepositoryDao usersRepositoryDao;
 
+    @EJB
+    private StatsRepositoryDao statsRepository;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String opertation = req.getParameter("operation");
-        String findUserByName=req.getParameter("findUserByName");
+        String findUserByName = req.getParameter("findUserByName");
+        String page = req.getParameter("page");
+        if (page == null) page = "1";
+        Integer pages = null;
+
+        Integer recordsPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
 
         List<User> userList = new ArrayList<>();
         try {
-            userList = usersRepositoryDao.listOfUsers(findUserByName);
+            userList = usersRepositoryDao.listOfUsers(findUserByName, Integer.parseInt(page));
+            pages = (Integer.parseInt(statsRepository.countUsers("all"))) / recordsPerPage;
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -40,11 +55,11 @@ public class GetAttributesUserRepository extends HttpServlet {
         session.setAttribute("userRepositoryDao", userList);
 
         if (opertation != null && opertation.equals("newoperation")) {
-            resp.sendRedirect("listOfUsers.jsp?operation=newoperation");
+            resp.sendRedirect("listOfUsers.jsp?operation=newoperation&page=" + page + "&pages=" + pages);
         } else if (opertation != null && opertation.equals("returnbook")) {
-            resp.sendRedirect("listOfUsers.jsp?operation=returnbook");
+            resp.sendRedirect("listOfUsers.jsp?operation=returnbook&page=" + page + "&pages=" + pages);
         } else {
-            resp.sendRedirect("listOfUsers.jsp");
+            resp.sendRedirect("listOfUsers.jsp?page=" + page + "&pages=" + pages);
         }
     }
 }

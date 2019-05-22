@@ -15,6 +15,11 @@
 </header>
 <%
     String operation = request.getParameter("operation");
+    String pageString = request.getParameter("page");
+    Integer pages = Integer.parseInt(request.getParameter("pages"));
+
+    if (pageString == null || pageString.isEmpty()) pageString = "1";
+    int pageNumber = Integer.parseInt(pageString);
     if (session.getAttribute("normalUser") == null) {
 %>
 
@@ -55,7 +60,31 @@
                 </div>
 
             </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
 
+                    <%if (pageNumber == 1) {%>
+                    <li class="page-item disabled">
+                            <%}else{%>
+                    <li class="page-item">
+                        <%}%>
+                        <a class="page-link"
+                           href="GetAttributesUserRepository?page=<%=pageNumber-1%>"
+                           tabindex="-1">Wcześniejsza</a>
+                    </li>
+                    <%if (pageNumber < pages) {%>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="GetAttributesUserRepository?page=<%=pageNumber+1%>">Następna</a>
+                    </li>
+                    <%} else {%>
+                    <li class="page-item disabled">
+                        <a class="page-link"
+                           href="GetAttributesUserRepository?page=<%=pageNumber+1%>">Następna</a>
+                            <%}%>
+                </ul>
+            </nav>
+            <br/>
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr class="listofitemps">
@@ -95,7 +124,8 @@
                     </td>
                     <td>
                         <%if (user.getStatus().equals("Nieaktywny")) {%>
-                        <p class="text-danger"><%=user.getStatus()%></p>
+                        <p class="text-danger"><%=user.getStatus()%>
+                        </p>
                         <%} else {%>
                         <%= user.getStatus()%>
                         <%}%>
@@ -132,19 +162,6 @@
                 </tbody>
 
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Wcześniejsza</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Następna</a>
-                    </li>
-                </ul>
-            </nav>
             <br/><br/><br/>
         </div>
     </div>

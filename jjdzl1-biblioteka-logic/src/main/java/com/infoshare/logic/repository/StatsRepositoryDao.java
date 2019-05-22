@@ -6,4 +6,5 @@ import java.util.HashMap;
 @Local
 public interface StatsRepositoryDao {
     HashMap<String, String> generateStats();
+    String countUsers(String status);
 }
