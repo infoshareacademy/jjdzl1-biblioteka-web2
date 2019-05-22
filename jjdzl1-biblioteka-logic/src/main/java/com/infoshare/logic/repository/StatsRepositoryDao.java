@@ -7,4 +7,5 @@ import java.util.HashMap;
 public interface StatsRepositoryDao {
     HashMap<String, String> generateStats();
     String countUsers(String status);
+    String countBooks(String status);
 }

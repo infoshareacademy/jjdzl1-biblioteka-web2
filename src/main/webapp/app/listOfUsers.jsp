@@ -81,7 +81,8 @@
                     <li class="page-item disabled">
                         <a class="page-link"
                            href="GetAttributesUserRepository?page=<%=pageNumber+1%>">Następna</a>
-                            <%}%>
+                    </li>
+                    <%}%>
                 </ul>
             </nav>
             <br/>
