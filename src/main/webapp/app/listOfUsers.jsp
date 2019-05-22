@@ -18,7 +18,7 @@
     String operation = request.getParameter("operation");
     String pageString = request.getParameter("page");
     Integer pages = Integer.parseInt(request.getParameter("pages"));
-    Integer recordsPerPage= RecordPerPage.readProperties();
+    Integer recordsPerPage = RecordPerPage.readProperties();
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
@@ -74,16 +74,17 @@
                            href="GetAttributesUserRepository?page=<%=pageNumber-1%>"
                            tabindex="-1">Wcześniejsza</a>
                     </li>
-                    <%if (pageNumber < pages) {%>
-                    <li class="page-item">
-                        <a class="page-link"
-                           href="GetAttributesUserRepository?page=<%=pageNumber+1%>">Następna</a>
-                    </li>
-                    <%} else {%>
+                    <%if (pageNumber == pages) {%>
                     <li class="page-item disabled">
                         <a class="page-link"
                            href="GetAttributesUserRepository?page=<%=pageNumber+1%>">Następna</a>
                     </li>
+                    <%} else {%>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="GetAttributesUserRepository?page=<%=pageNumber+1%>">Następna</a>
+                    </li>
+
                     <%}%>
                 </ul>
             </nav>

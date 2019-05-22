@@ -40,9 +40,6 @@ public class GetAttributesUserRepository extends HttpServlet {
         String page = req.getParameter("page");
         if (page == null) page = "1";
 
-        //        Integer pages = null;
-//        Integer recordsPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
-
         BigDecimal pages = null;
 
         BigDecimal recordsPerPage = new BigDecimal(Integer.parseInt(ReadProperties.readPropertie("records-per-page")));

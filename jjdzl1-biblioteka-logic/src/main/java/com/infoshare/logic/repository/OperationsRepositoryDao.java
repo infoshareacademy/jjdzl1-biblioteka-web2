@@ -12,7 +12,9 @@ import java.util.List;
 
 @Local
 public interface OperationsRepositoryDao {
-    List<Operation> AllOperationList(String typoOfOperations, String userId, LocalDate firstDate, LocalDate lastDate) throws SQLException, ClassNotFoundException;
+    List<Operation> AllOperationList(String typoOfOperations, String userId, LocalDate firstDate, LocalDate lastDate, Integer page) throws SQLException, ClassNotFoundException;
+
+    Integer countAllOperationList(String operationType, String userId, LocalDate firstDate, LocalDate lastDate) throws SQLException, ClassNotFoundException;
 
     void addNewOperation(List<Basket> basket, User user);
 

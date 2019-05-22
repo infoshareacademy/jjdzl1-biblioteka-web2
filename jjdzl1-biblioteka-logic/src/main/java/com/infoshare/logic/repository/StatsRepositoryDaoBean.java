@@ -80,19 +80,30 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
 
     public String countOperations(String status) {
 
-        String stringQuery = null;
+        String stringQuery = "";
+
         if (status.equals("all")) {
             stringQuery = "select count(o) from Operation o";
+
         } else if (status.equals("activeReservation")) {
-            stringQuery = "select count(o) from Operation o where o.operationType='RESERVATION' and o.endDate >=current_date";
+            stringQuery = "select count(o) from Operation o " +
+                    "where o.operationType='RESERVATION' " +
+                    "and o.endDate >=current_date";
+
         } else if (status.equals("expiredReservation")) {
-            stringQuery = "select count(o) from Operation o where o.operationType='RESERVATION' and o.endDate < current_date";
+            stringQuery = "select count(o) from Operation o " +
+                    "where o.operationType='RESERVATION' " +
+                    "and o.endDate < current_date";
+
         } else if (status.equals("expiredBorrow")) {
             LocalDate nowMinus30Days = LocalDate.now().minusDays(30);
-            stringQuery = "select count(o) from Operation o where o.operationType='BORROW' and o.startDate < '" + nowMinus30Days + "'";
+            stringQuery = "select count(o) from Operation o " +
+                    "where o.operationType='BORROW' " +
+                    "and o.startDate < '" + nowMinus30Days + "'";
         }
 
         Query query = entityManager.createQuery(stringQuery);
+
         String countOperation = String.valueOf(query.getSingleResult());
         return countOperation;
     }
