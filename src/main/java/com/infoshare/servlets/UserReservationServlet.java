@@ -3,6 +3,7 @@ package com.infoshare.servlets;
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.OperationsRepositoryDao;
+import com.infoshare.logic.utils.ReadProperties;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -10,11 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.Properties;
 
 @WebServlet("/UserReservationServlet")
 public class UserReservationServlet extends HttpServlet {
@@ -30,19 +28,7 @@ public class UserReservationServlet extends HttpServlet {
         int userId = (int) req.getSession().getAttribute("userId");
         int countReservationForUser = operationsRepository.listOfReservationByUser(userId).size();
 
-        Integer maxNumberOfUserReservation;
-        try {
-            Properties properties = new Properties();
-            InputStream inputStream = Thread.currentThread()
-                    .getContextClassLoader()
-                    .getResource("settings.properties")
-                    .openStream();
-            properties.load(inputStream);
-            maxNumberOfUserReservation = Integer.parseInt(properties.getProperty("max-number-of-user-reservation"));
-        } catch (
-                IOException e) {
-            throw new FileNotFoundException();
-        }
+        Integer maxNumberOfUserReservation = Integer.parseInt(ReadProperties.readPropertie("max-number-of-user-reservation"));
 
         if (countReservationForUser < maxNumberOfUserReservation) {
             try {

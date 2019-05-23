@@ -1,7 +1,6 @@
 package com.infoshare.servlets;
 
 import com.infoshare.logic.domain.*;
-import com.infoshare.logic.repository.BasketRepositoryDao;
 import com.infoshare.logic.repository.BooksRepositoryDao;
 import com.infoshare.logic.repository.OperationsRepositoryDao;
 
@@ -14,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("BorrowAfterReservationBookServlet")
 public class BorrowAfterReservationBookServlet extends HttpServlet {

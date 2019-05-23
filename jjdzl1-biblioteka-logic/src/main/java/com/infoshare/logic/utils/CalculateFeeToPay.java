@@ -1,32 +1,17 @@
 package com.infoshare.logic.utils;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Properties;
+
 
 public class CalculateFeeToPay {
 
     public static BigDecimal calculateFeeToPay(LocalDate startDate, LocalDate endDate) throws FileNotFoundException {
 
-        Double oneDayPay;
-
-        try {
-            Properties properties = new Properties();
-            InputStream inputStream = Thread.currentThread()
-                    .getContextClassLoader()
-                    .getResource("settings.properties")
-                    .openStream();
-            properties.load(inputStream);
-            oneDayPay = Double.parseDouble(properties.getProperty("price-for-one-day-of-borrow-delay"));
-        } catch (
-                IOException e) {
-            throw new FileNotFoundException();
-        }
+        Double oneDayPay = Double.parseDouble(ReadProperties.readPropertie("price-for-one-day-of-borrow-delay"));
 
         BigDecimal priceforOneDayOfBorrowDelay = GetPriceForOneDayOfBorrowDelay.getPriceForOneDayOfBorrowDelay();
 

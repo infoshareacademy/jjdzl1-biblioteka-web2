@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,6 @@ public class ReservationBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    //    int userId = Integer.parseInt(req.getParameter("userId"));
         List<Operation> reservations = new ArrayList<>();
         int userId = ((User) req.getSession().getAttribute("selectedUser")).getId();
 

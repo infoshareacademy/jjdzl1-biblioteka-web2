@@ -1,7 +1,7 @@
 <%@ page import="com.infoshare.logic.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.logic.domain.UserStatus" %>
-<%@ page import="com.infoshare.logic.utils.RecordPerPage" %>
+<%@ page import="com.infoshare.logic.utils.ReadProperties" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     String operation = request.getParameter("operation");
     String pageString = request.getParameter("page");
     Integer pages = Integer.parseInt(request.getParameter("pages"));
-    Integer recordsPerPage = RecordPerPage.readProperties();
+    Integer recordsPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
 
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
