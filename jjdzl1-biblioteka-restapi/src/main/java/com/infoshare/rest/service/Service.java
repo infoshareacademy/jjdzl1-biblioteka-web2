@@ -48,7 +48,7 @@ public class Service {
     @GET
     @Path("/users")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUsers(@QueryParam("page") Integer page) throws SQLException, ClassNotFoundException {
+    public Response getUsers(@QueryParam("page") Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException {
 
         Collection<User> users = usersRepository.listOfUsers("", page);
         if (users.isEmpty()) {
@@ -128,7 +128,7 @@ public class Service {
     @DELETE
     @Path("/user")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteUser(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException {
+    public Response deleteUser(@QueryParam("id") Integer id) throws SQLException, ClassNotFoundException, FileNotFoundException {
 
         if (usersRepository.getUserById(id) != null) {
             usersRepository.deleteUser(id);
@@ -235,7 +235,7 @@ public class Service {
     @GET
     @Path("/operations")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id, @QueryParam("page") Integer page) throws SQLException, ClassNotFoundException {
+    public Response getOperations(@QueryParam("type") String type, @QueryParam("userId") String id, @QueryParam("page") Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException {
 
         if (page == null) page = 1;
         if (type == null) type = "all";

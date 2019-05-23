@@ -4,7 +4,8 @@
 <%@ page import="com.infoshare.logic.domain.OperationType" %>
 <%@ page import="java.math.BigDecimal" %>
 <%@ page import="com.infoshare.logic.utils.CalculateFeeToPay" %>
-<%@ page import="com.infoshare.logic.utils.RecordPerPage" %>
+<%@ page import="com.infoshare.logic.utils.ReadProperties" %>
+<%@ page import="javax.persistence.criteria.CriteriaBuilder" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -25,6 +26,7 @@
     String lastDate = request.getParameter("lastDate");
     Integer pages = Integer.parseInt(request.getParameter("pages"));
     Integer user = null;
+    Integer selectedUserId = null;
     if (StringUser != null) user = Integer.parseInt(StringUser);
     String operationTypePl = "";
     String operationType = request.getParameter("operationType");
@@ -38,9 +40,12 @@
     String pageString = request.getParameter("page");
     String edit = request.getParameter("edit");
     String reservation = request.getParameter("reservation");
-    if (reservation == null)
-        reservation = "";
-    Integer recordsPerPage = RecordPerPage.readProperties();
+    if (reservation == null) reservation = "";
+    if (session.getAttribute("selectedUser") != null) {
+        User selectedUser = (User) session.getAttribute("selectedUser");
+        selectedUserId = selectedUser.getId();
+    }
+    Integer recordsPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
 %>
@@ -103,18 +108,26 @@
                             <li class="page-item">
                                 <%}%>
                                 <a class="page-link"
+                                        <%if (selectedUserId == null) {%>
                                    href="GetAttributeOperationRepository?page=<%=pageNumber-1%>&operationType=<%=operationType%>&page=<%=pageNumber%>"
+                                        <%} else {%>
+                                   href="GetAttributeOperationRepository?page=<%=pageNumber-1%>&operationType=<%=operationType%>&page=<%=pageNumber%>"
+                                        <%}%>
                                    tabindex="-1">Wcześniejsza</a>
                             </li>
                             <%if (pageNumber == pages || pages == 0) {%>
                             <li class="page-item disabled">
                                 <a class="page-link"
-                                   href="GetAttributeOperationRepository?page=<%=pageNumber+1%>&operationType=<%=operationType%>&page=<%=pageNumber%>">Następna</a>
+                                   href="">Następna</a>
                             </li>
                             <%} else {%>
                             <li class="page-item">
                                 <a class="page-link"
+                                        <%if (selectedUserId == null) {%>
                                    href="GetAttributeOperationRepository?page=<%=pageNumber+1%>&operationType=<%=operationType%>&page=<%=pageNumber%>">Następna</a>
+                                <%} else {%>
+                                href="GetAttributeOperationRepository?page=<%=pageNumber + 1%>&operationType=<%=operationType%>&page=<%=pageNumber%>&userId=<%=selectedUserId%>">Następna</a>
+                                <%}%>
                             </li>
                             <%}%>
                         </ul>

@@ -4,7 +4,7 @@ import com.infoshare.logic.domain.User;
 import com.infoshare.logic.domain.UserStatus;
 import com.infoshare.logic.utils.Hasher;
 import com.infoshare.logic.utils.PBKDF2Hasher;
-import com.infoshare.logic.utils.RecordPerPage;
+import com.infoshare.logic.utils.ReadProperties;
 import com.infoshare.logic.validation.UserValidator;
 
 
@@ -26,16 +26,10 @@ public class UsersRepositoryDaoBean implements UsersRepositoryDao {
     UserValidator validator;
 
     @Override
-    public List<User> listOfUsers(String findUserByName, Integer page) {
+    public List<User> listOfUsers(String findUserByName, Integer page) throws FileNotFoundException {
 
-        Integer recordPerPage = null;
+        Integer recordPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
         Integer offset = null;
-
-        try {
-            recordPerPage = RecordPerPage.readProperties();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         if (page == null) page = 1;
         offset = recordPerPage * page - recordPerPage;

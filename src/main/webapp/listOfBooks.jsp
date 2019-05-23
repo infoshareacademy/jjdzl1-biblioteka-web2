@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.infoshare.logic.domain.Book" %>
-<%@ page import="com.infoshare.logic.utils.RecordPerPage" %>
+<%@ page import="com.infoshare.logic.utils.ReadProperties" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -18,14 +18,15 @@
 <%
     String order = request.getParameter("order");
     String pageString = request.getParameter("page");
-    Integer pages=Integer.parseInt(request.getParameter("pages"));
-
+    String stringPages = request.getParameter("pages");
+    if (stringPages == null) stringPages = "1";
+    Integer pages = Integer.parseInt(stringPages);
     if (pageString == null || pageString.isEmpty()) pageString = "1";
     int pageNumber = Integer.parseInt(pageString);
     String titleOfBook = request.getParameter("titleOfBook");
 
     String orderTitle;
-    int recordsPerPage = RecordPerPage.readProperties();
+    int recordsPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
 
     if (order == null || order.isEmpty() || order.equals("title")) {
         orderTitle = " (wg tytułu)";
@@ -56,12 +57,12 @@
                                    href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>"
                                    tabindex="-1">Wcześniejsza</a>
                             </li>
-                            <%if ((pageNumber+1) > pages) {%>
+                            <%if ((pageNumber + 1) > pages) {%>
                             <li class="page-item disabled">
                                 <a class="page-link"
                                    href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
                             </li>
-                            <%}else{%>
+                            <%} else {%>
                             <li class="page-item">
                                 <a class="page-link"
                                    href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>

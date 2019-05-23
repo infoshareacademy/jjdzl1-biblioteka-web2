@@ -2,8 +2,7 @@ package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.BookStatus;
-import com.infoshare.logic.domain.User;
-import com.infoshare.logic.utils.RecordPerPage;
+import com.infoshare.logic.utils.ReadProperties;
 import com.infoshare.logic.validation.BookValidator;
 
 import javax.ejb.EJB;
@@ -30,14 +29,8 @@ public class BooksRepositoryDaoBean implements BooksRepositoryDao {
     @Override
     public List<Book> bookList(String order, Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException {
 
-        Integer recordPerPage = null;
+        Integer recordPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
         Integer offset = null;
-
-        try {
-            recordPerPage = RecordPerPage.readProperties();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         if (page == null) page = 1;
         offset = recordPerPage * page - recordPerPage;

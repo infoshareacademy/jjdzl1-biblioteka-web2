@@ -1,8 +1,7 @@
 package com.infoshare.logic.repository;
 
-import com.infoshare.logic.domain.Book;
 import com.infoshare.logic.domain.Message;
-import com.infoshare.logic.utils.RecordPerPage;
+import com.infoshare.logic.utils.ReadProperties;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -30,20 +29,13 @@ public class MessageRepositoryDaoBean implements MessageRepositoryDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Message> getMessage(Integer id, Integer page) {
+    public List<Message> getMessage(Integer id, Integer page) throws FileNotFoundException {
 
-        Integer recordPerPage = null;
+        Integer recordPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
         Integer offset = null;
-
-        try {
-            recordPerPage = RecordPerPage.readProperties();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         if (page == null) page = 1;
         offset = recordPerPage * page - recordPerPage;
-
 
         String query = "select m from Message m";
 
@@ -61,18 +53,11 @@ public class MessageRepositoryDaoBean implements MessageRepositoryDao {
     }
 
     @Override
-    public Long countMessage(Integer id) {
+    public Long countMessage(Integer id) throws FileNotFoundException {
 
-        Integer recordPerPage = null;
+        Integer recordPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
         Integer offset = null;
         Long numbersOfMessage = null;
-
-
-        try {
-            recordPerPage = RecordPerPage.readProperties();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         String query = "select count(m) from Message m";
 

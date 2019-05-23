@@ -1,7 +1,7 @@
 package com.infoshare.logic.repository;
 
 import com.infoshare.logic.domain.*;
-import com.infoshare.logic.utils.RecordPerPage;
+import com.infoshare.logic.utils.ReadProperties;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -28,16 +28,10 @@ public class OperationsRepositoryDaoBeen implements OperationsRepositoryDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Operation> AllOperationList(String operationType, String userId, LocalDate firstDate, LocalDate lastDate, Integer page) throws SQLException, ClassNotFoundException {
+    public List<Operation> AllOperationList(String operationType, String userId, LocalDate firstDate, LocalDate lastDate, Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException {
 
-        Integer recordPerPage = null;
+        Integer recordPerPage = Integer.parseInt(ReadProperties.readPropertie("records-per-page"));
         Integer offset = null;
-
-        try {
-            recordPerPage = RecordPerPage.readProperties();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         if (page == null) page = 1;
         offset = recordPerPage * page - recordPerPage;

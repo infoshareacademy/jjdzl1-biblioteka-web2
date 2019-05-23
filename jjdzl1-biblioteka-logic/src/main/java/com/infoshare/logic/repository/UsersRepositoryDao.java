@@ -4,12 +4,13 @@ import com.infoshare.logic.domain.User;
 
 import javax.ejb.Local;
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
 @Local
 public interface UsersRepositoryDao {
-    List<User> listOfUsers(String findUserByName, Integer page) throws SQLException, ClassNotFoundException;
+    List<User> listOfUsers(String findUserByName, Integer page) throws SQLException, ClassNotFoundException, FileNotFoundException;
 
     User getUserById(int id) throws SQLException, ClassNotFoundException;
 
