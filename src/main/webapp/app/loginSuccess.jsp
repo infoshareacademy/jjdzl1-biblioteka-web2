@@ -114,8 +114,9 @@
 
         String activeReservation = null;
         String expiredReservation = null;
-        String expiredBorrow=null;
-
+        String expiredBorrow = null;
+        String borrowThisMonth = null;
+        String allBorrows = null;
 
         Map<String, String> stats = (HashMap) session.getAttribute("stats");
         time = stats.get("time");
@@ -131,7 +132,9 @@
         disabledUsers = stats.get("disabled");
         activeReservation = stats.get("activeReservation");
         expiredReservation = stats.get("expiredReservation");
-        expiredBorrow=stats.get("expiredBorrow");
+        expiredBorrow = stats.get("expiredBorrow");
+        borrowThisMonth = stats.get("borrowThisMonth");
+        allBorrows = stats.get("allBorrows");
 
         if (session.getAttribute("normalUser") == null) {
     %>
@@ -139,11 +142,9 @@
         <div class="col-lg-6">
             <div style="margin-top:70px;margin-right: 50px; margin-left: 70px;text-align: left">
                 <div class="d-flex">
-                    <div class="mr-auto p-2 align-items-start">
-                        <h4><b>Statystyki biblioteki</b></h4>
-                    </div>
+                    <h4><b>Statystyki biblioteki</b></h4>
                 </div>
-
+                <hr>
                 <table class="table table-borderless">
                     <thead class="listofitemps">
                     <tr>
@@ -170,8 +171,9 @@
 
                     </thead>
                 </table>
-
+                <br/>
                 <h4><b>Statystyki wypożyczeń</b></h4>
+                <hr>
                 <table class="table table-borderless">
                     <thead class="listofitemps">
 
@@ -181,6 +183,15 @@
                         </td>
                         <td>Ilość rezerwacji:</td>
                         <td><%=reservationBooks%>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Wszystkich wypożyczeń:</td>
+                        <td><%=allBorrows%>
+                        </td>
+                        <td>Wypożyczeń w tym miesiącu:</td>
+                        <td><%=borrowThisMonth%>
                         </td>
                     </tr>
 
@@ -195,7 +206,8 @@
 
                     <tr>
                         <td>Przeterminowanych wypożyczeń:</td>
-                        <td><%=expiredBorrow%></td>
+                        <td><%=expiredBorrow%>
+                        </td>
                         <td>Dostępnych książek:</td>
                         <td><%=availableBooks%>
                         </td>
@@ -204,7 +216,6 @@
                     </tr>
                     </thead>
                 </table>
-                <br/>
                 <br/>
                 <div class="d-flex">
                     <div class="mr-auto p-2 align-items-start">

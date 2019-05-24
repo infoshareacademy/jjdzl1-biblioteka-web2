@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.HashMap;
 
 @Stateless
@@ -39,6 +41,8 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
         statsMap.put("activeReservation", countOperations("activeReservation"));
         statsMap.put("expiredReservation", countOperations("expiredReservation"));
         statsMap.put("expiredBorrow", countOperations("expiredBorrow"));
+        statsMap.put("borrowThisMonth", countOperations("borrowThisMonth"));
+        statsMap.put("allBorrows", countOperations("allBorrows"));
 
 
         return statsMap;
@@ -80,6 +84,10 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
 
     public String countOperations(String status) {
 
+        LocalDate now = LocalDate.now();
+        LocalDate firstDayOfMonth = now.with(TemporalAdjusters.firstDayOfMonth());
+        LocalDate lastDayOfMonth = now.with(TemporalAdjusters.lastDayOfMonth());
+
         String stringQuery = "";
 
         if (status.equals("all")) {
@@ -100,6 +108,14 @@ public class StatsRepositoryDaoBean implements StatsRepositoryDao {
             stringQuery = "select count(o) from Operation o " +
                     "where o.operationType='BORROW' " +
                     "and o.startDate < '" + nowMinus30Days + "'";
+
+        } else if (status.equals("borrowThisMonth")) {
+            stringQuery = "select count(o) from Operation o " +
+                    "where o.operationType='BORROW' " +
+                    "and o.startDate >= '" + firstDayOfMonth + "' and o.startDate <= '" + lastDayOfMonth + "'";
+        } else if (status.equals("allBorrows")) {
+            stringQuery = "select count(o) from Operation o " +
+                    "where o.operationType='BORROW'";
         }
 
         Query query = entityManager.createQuery(stringQuery);
