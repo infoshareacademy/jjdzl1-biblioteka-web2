@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-    <%@include file="include/appHeader.jsp" %>
+    <%@include file="include/header.jsp" %>
 </header>
 
 
