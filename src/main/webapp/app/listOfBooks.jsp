@@ -57,19 +57,31 @@
                                     <%}else{%>
                             <li class="page-item">
                                 <%}%>
+                                <%if (reservation != null) {%>
+                                <a class="page-link"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>&reservation=user"
+                                   tabindex="-1">Wcześniejsza</a>
+                                <%} else {%>
                                 <a class="page-link"
                                    href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>"
                                    tabindex="-1">Wcześniejsza</a>
+                                <%}%>
                             </li>
                             <%if (pageNumber == pages) {%>
                             <li class="page-item disabled">
                                 <a class="page-link"
-                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
+                                   href="#">Następna</a>
                             </li>
                             <%} else {%>
                             <li class="page-item">
+                                <%if (reservation != null) {%>
+                                <a class="page-link"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>&reservation=user">Następna</a>
+                                <%} else {%>
                                 <a class="page-link"
                                    href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
+                                <%}%>
+
                             </li>
                             <%}%>
                         </ul>
