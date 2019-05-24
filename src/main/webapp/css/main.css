@@ -292,3 +292,8 @@ ul {
     color: #6c757d;
     align-items: end;
 }
+
+.aboutUs{
+    text-decoration: none;
+    color: black;
+}

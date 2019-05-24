@@ -50,6 +50,11 @@
                 <div class="p-2 align-items-end ">
                     <br/>
                     <nav aria-label="Page navigation example">
+                    <%  String editedBook="&edit=false";
+                        if (edit!=null && edit.equals("true")){
+                            editedBook="&edit=true";
+                        }%>
+
                         <ul class="pagination justify-content-end">
 
                             <%if (pageNumber == 1) {%>
@@ -57,19 +62,31 @@
                                     <%}else{%>
                             <li class="page-item">
                                 <%}%>
+                                <%if (reservation != null && reservation.equals("user")) {%>
                                 <a class="page-link"
-                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%>&reservation=user&<%=editedBook%>"
                                    tabindex="-1">Wcześniejsza</a>
+                                <%} else {%>
+                                <a class="page-link"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber-1%><%=editedBook%>"
+                                   tabindex="-1">Wcześniejsza</a>
+                                <%}%>
                             </li>
                             <%if (pageNumber == pages) {%>
                             <li class="page-item disabled">
                                 <a class="page-link"
-                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
+                                   href="#">Następna</a>
                             </li>
                             <%} else {%>
                             <li class="page-item">
+                                <%if (reservation != null && reservation.equals("user")) {%>
                                 <a class="page-link"
-                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>">Następna</a>
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%>&reservation=user<%=editedBook%>">Następna</a>
+                                <%} else {%>
+                                <a class="page-link"
+                                   href="GetAttributeBookRepository?order=<%=order%>&page=<%=pageNumber+1%><%=editedBook%>">Następna</a>
+                                <%}%>
+
                             </li>
                             <%}%>
                         </ul>
