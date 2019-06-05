@@ -14,13 +14,11 @@ body {
     display: block;
     text-align: center;
     height: 100vh;
-
 }
 
 .navbar-nav li:hover > .dropdown-menu {
     display: block;
 }
-
 
 .navbar {
     min-height: 57px;
@@ -34,9 +32,7 @@ body {
     list-style: none;
     font-size: 10px;
     padding-top: 10px;
-
 }
-
 
 .footer {
     position: fixed;
@@ -67,7 +63,6 @@ body {
 .footer a:active {
     text-decoration: underline;
     color: white;
-
 }
 
 .content {
